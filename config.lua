@@ -824,9 +824,16 @@ Config.Showers = {
 }
 
 
-function Notify(text)
-    exports["my_notify"]:Notify("Gym", text, 5000, "info") -- replace with your preferred notification trigger
-	--exports["mythic_notify"]:SendAlert("inform", text, 5000)
+function Notify(text, notifType)
+        if lib and lib.notify then
+                lib.notify({
+                        title = 'Outlaw Gym',
+                        description = text,
+                        type = notifType or 'inform'
+                })
+        else
+                print(('Notification fallback: %s'):format(text))
+        end
 end
 
 function DrawText3D(x, y, z, text)

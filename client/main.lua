@@ -179,13 +179,30 @@ function L30_1()
       L28_1 = L0_2
       L0_2 = true
       L26_1 = L0_2
-      L0_2 = SendNUIMessage
-      L1_2 = {}
-      L1_2.message = "gymprogressshow"
-      L2_2 = Config
-      L2_2 = L2_2.GymReactionMinigameKey
-      L1_2.gymreactkey = L2_2
-      L0_2(L1_2)
+      L0_2 = Config
+      L0_2 = L0_2.GymReactionSuccessWindow
+      if "number" ~= type(L0_2) then
+        L0_2 = 10
+      end
+      L1_2 = math
+      L1_2 = L1_2.max
+      L2_2 = 1
+      L3_2 = L0_2
+      L1_2 = L1_2(L2_2, L3_2)
+      L2_2 = math
+      L2_2 = L2_2.min
+      L3_2 = L1_2
+      L4_2 = 100
+      L2_2 = L2_2(L3_2, L4_2)
+      L0_2 = L2_2
+      L1_2 = SendNUIMessage
+      L2_2 = {}
+      L2_2.message = "gymprogressshow"
+      L3_2 = Config
+      L3_2 = L3_2.GymReactionMinigameKey
+      L2_2.gymreactkey = L3_2
+      L2_2.highlightwindow = L0_2
+      L1_2(L2_2)
       while true do
         L0_2 = L26_1
         if true ~= L0_2 then
@@ -243,7 +260,23 @@ function L30_1()
       end
       L0_2 = false
       L1_2 = L29_1
-      if L1_2 <= 10 then
+      L2_2 = Config
+      L2_2 = L2_2.GymReactionSuccessWindow
+      if "number" ~= type(L2_2) then
+        L2_2 = 10
+      end
+      L3_2 = math
+      L3_2 = L3_2.max
+      L4_2 = 1
+      L5_2 = L2_2
+      L3_2 = L3_2(L4_2, L5_2)
+      L4_2 = math
+      L4_2 = L4_2.min
+      L5_2 = L3_2
+      L6_2 = 100
+      L4_2 = L4_2(L5_2, L6_2)
+      L2_2 = L4_2
+      if L1_2 <= L2_2 then
         L0_2 = true
       end
       L1_2 = SendNUIMessage
@@ -282,7 +315,7 @@ if "esx" == L30_1 then
     function L32_1()
       local L0_2, L1_2, L2_2
       L0_2 = TriggerServerEvent
-      L1_2 = "rtx_gym:GymSynchronize"
+      L1_2 = "outlaw_gym:GymSynchronize"
       L0_2(L1_2)
       playerloaded = true
       L0_2 = {}
@@ -335,7 +368,7 @@ if "esx" == L30_1 then
           L0_2 = L0_2(L1_2, L2_2)
           if L0_2 then
             L0_2 = TriggerServerEvent
-            L1_2 = "rtx_gym:GymSynchronize"
+            L1_2 = "outlaw_gym:GymSynchronize"
             L0_2(L1_2)
             playerloaded = true
             L0_2 = {}
@@ -394,7 +427,7 @@ if "qbcore" == L30_1 then
     function L32_1()
       local L0_2, L1_2, L2_2
       L0_2 = TriggerServerEvent
-      L1_2 = "rtx_gym:GymSynchronize"
+      L1_2 = "outlaw_gym:GymSynchronize"
       L0_2(L1_2)
       playerloaded = true
       L0_2 = {}
@@ -447,7 +480,7 @@ if "qbcore" == L30_1 then
           L0_2 = L0_2(L1_2, L2_2)
           if L0_2 then
             L0_2 = TriggerServerEvent
-            L1_2 = "rtx_gym:GymSynchronize"
+            L1_2 = "outlaw_gym:GymSynchronize"
             L0_2(L1_2)
             playerloaded = true
             L0_2 = {}
@@ -506,7 +539,7 @@ if "standalone" == L30_1 then
     function L32_1()
       local L0_2, L1_2, L2_2
       L0_2 = TriggerServerEvent
-      L1_2 = "rtx_gym:GymSynchronize"
+      L1_2 = "outlaw_gym:GymSynchronize"
       L0_2(L1_2)
       playerloaded = true
       L0_2 = {}
@@ -559,7 +592,7 @@ if "standalone" == L30_1 then
           L0_2 = L0_2(L1_2, L2_2)
           if L0_2 then
             L0_2 = TriggerServerEvent
-            L1_2 = "rtx_gym:GymSynchronize"
+            L1_2 = "outlaw_gym:GymSynchronize"
             L0_2(L1_2)
             playerloaded = true
             L0_2 = {}
@@ -619,7 +652,7 @@ function L31_1()
         L0_2 = playerloaded
         if false == L0_2 then
           L0_2 = TriggerServerEvent
-          L1_2 = "rtx_gym:GymSynchronize"
+          L1_2 = "outlaw_gym:GymSynchronize"
           L0_2(L1_2)
         else
           return
@@ -630,10 +663,10 @@ function L31_1()
 end
 L30_1(L31_1)
 L30_1 = RegisterNetEvent
-L31_1 = "rtx_gym:PlayerLoadedClient"
+L31_1 = "outlaw_gym:PlayerLoadedClient"
 L30_1(L31_1)
 L30_1 = AddEventHandler
-L31_1 = "rtx_gym:PlayerLoadedClient"
+L31_1 = "outlaw_gym:PlayerLoadedClient"
 function L32_1(A0_2)
   local L1_2
   playerloaded = A0_2
@@ -725,7 +758,7 @@ function L31_1()
               L20_2 = {}
               L21_2 = {}
               L22_2 = {}
-              L22_2.event = "rtx_gym:UseExercise"
+              L22_2.event = "outlaw_gym:UseExercise"
               L23_2 = Config
               L23_2 = L23_2.TargetIcons
               L23_2 = L23_2.exerciseicon
@@ -786,7 +819,7 @@ function L31_1()
                 function L23_2(A0_3)
                   local L1_3, L2_3
                   L1_3 = TriggerEvent
-                  L2_3 = "rtx_gym:UseExercise"
+                  L2_3 = "outlaw_gym:UseExercise"
                   L1_3(L2_3)
                 end
                 L22_2.action = L23_2
@@ -841,7 +874,7 @@ function L31_1()
                   L22_2 = ""
                   L18_2 = L18_2 .. L19_2 .. L20_2 .. L21_2 .. L22_2
                   L17_2.name = L18_2
-                  L17_2.event = "rtx_gym:UseExercise"
+                  L17_2.event = "outlaw_gym:UseExercise"
                   L18_2 = Config
                   L18_2 = L18_2.TargetIcons
                   L18_2 = L18_2.exerciseicon
@@ -909,7 +942,7 @@ function L31_1()
               L13_2 = {}
               L14_2 = {}
               L15_2 = {}
-              L15_2.event = "rtx_gym:UseEntry"
+              L15_2.event = "outlaw_gym:UseEntry"
               L16_2 = Config
               L16_2 = L16_2.TargetIcons
               L16_2 = L16_2.payicon
@@ -967,7 +1000,7 @@ function L31_1()
                 function L16_2(A0_3)
                   local L1_3, L2_3
                   L1_3 = TriggerEvent
-                  L2_3 = "rtx_gym:UseEntry"
+                  L2_3 = "outlaw_gym:UseEntry"
                   L1_3(L2_3)
                 end
                 L15_2.action = L16_2
@@ -1022,7 +1055,7 @@ function L31_1()
                   L13_2 = ""
                   L11_2 = L11_2 .. L12_2 .. L13_2
                   L10_2.name = L11_2
-                  L10_2.event = "rtx_gym:UseEntry"
+                  L10_2.event = "outlaw_gym:UseEntry"
                   L11_2 = Config
                   L11_2 = L11_2.TargetIcons
                   L11_2 = L11_2.payicon
@@ -1090,7 +1123,7 @@ function L31_1()
               L13_2 = {}
               L14_2 = {}
               L15_2 = {}
-              L15_2.event = "rtx_gym:UseManagment"
+              L15_2.event = "outlaw_gym:UseManagment"
               L16_2 = Config
               L16_2 = L16_2.TargetIcons
               L16_2 = L16_2.managmenticon
@@ -1148,7 +1181,7 @@ function L31_1()
                 function L16_2(A0_3)
                   local L1_3, L2_3
                   L1_3 = TriggerEvent
-                  L2_3 = "rtx_gym:UseManagment"
+                  L2_3 = "outlaw_gym:UseManagment"
                   L1_3(L2_3)
                 end
                 L15_2.action = L16_2
@@ -1203,7 +1236,7 @@ function L31_1()
                   L13_2 = ""
                   L11_2 = L11_2 .. L12_2 .. L13_2
                   L10_2.name = L11_2
-                  L10_2.event = "rtx_gym:UseManagment"
+                  L10_2.event = "outlaw_gym:UseManagment"
                   L11_2 = Config
                   L11_2 = L11_2.TargetIcons
                   L11_2 = L11_2.managmenticon
@@ -1270,7 +1303,7 @@ function L31_1()
             L13_2 = {}
             L14_2 = {}
             L15_2 = {}
-            L15_2.event = "rtx_gym:UseShowerTarget"
+            L15_2.event = "outlaw_gym:UseShowerTarget"
             L16_2 = Config
             L16_2 = L16_2.TargetIcons
             L16_2 = L16_2.showericon
@@ -1329,7 +1362,7 @@ function L31_1()
               function L16_2(A0_3)
                 local L1_3, L2_3
                 L1_3 = TriggerEvent
-                L2_3 = "rtx_gym:UseShowerTarget"
+                L2_3 = "outlaw_gym:UseShowerTarget"
                 L1_3(L2_3)
               end
               L15_2.action = L16_2
@@ -1385,7 +1418,7 @@ function L31_1()
                 L13_2 = ""
                 L11_2 = L11_2 .. L12_2 .. L13_2
                 L10_2.name = L11_2
-                L10_2.event = "rtx_gym:UseShowerTarget"
+                L10_2.event = "outlaw_gym:UseShowerTarget"
                 L11_2 = Config
                 L11_2 = L11_2.TargetIcons
                 L11_2 = L11_2.showericon
@@ -1446,11 +1479,11 @@ L30_1(L31_1)
 function L30_1(A0_2)
   local L1_2, L2_2, L3_2, L4_2, L5_2
   L1_2 = AddTextEntry
-  L2_2 = "gtavclassicinteractionrtxgym"
+  L2_2 = "gtavclassicinteractionoutlawgym"
   L3_2 = A0_2
   L1_2(L2_2, L3_2)
   L1_2 = BeginTextCommandDisplayHelp
-  L2_2 = "gtavclassicinteractionrtxgym"
+  L2_2 = "gtavclassicinteractionoutlawgym"
   L1_2(L2_2)
   L1_2 = EndTextCommandDisplayHelp
   L2_2 = 0
@@ -2327,7 +2360,7 @@ function L30_1()
                 L25_2 = 0
                 L8_2(L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2, L20_2, L21_2, L22_2, L23_2, L24_2, L25_2)
                 L8_2 = TriggerServerEvent
-                L9_2 = "rtx_gym:GymAdd"
+                L9_2 = "outlaw_gym:GymAdd"
                 L10_2 = L3_1.gymid
                 L11_2 = L3_1.exerciseid
                 L8_2(L9_2, L10_2, L11_2)
@@ -2641,7 +2674,7 @@ function L30_1()
                   L25_2 = 0
                   L8_2(L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2, L20_2, L21_2, L22_2, L23_2, L24_2, L25_2)
                   L8_2 = TriggerServerEvent
-                  L9_2 = "rtx_gym:GymAdd"
+                  L9_2 = "outlaw_gym:GymAdd"
                   L10_2 = L3_1.gymid
                   L11_2 = L3_1.exerciseid
                   L8_2(L9_2, L10_2, L11_2)
@@ -2995,7 +3028,7 @@ function L30_1()
                     L25_2 = 0
                     L8_2(L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2, L20_2, L21_2, L22_2, L23_2, L24_2, L25_2)
                     L8_2 = TriggerServerEvent
-                    L9_2 = "rtx_gym:GymAdd"
+                    L9_2 = "outlaw_gym:GymAdd"
                     L10_2 = L3_1.gymid
                     L11_2 = L3_1.exerciseid
                     L8_2(L9_2, L10_2, L11_2)
@@ -3217,7 +3250,7 @@ function L30_1()
                       L25_2 = 0
                       L8_2(L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2, L20_2, L21_2, L22_2, L23_2, L24_2, L25_2)
                       L8_2 = TriggerServerEvent
-                      L9_2 = "rtx_gym:GymAdd"
+                      L9_2 = "outlaw_gym:GymAdd"
                       L10_2 = L3_1.gymid
                       L11_2 = L3_1.exerciseid
                       L8_2(L9_2, L10_2, L11_2)
@@ -3439,7 +3472,7 @@ function L30_1()
                         L25_2 = 0
                         L8_2(L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2, L20_2, L21_2, L22_2, L23_2, L24_2, L25_2)
                         L8_2 = TriggerServerEvent
-                        L9_2 = "rtx_gym:GymAdd"
+                        L9_2 = "outlaw_gym:GymAdd"
                         L10_2 = L3_1.gymid
                         L11_2 = L3_1.exerciseid
                         L8_2(L9_2, L10_2, L11_2)
@@ -3607,7 +3640,7 @@ function L30_1()
                           L9_2 = true
                           L7_2(L8_2, L9_2)
                           L7_2 = TriggerServerEvent
-                          L8_2 = "rtx_gym:GymAdd"
+                          L8_2 = "outlaw_gym:GymAdd"
                           L9_2 = L3_1.gymid
                           L10_2 = L3_1.exerciseid
                           L7_2(L8_2, L9_2, L10_2)
@@ -3751,7 +3784,7 @@ function L30_1()
                           L9_2 = L0_2.heading
                           L7_2(L8_2, L9_2)
                           L7_2 = TriggerServerEvent
-                          L8_2 = "rtx_gym:GymAdd"
+                          L8_2 = "outlaw_gym:GymAdd"
                           L9_2 = L3_1.gymid
                           L10_2 = L3_1.exerciseid
                           L7_2(L8_2, L9_2, L10_2)
@@ -3824,7 +3857,7 @@ function L30_1()
             end
           else
             L3_2 = TriggerEvent
-            L4_2 = "rtx_gym:Notify"
+            L4_2 = "outlaw_gym:Notify"
             L5_2 = Language
             L6_2 = Config
             L6_2 = L6_2.Language
@@ -3965,7 +3998,7 @@ function L30_1()
               L22_2 = 0
               L5_2(L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2, L20_2, L21_2, L22_2)
               L5_2 = TriggerServerEvent
-              L6_2 = "rtx_gym:GymTypesAdd"
+              L6_2 = "outlaw_gym:GymTypesAdd"
               L7_2 = L7_1
               L5_2(L6_2, L7_2)
               L5_2 = Citizen
@@ -4188,7 +4221,7 @@ function L30_1()
                 L23_2 = 0
                 L6_2(L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2, L20_2, L21_2, L22_2, L23_2)
                 L6_2 = TriggerServerEvent
-                L7_2 = "rtx_gym:GymTypesAdd"
+                L7_2 = "outlaw_gym:GymTypesAdd"
                 L8_2 = L7_1
                 L6_2(L7_2, L8_2)
                 L6_2 = Citizen
@@ -4635,7 +4668,7 @@ function L30_1()
                   L22_2 = 0
                   L5_2(L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2, L20_2, L21_2, L22_2)
                   L5_2 = TriggerServerEvent
-                  L6_2 = "rtx_gym:GymTypesAdd"
+                  L6_2 = "outlaw_gym:GymTypesAdd"
                   L7_2 = L7_1
                   L5_2(L6_2, L7_2)
                   L5_2 = Citizen
@@ -4850,7 +4883,7 @@ function L30_1()
         L7_2 = L1_2.heading
         L5_2(L6_2, L7_2)
         L5_2 = TriggerServerEvent
-        L6_2 = "rtx_gym:GYMComplete"
+        L6_2 = "outlaw_gym:GYMComplete"
         L7_2 = L3_1.gymid
         L8_2 = L3_1.exerciseid
         L5_2(L6_2, L7_2, L8_2)
@@ -5008,7 +5041,7 @@ function L30_1()
           end
           disablekeyboard2 = false
           L3_2 = TriggerServerEvent
-          L4_2 = "rtx_gym:GYMTYPESComplete"
+          L4_2 = "outlaw_gym:GYMTYPESComplete"
           L3_2(L4_2)
           L3_2 = false
           L5_1 = L3_2
@@ -5024,10 +5057,10 @@ function L30_1()
 end
 GymStop = L30_1
 L30_1 = RegisterNetEvent
-L31_1 = "rtx_gym:GymStop"
+L31_1 = "outlaw_gym:GymStop"
 L30_1(L31_1)
 L30_1 = AddEventHandler
-L31_1 = "rtx_gym:GymStop"
+L31_1 = "outlaw_gym:GymStop"
 function L32_1(A0_2, A1_2)
   local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2
   L2_2 = usinggym
@@ -5135,7 +5168,7 @@ function L32_1(A0_2, A1_2)
         L9_2 = L3_2.heading
         L7_2(L8_2, L9_2)
         L7_2 = TriggerServerEvent
-        L8_2 = "rtx_gym:GYMComplete"
+        L8_2 = "outlaw_gym:GYMComplete"
         L9_2 = L3_1.gymid
         L10_2 = L3_1.exerciseid
         L7_2(L8_2, L9_2, L10_2)
@@ -5179,10 +5212,10 @@ function L32_1(A0_2, A1_2)
 end
 L30_1(L31_1, L32_1)
 L30_1 = RegisterNetEvent
-L31_1 = "rtx_gym:GymStop2"
+L31_1 = "outlaw_gym:GymStop2"
 L30_1(L31_1)
 L30_1 = AddEventHandler
-L31_1 = "rtx_gym:GymStop2"
+L31_1 = "outlaw_gym:GymStop2"
 function L32_1()
   local L0_2, L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2, L20_2, L21_2
   L0_2 = usinggym2
@@ -5300,7 +5333,7 @@ function L32_1()
       end
       disablekeyboard2 = false
       L3_2 = TriggerServerEvent
-      L4_2 = "rtx_gym:GYMTYPESComplete"
+      L4_2 = "outlaw_gym:GYMTYPESComplete"
       L3_2(L4_2)
       L3_2 = false
       L5_1 = L3_2
@@ -5324,10 +5357,10 @@ L30_1 = Config
 L30_1 = L30_1.Showers
 if L30_1 then
   L30_1 = RegisterNetEvent
-  L31_1 = "rtx_gym:UseShower"
+  L31_1 = "outlaw_gym:UseShower"
   L30_1(L31_1)
   L30_1 = AddEventHandler
-  L31_1 = "rtx_gym:UseShower"
+  L31_1 = "outlaw_gym:UseShower"
   function L32_1(A0_2)
     local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2, L20_2, L21_2, L22_2, L23_2
     L1_2 = ActionPossible
@@ -5420,7 +5453,7 @@ if L30_1 then
         L8_2 = L1_2
         L7_2(L8_2)
         L7_2 = TriggerServerEvent
-        L8_2 = "rtx_gym:SHOWERComplete"
+        L8_2 = "outlaw_gym:SHOWERComplete"
         L9_2 = true
         L10_2 = A0_2
         L7_2(L8_2, L9_2, L10_2)
@@ -5442,7 +5475,7 @@ if L30_1 then
         L8_2 = L1_2
         L7_2(L8_2)
         L7_2 = TriggerServerEvent
-        L8_2 = "rtx_gym:SHOWERComplete"
+        L8_2 = "outlaw_gym:SHOWERComplete"
         L9_2 = false
         L10_2 = A0_2
         L7_2(L8_2, L9_2, L10_2)
@@ -5460,10 +5493,10 @@ if L30_1 then
   end
   L30_1(L31_1, L32_1)
   L30_1 = RegisterNetEvent
-  L31_1 = "rtx_gym:ShowerHandler"
+  L31_1 = "outlaw_gym:ShowerHandler"
   L30_1(L31_1)
   L30_1 = AddEventHandler
-  L31_1 = "rtx_gym:ShowerHandler"
+  L31_1 = "outlaw_gym:ShowerHandler"
   function L32_1(A0_2, A1_2)
     local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2
     L2_2 = Config
@@ -5552,10 +5585,10 @@ if L30_1 then
   L30_1(L31_1, L32_1)
 end
 L30_1 = RegisterNetEvent
-L31_1 = "rtx_gym:GymHandler"
+L31_1 = "outlaw_gym:GymHandler"
 L30_1(L31_1)
 L30_1 = AddEventHandler
-L31_1 = "rtx_gym:GymHandler"
+L31_1 = "outlaw_gym:GymHandler"
 function L32_1(A0_2, A1_2)
   local L2_2
   L2_2 = Config
@@ -5565,10 +5598,10 @@ function L32_1(A0_2, A1_2)
 end
 L30_1(L31_1, L32_1)
 L30_1 = RegisterNetEvent
-L31_1 = "rtx_gym:UseGym"
+L31_1 = "outlaw_gym:UseGym"
 L30_1(L31_1)
 L30_1 = AddEventHandler
-L31_1 = "rtx_gym:UseGym"
+L31_1 = "outlaw_gym:UseGym"
 function L32_1(A0_2, A1_2)
   local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2, L20_2, L21_2, L22_2, L23_2, L24_2, L25_2, L26_2, L27_2, L28_2, L29_2
   L2_2 = ActionPossible
@@ -6333,7 +6366,7 @@ function L32_1(A0_2, A1_2)
       end
     else
       L8_2 = TriggerServerEvent
-      L9_2 = "rtx_gym:GYMComplete"
+      L9_2 = "outlaw_gym:GYMComplete"
       L10_2 = A0_2
       L11_2 = A1_2
       L8_2(L9_2, L10_2, L11_2)
@@ -6342,10 +6375,10 @@ function L32_1(A0_2, A1_2)
 end
 L30_1(L31_1, L32_1)
 L30_1 = RegisterNetEvent
-L31_1 = "rtx_gym:UseGymTypes"
+L31_1 = "outlaw_gym:UseGymTypes"
 L30_1(L31_1)
 L30_1 = AddEventHandler
-L31_1 = "rtx_gym:UseGymTypes"
+L31_1 = "outlaw_gym:UseGymTypes"
 function L32_1(A0_2)
   local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2, L20_2, L21_2, L22_2
   L1_2 = ActionPossible
@@ -6527,10 +6560,10 @@ function L32_1(A0_2)
 end
 L30_1(L31_1, L32_1)
 L30_1 = RegisterNetEvent
-L31_1 = "rtx_gym:Notify"
+L31_1 = "outlaw_gym:Notify"
 L30_1(L31_1)
 L30_1 = AddEventHandler
-L31_1 = "rtx_gym:Notify"
+L31_1 = "outlaw_gym:Notify"
 function L32_1(A0_2)
   local L1_2, L2_2
   L1_2 = Notify
@@ -6539,10 +6572,10 @@ function L32_1(A0_2)
 end
 L30_1(L31_1, L32_1)
 L30_1 = RegisterNetEvent
-L31_1 = "rtx_gym:OpenGymPayMenuClient"
+L31_1 = "outlaw_gym:OpenGymPayMenuClient"
 L30_1(L31_1)
 L30_1 = AddEventHandler
-L31_1 = "rtx_gym:OpenGymPayMenuClient"
+L31_1 = "outlaw_gym:OpenGymPayMenuClient"
 function L32_1(A0_2, A1_2)
   local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2
   L2_2 = L13_1
@@ -6579,10 +6612,10 @@ function L32_1(A0_2, A1_2)
 end
 L30_1(L31_1, L32_1)
 L30_1 = RegisterNetEvent
-L31_1 = "rtx_gym:SynchronizeOwnedGym"
+L31_1 = "outlaw_gym:SynchronizeOwnedGym"
 L30_1(L31_1)
 L30_1 = AddEventHandler
-L31_1 = "rtx_gym:SynchronizeOwnedGym"
+L31_1 = "outlaw_gym:SynchronizeOwnedGym"
 function L32_1(A0_2, A1_2)
   local L2_2
   L2_2 = L14_1
@@ -6590,10 +6623,10 @@ function L32_1(A0_2, A1_2)
 end
 L30_1(L31_1, L32_1)
 L30_1 = RegisterNetEvent
-L31_1 = "rtx_gym:SynchronizeYourOwnedGym"
+L31_1 = "outlaw_gym:SynchronizeYourOwnedGym"
 L30_1(L31_1)
 L30_1 = AddEventHandler
-L31_1 = "rtx_gym:SynchronizeYourOwnedGym"
+L31_1 = "outlaw_gym:SynchronizeYourOwnedGym"
 function L32_1(A0_2, A1_2)
   local L2_2
   if false == A1_2 then
@@ -6606,10 +6639,10 @@ function L32_1(A0_2, A1_2)
 end
 L30_1(L31_1, L32_1)
 L30_1 = RegisterNetEvent
-L31_1 = "rtx_gym:OpenBuyGymMenuClient"
+L31_1 = "outlaw_gym:OpenBuyGymMenuClient"
 L30_1(L31_1)
 L30_1 = AddEventHandler
-L31_1 = "rtx_gym:OpenBuyGymMenuClient"
+L31_1 = "outlaw_gym:OpenBuyGymMenuClient"
 function L32_1(A0_2, A1_2)
   local L2_2, L3_2, L4_2, L5_2
   L2_2 = L13_1
@@ -6635,10 +6668,10 @@ function L32_1(A0_2, A1_2)
 end
 L30_1(L31_1, L32_1)
 L30_1 = RegisterNetEvent
-L31_1 = "rtx_gym:GymBuyed"
+L31_1 = "outlaw_gym:GymBuyed"
 L30_1(L31_1)
 L30_1 = AddEventHandler
-L31_1 = "rtx_gym:GymBuyed"
+L31_1 = "outlaw_gym:GymBuyed"
 function L32_1(A0_2)
   local L1_2, L2_2, L3_2
   L1_2 = L16_1
@@ -6659,10 +6692,10 @@ function L32_1(A0_2)
 end
 L30_1(L31_1, L32_1)
 L30_1 = RegisterNetEvent
-L31_1 = "rtx_gym:OpenGymMenu"
+L31_1 = "outlaw_gym:OpenGymMenu"
 L30_1(L31_1)
 L30_1 = AddEventHandler
-L31_1 = "rtx_gym:OpenGymMenu"
+L31_1 = "outlaw_gym:OpenGymMenu"
 function L32_1(A0_2, A1_2, A2_2, A3_2, A4_2)
   local L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2
   L5_2 = L13_1
@@ -6708,10 +6741,10 @@ function L32_1(A0_2, A1_2, A2_2, A3_2, A4_2)
 end
 L30_1(L31_1, L32_1)
 L30_1 = RegisterNetEvent
-L31_1 = "rtx_gym:GymMenuUpdate"
+L31_1 = "outlaw_gym:GymMenuUpdate"
 L30_1(L31_1)
 L30_1 = AddEventHandler
-L31_1 = "rtx_gym:GymMenuUpdate"
+L31_1 = "outlaw_gym:GymMenuUpdate"
 function L32_1(A0_2, A1_2, A2_2, A3_2)
   local L4_2, L5_2
   L4_2 = L13_1
@@ -6733,10 +6766,10 @@ L30_1 = Config
 L30_1 = L30_1.DifferentStatsSystem
 if false == L30_1 then
   L30_1 = RegisterNetEvent
-  L31_1 = "rtx_gym:UpdateStats"
+  L31_1 = "outlaw_gym:UpdateStats"
   L30_1(L31_1)
   L30_1 = AddEventHandler
-  L31_1 = "rtx_gym:UpdateStats"
+  L31_1 = "outlaw_gym:UpdateStats"
   function L32_1(A0_2, A1_2)
     local L2_2
     L2_2 = playerneeds
@@ -6744,10 +6777,10 @@ if false == L30_1 then
   end
   L30_1(L31_1, L32_1)
   L30_1 = RegisterNetEvent
-  L31_1 = "rtx_gym:SynchronizeStats"
+  L31_1 = "outlaw_gym:SynchronizeStats"
   L30_1(L31_1)
   L30_1 = AddEventHandler
-  L31_1 = "rtx_gym:SynchronizeStats"
+  L31_1 = "outlaw_gym:SynchronizeStats"
   function L32_1(A0_2)
     local L1_2
     playerneeds = A0_2
@@ -6757,10 +6790,10 @@ if false == L30_1 then
   L30_1 = L30_1.ReducingStatsWhenNotExercising
   if true == L30_1 then
     L30_1 = RegisterNetEvent
-    L31_1 = "rtx_gym:ResetTimer"
+    L31_1 = "outlaw_gym:ResetTimer"
     L30_1(L31_1)
     L30_1 = AddEventHandler
-    L31_1 = "rtx_gym:ResetTimer"
+    L31_1 = "outlaw_gym:ResetTimer"
     function L32_1(A0_2)
       local L1_2, L2_2, L3_2
       if "strenght" == A0_2 then
@@ -6803,10 +6836,10 @@ if false == L30_1 then
 end
 L30_1 = false
 L31_1 = RegisterNetEvent
-L32_1 = "rtx_gym:SupplementAnim"
+L32_1 = "outlaw_gym:SupplementAnim"
 L31_1(L32_1)
 L31_1 = AddEventHandler
-L32_1 = "rtx_gym:SupplementAnim"
+L32_1 = "outlaw_gym:SupplementAnim"
 function L33_1(A0_2)
   local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2, L20_2, L21_2
   L1_2 = L30_1
@@ -7224,10 +7257,10 @@ L31_1 = Config
 L31_1 = L31_1.Target
 if L31_1 then
   L31_1 = RegisterNetEvent
-  L32_1 = "rtx_gym:UseExercise"
+  L32_1 = "outlaw_gym:UseExercise"
   L31_1(L32_1)
   L31_1 = AddEventHandler
-  L32_1 = "rtx_gym:UseExercise"
+  L32_1 = "outlaw_gym:UseExercise"
   function L33_1()
     local L0_2, L1_2, L2_2, L3_2, L4_2
     L0_2 = ActionPossible
@@ -7238,7 +7271,7 @@ if L31_1 then
         L0_2 = L6_1.exerciseid
         if nil ~= L0_2 then
           L0_2 = TriggerServerEvent
-          L1_2 = "rtx_gym:UseGym"
+          L1_2 = "outlaw_gym:UseGym"
           L2_2 = ""
           L3_2 = L6_1.gymid
           L4_2 = L6_1.exerciseid
@@ -7249,10 +7282,10 @@ if L31_1 then
   end
   L31_1(L32_1, L33_1)
   L31_1 = RegisterNetEvent
-  L32_1 = "rtx_gym:UseEntry"
+  L32_1 = "outlaw_gym:UseEntry"
   L31_1(L32_1)
   L31_1 = AddEventHandler
-  L32_1 = "rtx_gym:UseEntry"
+  L32_1 = "outlaw_gym:UseEntry"
   function L33_1()
     local L0_2, L1_2, L2_2
     L0_2 = L13_1
@@ -7260,7 +7293,7 @@ if L31_1 then
       L0_2 = L10_1
       if nil ~= L0_2 then
         L0_2 = TriggerServerEvent
-        L1_2 = "rtx_gym:OpenGymPayMenu"
+        L1_2 = "outlaw_gym:OpenGymPayMenu"
         L2_2 = L10_1
         L0_2(L1_2, L2_2)
       end
@@ -7268,10 +7301,10 @@ if L31_1 then
   end
   L31_1(L32_1, L33_1)
   L31_1 = RegisterNetEvent
-  L32_1 = "rtx_gym:UseManagment"
+  L32_1 = "outlaw_gym:UseManagment"
   L31_1(L32_1)
   L31_1 = AddEventHandler
-  L32_1 = "rtx_gym:UseManagment"
+  L32_1 = "outlaw_gym:UseManagment"
   function L33_1()
     local L0_2, L1_2, L2_2
     L0_2 = L13_1
@@ -7287,7 +7320,7 @@ if L31_1 then
           L0_2 = L0_2[L1_2]
           if false == L0_2 then
             L0_2 = TriggerServerEvent
-            L1_2 = "rtx_gym:OpenBuyGymMenu"
+            L1_2 = "outlaw_gym:OpenBuyGymMenu"
             L2_2 = L12_1
             L0_2(L1_2, L2_2)
           else
@@ -7296,7 +7329,7 @@ if L31_1 then
             L0_2 = L0_2[L1_2]
             if nil ~= L0_2 then
               L0_2 = TriggerServerEvent
-              L1_2 = "rtx_gym:GymOpenManagment"
+              L1_2 = "outlaw_gym:GymOpenManagment"
               L2_2 = L12_1
               L0_2(L1_2, L2_2)
             end
@@ -7307,10 +7340,10 @@ if L31_1 then
   end
   L31_1(L32_1, L33_1)
   L31_1 = RegisterNetEvent
-  L32_1 = "rtx_gym:UseShowerTarget"
+  L32_1 = "outlaw_gym:UseShowerTarget"
   L31_1(L32_1)
   L31_1 = AddEventHandler
-  L32_1 = "rtx_gym:UseShowerTarget"
+  L32_1 = "outlaw_gym:UseShowerTarget"
   function L33_1()
     local L0_2, L1_2, L2_2
     L0_2 = ActionPossible
@@ -7319,7 +7352,7 @@ if L31_1 then
       L0_2 = L2_1
       if nil ~= L0_2 then
         L0_2 = TriggerServerEvent
-        L1_2 = "rtx_gym:UseShower"
+        L1_2 = "outlaw_gym:UseShower"
         L2_2 = L2_1
         L0_2(L1_2, L2_2)
       end
@@ -7340,7 +7373,7 @@ function L33_1(A0_2, A1_2)
       L3_2.message = "hidegymentry"
       L2_2(L3_2)
       L2_2 = TriggerServerEvent
-      L3_2 = "rtx_gym:GymBuyEntry"
+      L3_2 = "outlaw_gym:GymBuyEntry"
       L4_2 = L11_1
       L5_2 = tostring
       L6_2 = A0_2.entrytype
@@ -7372,7 +7405,7 @@ function L33_1(A0_2, A1_2)
     L3_2.message = "hidegymbuy"
     L2_2(L3_2)
     L2_2 = TriggerServerEvent
-    L3_2 = "rtx_gym:GymBuy"
+    L3_2 = "outlaw_gym:GymBuy"
     L4_2 = L16_1
     L2_2(L3_2, L4_2)
     L2_2 = false
@@ -7396,7 +7429,7 @@ function L33_1(A0_2, A1_2)
   L2_2 = L17_1
   if nil ~= L2_2 then
     L2_2 = TriggerServerEvent
-    L3_2 = "rtx_gym:ChangeEntryPrice"
+    L3_2 = "outlaw_gym:ChangeEntryPrice"
     L4_2 = L17_1
     L5_2 = tonumber
     L6_2 = A0_2.entryprice
@@ -7415,7 +7448,7 @@ function L33_1(A0_2, A1_2)
   L2_2 = L17_1
   if nil ~= L2_2 then
     L2_2 = TriggerServerEvent
-    L3_2 = "rtx_gym:ManagmentWithdraw"
+    L3_2 = "outlaw_gym:ManagmentWithdraw"
     L4_2 = L17_1
     L2_2(L3_2, L4_2)
   end
@@ -7431,7 +7464,7 @@ function L33_1(A0_2, A1_2)
   L2_2 = L17_1
   if nil ~= L2_2 then
     L2_2 = TriggerServerEvent
-    L3_2 = "rtx_gym:CloseStatus"
+    L3_2 = "outlaw_gym:CloseStatus"
     L4_2 = L17_1
     L5_2 = A0_2.statushandler
     L2_2(L3_2, L4_2, L5_2)
@@ -7448,7 +7481,7 @@ function L33_1(A0_2, A1_2)
   L2_2 = L17_1
   if nil ~= L2_2 then
     L2_2 = TriggerServerEvent
-    L3_2 = "rtx_gym:SellGym"
+    L3_2 = "outlaw_gym:SellGym"
     L4_2 = L17_1
     L2_2(L3_2, L4_2)
     L2_2 = false
@@ -7482,7 +7515,7 @@ function L33_1(A0_2, A1_2)
       L4_2 = L4_2.GymTransferMaxDistance
       if L3_2 < L4_2 then
         L4_2 = TriggerServerEvent
-        L5_2 = "rtx_gym:TransferGym"
+        L5_2 = "outlaw_gym:TransferGym"
         L6_2 = L17_1
         L7_2 = GetPlayerServerId
         L8_2 = L2_2
@@ -8775,7 +8808,7 @@ function L32_1()
             L2_2 = L2_2(L3_2, L4_2, L5_2)
             if L2_2 then
               L2_2 = TriggerServerEvent
-              L3_2 = "rtx_gym:UpdateLung"
+              L3_2 = "outlaw_gym:UpdateLung"
               L2_2(L3_2)
             end
           end
@@ -8798,7 +8831,7 @@ function L32_1()
           L1_2 = L1_2(L2_2, L3_2, L4_2, L5_2)
           if L1_2 then
             L1_2 = TriggerServerEvent
-            L2_2 = "rtx_gym:UpdateLung"
+            L2_2 = "outlaw_gym:UpdateLung"
             L1_2(L2_2)
           end
         end
@@ -8848,7 +8881,7 @@ function L32_1()
                 L3_2 = usinggym2
                 if false == L3_2 then
                   L3_2 = TriggerServerEvent
-                  L4_2 = "rtx_gym:UpdateEnergy"
+                  L4_2 = "outlaw_gym:UpdateEnergy"
                   L3_2(L4_2)
                 end
               end
@@ -8871,7 +8904,7 @@ function L32_1()
               L2_2 = usinggym2
               if false == L2_2 then
                 L2_2 = TriggerServerEvent
-                L3_2 = "rtx_gym:UpdateEnergy"
+                L3_2 = "outlaw_gym:UpdateEnergy"
                 L2_2(L3_2)
               end
             end
@@ -8928,7 +8961,7 @@ if L31_1 then
               L4_2 = L4_2(L5_2)
               if L4_2 then
                 L4_2 = TriggerServerEvent
-                L5_2 = "rtx_gym:UpdateCondition"
+                L5_2 = "outlaw_gym:UpdateCondition"
                 L4_2(L5_2)
               end
             end
@@ -8952,7 +8985,7 @@ if L31_1 then
             L3_2 = L3_2(L4_2)
             if L3_2 then
               L3_2 = TriggerServerEvent
-              L4_2 = "rtx_gym:UpdateCondition"
+              L4_2 = "outlaw_gym:UpdateCondition"
               L3_2(L4_2)
             end
           end
@@ -8971,7 +9004,7 @@ function L33_1()
   L0_2 = L0_2()
   if true == L0_2 then
     L0_2 = TriggerServerEvent
-    L1_2 = "rtx_gym:UseGym"
+    L1_2 = "outlaw_gym:UseGym"
     L2_2 = "pushups"
     L0_2(L1_2, L2_2)
   end
@@ -8986,7 +9019,7 @@ function L33_1()
   L0_2 = L0_2()
   if true == L0_2 then
     L0_2 = TriggerServerEvent
-    L1_2 = "rtx_gym:UseGym"
+    L1_2 = "outlaw_gym:UseGym"
     L2_2 = "situps"
     L0_2(L1_2, L2_2)
   end
@@ -9001,7 +9034,7 @@ function L33_1()
   L0_2 = L0_2()
   if true == L0_2 then
     L0_2 = TriggerServerEvent
-    L1_2 = "rtx_gym:UseGym"
+    L1_2 = "outlaw_gym:UseGym"
     L2_2 = "yoga"
     L0_2(L1_2, L2_2)
   end
@@ -9306,7 +9339,7 @@ if false == L31_1 then
       L0_2 = L10_1
       if nil ~= L0_2 then
         L0_2 = TriggerServerEvent
-        L1_2 = "rtx_gym:OpenGymPayMenu"
+        L1_2 = "outlaw_gym:OpenGymPayMenu"
         L2_2 = L10_1
         L0_2(L1_2, L2_2)
       end
@@ -9341,7 +9374,7 @@ if false == L31_1 then
           L0_2 = L0_2[L1_2]
           if false == L0_2 then
             L0_2 = TriggerServerEvent
-            L1_2 = "rtx_gym:OpenBuyGymMenu"
+            L1_2 = "outlaw_gym:OpenBuyGymMenu"
             L2_2 = L12_1
             L0_2(L1_2, L2_2)
           else
@@ -9350,7 +9383,7 @@ if false == L31_1 then
             L0_2 = L0_2[L1_2]
             if nil ~= L0_2 then
               L0_2 = TriggerServerEvent
-              L1_2 = "rtx_gym:GymOpenManagment"
+              L1_2 = "outlaw_gym:GymOpenManagment"
               L2_2 = L12_1
               L0_2(L1_2, L2_2)
             end
@@ -9372,7 +9405,7 @@ if false == L31_1 then
         L0_2 = L6_1.exerciseid
         if nil ~= L0_2 then
           L0_2 = TriggerServerEvent
-          L1_2 = "rtx_gym:UseGym"
+          L1_2 = "outlaw_gym:UseGym"
           L2_2 = ""
           L3_2 = L6_1.gymid
           L4_2 = L6_1.exerciseid
@@ -9386,7 +9419,7 @@ if false == L31_1 then
   L31_1 = L31_1.Showers
   if L31_1 then
     L31_1 = RegisterCommand
-    L32_1 = "showerrtx"
+    L32_1 = "outlawshower"
     function L33_1()
       local L0_2, L1_2, L2_2
       L0_2 = ActionPossible
@@ -9395,7 +9428,7 @@ if false == L31_1 then
         L0_2 = L2_1
         if nil ~= L0_2 then
           L0_2 = TriggerServerEvent
-          L1_2 = "rtx_gym:UseShower"
+          L1_2 = "outlaw_gym:UseShower"
           L2_2 = L2_1
           L0_2(L1_2, L2_2)
         end
@@ -9415,7 +9448,7 @@ if false == L31_1 then
   L35_1 = L35_1.GymOpenManagmentMenuKey
   L31_1(L32_1, L33_1, L34_1, L35_1)
   L31_1 = RegisterKeyMapping
-  L32_1 = "showerrtx"
+  L32_1 = "outlawshower"
   L33_1 = Language
   L34_1 = Config
   L34_1 = L34_1.Language

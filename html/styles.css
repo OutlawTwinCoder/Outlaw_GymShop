@@ -1,1401 +1,497 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 :root {
-  --color: #ff66ff;
+  --primary: #ff6b35;
+  --primary-accent: #faae2b;
+  --surface: rgba(18, 23, 34, 0.95);
+  --surface-alt: rgba(30, 38, 53, 0.88);
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #f5f7fb;
+  --muted: rgba(236, 240, 255, 0.65);
+  --success: #3dd598;
+  --danger: #ff5d5d;
+  --shadow: 0 22px 48px rgba(0, 0, 0, 0.55);
+  --gym-highlight-height: 12%;
 }
 
-@import url('https://kit-pro.fontawesome.com/releases/v6.2.0/css/pro.min.css');
-
-@font-face {
-  font-family: BebasNeueBold;
-  src: url(BebasNeueBold.ttf);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
 }
 
-*{
-	user-select: none; /* supported by Chrome and Opera */
-   -webkit-user-select: none; /* Safari */
-   -khtml-user-select: none; /* Konqueror HTML */
-   -moz-user-select: none; /* Firefox */
-   -ms-user-select: none; /* Internet Explorer/Edge */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background: transparent;
+  color: var(--text);
 }
 
-html {
+body {
+  display: none;
   overflow: hidden;
-  font-family: 'Open Sans', sans-serif;
 }
 
-body{
-	display: block;
-	color: #a8a8aa;
+.full-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: clamp(64px, 14vw, 320px);
+  padding-left: clamp(24px, 6vw, 120px);
+  pointer-events: none;
+  background: radial-gradient(circle at top left, rgba(255, 107, 53, 0.08), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(250, 174, 43, 0.08), transparent 55%);
 }
 
-.gymmanagment-container {
-	width: 60%;
-	height: 70%;
-	background-color: rgba(0, 0, 0, 0.70);
-	border-bottom: 3px solid var(--color);
-	border-radius: 10px;	
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	display: none;
+.panel {
+  pointer-events: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  padding: 28px;
+  width: min(880px, 90vw);
+  max-height: 90vh;
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  gap: 24px;
+  animation: float-in 0.2s ease;
 }
 
-.headergymmanagment {
-	position: absolute;
-	width:100%;
-	height: 6%;
-	color: #ffffff;
-	display: flex;
-	background-color: rgba(0, 0, 0, 1);
-	border-bottom: 3px solid var(--color);  
-	flex-direction: row;
-	flex-wrap: wrap;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);  
-	top: 3.4%;
-	left: 50%;	
+.panel[style*="display: block"],
+.panel[style*="display: inline"],
+.panel[style*="display: inline-block"] {
+  display: flex !important;
 }
 
-.headergymmanagmenttext {
-	position: absolute;
-	margin: 0;
-	font-size: 30px;
-	color: #ffffff;
-	text-align: center;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
+.panel.small {
+  width: min(420px, 86vw);
 }
 
-.closegymmanagment {
-	position: absolute;
-	margin: 0;
-	top: 50%;
-	left: 97%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface-alt);
+  border-radius: 16px;
+  padding: 16px 22px;
+  border: 1px solid var(--border);
 }
 
-.gymentrypricecontainer {
-	position: absolute;
-	margin: 0;
-	background-color: rgba(0, 0, 0, 0.8);
-	border-bottom: 3px solid var(--color);
-	color: #ffffff;
-	font-size: 35px;
-	text-decoration: none;
-	text-align: center;
-	top: 25%;
-	left: 20%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	width: 30%;
-	height: 20%;
-	border-radius: 5px;
-	font-family: BebasNeueBold;
+.headergymmanagmenttext,
+.headergymentrytext,
+.headergymbuytext {
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
 }
 
-.gymentrypricetext {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 25%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 35px;
-	color: var(--color);
-	text-align:center;
-	font-family: BebasNeueBold;
+.icon-button {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.gymentrypricetextdata {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 75%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 35px;
-	color: #ffffff;
-	text-align:center;
-	font-family: BebasNeueBold;
+.icon-button:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.icon-button img {
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.panel-section {
+  background: var(--surface-alt);
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gymentrypricetext,
+.gymclosedtext,
+.gymwithdrawtext,
+.gymstatstext {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.gymentrypricetextdata,
+.gymwithdrawmoneytext {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.gymwithdrawmoneytext span,
+.gymentrypricetextdata span {
+  color: var(--primary);
 }
 
 .gymentrypriceslider {
-	-webkit-appearance: none;
-	appearance: none;	
-	position: absolute;
-	margin: 0;
-	background-color: rgba(255, 255, 255, 0.0);
-	color: #ffffff;
-	font-size: 35px;
-	text-decoration: none;
-	text-align: center;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	width: 70%;
-	height: 40%;
-	border-radius: 5px;
-	font-family: BebasNeueBold;
-	outline: none;
-}
-
-.gymentrypriceline {
-	-webkit-appearance: none;
-	appearance: none;	
-	position: absolute;
-	margin: 0;
-	background-color: rgba(255, 255, 255, 1.0);
-	color: #ffffff;
-	font-size: 35px;
-	text-decoration: none;
-	text-align: center;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	width: 70%;
-	height: 2.5%;
-	border-radius: 5px;
-	font-family: BebasNeueBold;
-	outline: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
+  position: relative;
 }
 
 .gymentrypriceslider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%; 
-  cursor: pointer;
-  background-color: var(--color);
-}
-
-.gymentrypriceslider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-accent));
+  border: none;
   cursor: pointer;
-  background-color: var(--color);
+  box-shadow: 0 6px 16px rgba(255, 107, 53, 0.35);
 }
 
-input[type=range]:focus {
-  outline: none;
+.switch-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
 }
 
-.gymclosedcontainer {
-	position: absolute;
-	margin: 0;
-	background-color: rgba(0, 0, 0, 0.8);
-	border-bottom: 3px solid var(--color);
-	color: #ffffff;
-	font-size: 35px;
-	text-decoration: none;
-	text-align: center;
-	top: 50%;
-	left: 20%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	width: 30%;
-	height: 20%;
-	border-radius: 5px;
-	font-family: BebasNeueBold;
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
 }
 
-.gymclosedtext {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 25%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 35px;
-	color: var(--color);
-	text-align:center;
-	font-family: BebasNeueBold;
-}
-
-.gymclosedtextclose {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 65%;
-	left: 15%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 30px;
-	color: #ffffff;
-	text-align:center;
-	font-family: BebasNeueBold;
-}
-
-.gymclosedtextopen {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 65%;
-	left: 85%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 30px;
-	color: #ffffff;
-	text-align:center;
-	font-family: BebasNeueBold;
-}
-
-
-input[type=number] {
-    -moz-appearance: textfield;
-	color: #ffffff;
-}
-
-input::placeholder { 
-	color: #ffffff;
-}
-
-.gymclosedinput {
-	display: inline-block;
-	width: 40%;
-	height: 30%;	
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 65%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	text-align:center;
-}
-
-.gymclosedinput input {
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.gymclosedinputslider {
+.switch .slider {
   position: absolute;
   cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 1);
-  border-bottom: 3px solid var(--color);    
-  border-radius: 5px;
-  -webkit-transition: .4s;
-  transition: .4s;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  transition: 0.3s ease;
 }
 
-.gymclosedinputslider:before {
-	position: absolute;
-	content: "";
-	width: 30%;
-	height: 70%;	
-	top: 50%;
-	left: 25%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);		
-	background-color: #ffffff;
-	border-radius: 5px;
-	-webkit-transition: .4s;
-	transition: .4s;
+.switch .slider::before {
+  position: absolute;
+  content: '';
+  height: 24px;
+  width: 24px;
+  left: 4px;
+  top: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  transition: 0.3s ease;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.35);
 }
 
-input:checked + .gymclosedinputslider:before {
-	top: 50%;
-	left: 75%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
+.switch input:checked + .slider {
+  background: linear-gradient(135deg, var(--primary), var(--primary-accent));
 }
 
-.gymwithdrawcontainer {
-	position: absolute;
-	margin: 0;
-	background-color: rgba(0, 0, 0, 0.8);
-	border-bottom: 3px solid var(--color);
-	color: #ffffff;
-	font-size: 35px;
-	text-decoration: none;
-	text-align: center;
-	top: 80%;
-	left: 20%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	width: 30%;
-	height: 30%;
-	border-radius: 5px;
-	font-family: BebasNeueBold;
+.switch input:checked + .slider::before {
+  transform: translateX(28px);
 }
 
-.gymwithdrawtext {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 20%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 35px;
-	color: var(--color);
-	text-align:center;
-	font-family: BebasNeueBold;
+.pill-button,
+.ghost-button {
+  border-radius: 999px;
+  padding: 12px 26px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
 }
 
-.gymwithdrawmoneytext {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 45%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 40px;
-	color: #ffffff;
-	text-align:center;
-	font-family: BebasNeueBold;
+.pill-button {
+  background: linear-gradient(135deg, var(--primary), var(--primary-accent));
+  color: #0b0f18;
+  border-color: transparent;
+  box-shadow: 0 14px 30px rgba(255, 107, 53, 0.35);
 }
 
-
-.gymwithdrawbutton {
-	position: absolute;
-	margin: 0;
-	background-color: rgba(0, 0, 0, 1);
-	border-bottom: 3px solid var(--color);
-	color: #ffffff;
-	font-size: 30px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 5px;
-	padding-right: 5px;
-	text-decoration: none;
-	text-align: center;
-	top: 75%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 99999999;
-	width: 60%;
-	border-radius: 5px;
+.pill-button:hover {
+  filter: brightness(1.05);
 }
 
-.gymwithdrawbutton:hover {
-	background: var(--color);
-	text-decoration: none;	
+.ghost-button {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--text);
 }
 
-.gymstatscontainer {
-	position: absolute;
-	margin: 0;
-	background-color: rgba(0, 0, 0, 0.8);
-	border-bottom: 3px solid var(--color);
-	color: #ffffff;
-	font-size: 35px;
-	text-decoration: none;
-	text-align: center;
-	top: 45%;
-	left: 70%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	width: 50%;
-	height: 60%;
-	border-radius: 5px;
-	font-family: BebasNeueBold;
+.ghost-button:hover {
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
-.gymstatstext {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 10%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 35px;
-	color: var(--color);
-	text-align:center;
-	font-family: BebasNeueBold;
+.gymentry-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
 }
 
-
-.gymstatsdata {
-	width: 90%;
-	height: 100%;
-	margin: 0;
-	position: absolute;
-	top: 85%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	z-index: 9999999;
+.entry-card {
+  background: var(--surface-alt);
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.gymsellcontainer {
-	position: absolute;
-	margin: 0;
-	background-color: rgba(0, 0, 0, 0.8);
-	border-bottom: 3px solid var(--color);
-	color: #ffffff;
-	font-size: 35px;
-	text-decoration: none;
-	text-align: center;
-	top: 88%;
-	left: 70%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	width: 50%;
-	height: 15%;
-	border-radius: 5px;
-	font-family: BebasNeueBold;
+.entry-card .label {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
 }
 
-.gymsellbutton {
-	position: absolute;
-	margin: 0;
-	background-color: rgba(0, 0, 0, 1);
-	border-bottom: 3px solid var(--color);
-	color: #ffffff;
-	font-size: 30px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 5px;
-	padding-right: 5px;
-	text-decoration: none;
-	text-align: center;
-	top: 50%;
-	left: 25%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 99999999;
-	width: 35%;
-	border-radius: 5px;
-}
-
-.gymsellbutton:hover {
-	background: var(--color);
-	text-decoration: none;	
-}
-
-.gymtransferbutton {
-	position: absolute;
-	margin: 0;
-	background-color: rgba(0, 0, 0, 1);
-	border-bottom: 3px solid var(--color);
-	color: #ffffff;
-	font-size: 30px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 5px;
-	padding-right: 5px;
-	text-decoration: none;
-	text-align: center;
-	top: 50%;
-	left: 75%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 99999999;
-	width: 35%;
-	border-radius: 5px;
-}
-
-.gymtransferbutton:hover {
-	background: var(--color);
-	text-decoration: none;	
-}
-
-.gymentry-container {
-	width: 40%;
-	height: 40%;
-	background-color: rgba(0, 0, 0, 0.70);
-	border-bottom: 3px solid var(--color);
-	border-radius: 10px;	
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	display: none;
-}
-
-.headergymentry {
-	position: absolute;
-	width:100%;
-	height: 8%;
-	color: #ffffff;
-	display: flex;
-	background-color: rgba(0, 0, 0, 1.0);
-	border-bottom: 3px solid var(--color);  
-	flex-direction: row;
-	flex-wrap: wrap;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);  
-	top: 4.5%;
-	left: 50%;	
-}
-
-
-.headergymentrytext {
-	position: absolute;
-	margin: 0;
-	font-size: 25px;
-	color: #ffffff;
-	text-align: center;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-}
-
-.closegymentry {
-	position: absolute;
-	margin: 0;
-	top: 50%;
-	left: 96%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-}
-
-.gymentrymaingymname {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 8%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 40px;
-	color: #ffffff;
-	text-align:center;
-	font-family: BebasNeueBold;
-}
-
-.gymentrymaingympass {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 25%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 40px;
-	color: var(--color);
-	text-align:center;
-	font-family: BebasNeueBold;
-}
-
-.gymentrypasscontainer {
-	position: absolute;
-	margin: 0;
-	background-color: rgba(0, 0, 0, 0.6);
-	border-bottom: 3px solid var(--color);
-	color: #ffffff;
-	font-size: 35px;
-	text-decoration: none;
-	text-align: center;
-	top: 55%;
-	left: 27%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	width: 40%;
-	height: 80%;
-	border-radius: 5px;
-	font-family: BebasNeueBold;
-}
-
-.gymentryonecontainer {
-	position: absolute;
-	margin: 0;
-	background-color: rgba(0, 0, 0, 0.6);
-	border-bottom: 3px solid var(--color);
-	color: #ffffff;
-	font-size: 35px;
-	text-decoration: none;
-	text-align: center;
-	top: 55%;
-	left: 73%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	width: 40%;
-	height: 80%;
-	border-radius: 5px;
-	font-family: BebasNeueBold;
-}
-
-.gymentrypasstext {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 12%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 40px;
-	color: #ffffff;
-	text-align:center;
-	font-family: BebasNeueBold;
-}
-
-.gymentrypassdurationtextmain {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 28%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 35px;
-	color: var(--color);
-	text-align:center;
-	font-family: BebasNeueBold;
-}
-
-.gymentrypassdurationtext {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 40%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 30px;
-	color: #ffffff;
-	text-align:center;
-	font-family: BebasNeueBold;
-}
-
-.gymentrypasspricetextmain {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 55%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 35px;
-	color: var(--color);
-	text-align:center;
-	font-family: BebasNeueBold;
-}
-
-.gymentrypasspricetext {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 67%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 30px;
-	color: #ffffff;
-	text-align:center;
-	font-family: BebasNeueBold;
-}
-
-.gymentrypassbutton {
-	position: absolute;
-	margin: 0;
-	background-color: rgba(0, 0, 0, 1);
-	border-bottom: 3px solid var(--color);
-	color: #ffffff;
-	font-size: 30px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 5px;
-	padding-right: 5px;
-	text-decoration: none;
-	text-align: center;
-	top: 85%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 99999999;
-	width: 60%;
-	border-radius: 5px;
-}
-
-.gymentrypassbutton:hover {
-	background: var(--color);
-	text-decoration: none;	
-}
-
-.gymentryonebutton {
-	position: absolute;
-	margin: 0;
-	background-color: rgba(0, 0, 0, 1);
-	border-bottom: 3px solid var(--color);
-	color: #ffffff;
-	font-size: 30px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 5px;
-	padding-right: 5px;
-	text-decoration: none;
-	text-align: center;
-	top: 85%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 99999999;
-	width: 60%;
-	border-radius: 5px;
-}
-
-.gymentryonebutton:hover {
-	background: var(--color);
-	text-decoration: none;	
-}
-
-#recolordata {
-	color: var(--color);
-}
-
-.infonotify-container {
-	width: 17%;
-	background-color: rgba(0, 0, 0, 0.70);
-	border-bottom: 3px solid var(--color);	
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 10%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	border-radius: 10px;
-	display: none;
-}
-
-.infonotifytext {
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 2px;
-	padding-right: 2px;	
-	vertical-align: middle;
-	text-align: center;
-	font-size: 25px;
-	font-family: BebasNeueBold;
-	color: #ffffff;
-}
-
-#infobindcolor {
-	color: var(--color);
-}
-
-.gymbuy-container {
-	width: 30%;
-	height: 30%;
-	background-color: rgba(0, 0, 0, 0.70);
-	border-bottom: 3px solid var(--color);
-	border-radius: 10px;	
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	display: none;
-}
-
-.headergymbuy {
-	position: absolute;
-	width:100%;
-	height: 2%;
-	color: #ffffff;
-	display: flex;
-	background-color: rgba(0, 0, 0, 1);
-	border-bottom: 3px solid var(--color);  
-	flex-direction: row;
-	flex-wrap: wrap;
-	padding-bottom:5%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);  
-	top: 6.5%;
-	left: 50%;	
-}
-
-.headergymbuytext {
-	position: absolute;
-	margin: 0;
-	font-size: 25px;
-	color: #ffffff;
-	text-align: center;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-}
-
-.closegymbuy {
-	position: absolute;
-	margin: 0;
-	top: 50%;
-	left: 95%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
+.entry-card .value {
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 
 .gymbuytext {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 25%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 40px;
-	color: #ffffff;
-	text-align:center;
-	font-family: BebasNeueBold;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  color: var(--muted);
 }
 
 .gymbuytextprice {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 60px;
-	color: var(--color);
-	text-align:center;
-	font-family: BebasNeueBold;
+  font-size: 2.6rem;
+  font-weight: 600;
 }
 
-#gymbuypricedata {
-	color: #ffffff;
-}
-
-.buttongymbuy {
-	position: absolute;
-	margin: 0;
-	background-color: rgba(0, 0, 0, 1);
-	border-bottom: 3px solid var(--color);
-	color: #ffffff;
-	font-size: 40px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 5px;
-	padding-right: 5px;
-	text-decoration: none;
-	text-align: center;
-	top: 80%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 99999999;
-	width: 45%;
-	border-radius: 8px;
-}
-
-.buttongymbuy:hover {
-	background: var(--color);
-	text-decoration: none;	
-	color: #ffffff;
+.gymbuytextprice span {
+  color: var(--primary);
 }
 
 .gym-container {
-	width: 18%;
-	height: 12%;
-	background-color: rgba(0, 0, 0, 0.70);
-	border-bottom: 3px solid var(--color);	
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 90%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	border-radius: 10px;
-	display: none;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
 }
 
 .gymlabeltext {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 25%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 35px;
-	color: var(--color);
-	text-align:center;
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 
-.gymlabelpress1 {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 55%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 25px;
-	color: #ffffff;
-	text-align:center;
-}
-
+.gymlabelpress1,
 .gymlabelpress2 {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 80%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 25px;
-	color: #ffffff;
-	text-align:center;
+  font-size: 1rem;
+  color: var(--muted);
 }
 
-#gympresskey {
-	color: var(--color);
+.gymlabelpress1 span,
+.gymlabelpress2 span {
+  color: var(--primary);
 }
 
-.gymstats-container {
-	width: 20%;
-	height: 60%;
-	background-color: rgba(0, 0, 0, 0.70);
-	border-bottom: 3px solid var(--color);	
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 80%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 99;
-	border-radius: 5px;
-	display: none;
+.gymstats-container#gymstatsshow {
+  gap: 18px;
 }
 
 .statsmaintext {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 10%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 50px;
-	font-family: BebasNeueBold;
-	color: #ffffff;
-	text-align:center;
-	z-index: 99999999;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.stat-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .statstext {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 35%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 30px;
-	color: #ffffff;
-	text-align:center;
+  font-size: 0.9rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-.statsstrength-container {
-	width: 90%;
-	height: 15%;
-	background-color: rgba(0, 0, 0, 0.0);	
-	margin: 0;
-	position: absolute;
-	top: 25%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	display: block;
+.progress-track {
+  width: 100%;
+  height: 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
 }
 
-.statsstatsstrengthmaincontainer {
-	width: 90%;
-	height: 18%;
-	background-color: rgba(255, 255, 255, 0.70);
-	margin: 0;
-	position: absolute;
-	top: 70%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	border-radius: 6px;
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(135deg, var(--primary), var(--primary-accent));
+  transition: width 0.35s ease, height 0.35s ease;
 }
 
-.statsstatsstrengthmaincontainerdata {
-	width: 70%;
-	height: 100%;
-	background-color: var(--color);
-	z-index: 9999999;
+.chart-wrapper {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 12px;
 }
 
-.statscondition-container {
-	width: 90%;
-	height: 15%;
-	background-color: rgba(0, 0, 0, 0.0);	
-	margin: 0;
-	position: absolute;
-	top: 40%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	display: block;
+.infonotify-container {
+  align-items: center;
+  text-align: center;
+  gap: 12px;
 }
 
-.statsstatsconditionmaincontainer {
-	width: 90%;
-	height: 18%;
-	background-color: rgba(255, 255, 255, 0.70);
-	margin: 0;
-	position: absolute;
-	top: 70%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	border-radius: 6px;
+.infonotifytext {
+  font-size: 1.05rem;
+  font-weight: 500;
 }
 
-.statsstatsconditionmaincontainerdata {
-	width: 70%;
-	height: 100%;
-	background-color: var(--color);
-	z-index: 9999999;
+.progress-container,
+.gymprogress-container {
+  gap: 18px;
+  text-align: center;
 }
 
-
-.statsswimming-container {
-	width: 90%;
-	height: 15%;
-	background-color: rgba(0, 0, 0, 0.0);	
-	margin: 0;
-	position: absolute;
-	top: 55%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	display: block;
-}
-
-.statsstatsswimmingmaincontainer {
-	width: 90%;
-	height: 18%;
-	background-color: rgba(255, 255, 255, 0.70);
-	margin: 0;
-	position: absolute;
-	top: 70%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	border-radius: 6px;
-}
-
-.statsstatsswimmingmaincontainerdata {
-	width: 70%;
-	height: 100%;
-	background-color: var(--color);
-	z-index: 9999999;
-}
-
-.statshygiene-container {
-	width: 90%;
-	height: 15%;
-	background-color: rgba(0, 0, 0, 0.0);	
-	margin: 0;
-	position: absolute;
-	top: 70%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	display: block;
-}
-
-.statsstatshygienemaincontainer {
-	width: 90%;
-	height: 18%;
-	background-color: rgba(255, 255, 255, 0.70);
-	margin: 0;
-	position: absolute;
-	top: 70%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	border-radius: 6px;
-}
-
-.statsstatshygienemaincontainerdata {
-	width: 70%;
-	height: 100%;
-	background-color: var(--color);
-	z-index: 9999999;
-}
-
-.statsenergy-container {
-	width: 90%;
-	height: 15%;
-	background-color: rgba(0, 0, 0, 0.0);	
-	margin: 0;
-	position: absolute;
-	top: 85%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	display: block;
-}
-
-.statsstatsenergymaincontainer {
-	width: 90%;
-	height: 18%;
-	background-color: rgba(255, 255, 255, 0.70);
-	margin: 0;
-	position: absolute;
-	top: 70%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	border-radius: 6px;
-}
-
-.statsstatsenergymaincontainerdata {
-	width: 70%;
-	height: 100%;
-	background-color: var(--color);
-	z-index: 9999999;
-}
-
-.progress-container {
-	width: 40%;
-	height: 15%;
-	background-color: rgba(0, 0, 0, 0.70);
-	border-bottom: 3px solid var(--color);	
-	margin: 0;
-	position: absolute;
-	top: 90%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	border-radius: 10px;
-	display: none;
-}
-
-.progressbartext {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 30%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 40px;
-	color: #ffffff;
-	text-align:center;
+.progressbartext,
+.gymprogressbartext {
+  font-size: 0.95rem;
+  color: var(--muted);
 }
 
 .progressbarmaincontainer {
-	width: 90%;
-	height: 25%;
-	background-color: rgba(255, 255, 255, 0.70);
-	margin: 0;
-	position: absolute;
-	top: 70%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	border-radius: 5px;
+  height: 12px;
 }
 
 .progressbarmaincontainerdata {
-	width: 0%;
-	height: 100%;
-	background-color: var(--color);
-	z-index: 9999999;
-}
-
-.gymprogress-container {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	display: none;
-}
-
-.gymprogressbartext {
-	position: absolute;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	top: 95%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);	
-	font-size: 30px;
-	color: #ffffff;
-	text-align:center;
-	font-family: BebasNeueBold;
-	padding-left: 2.5%;
-	padding-right: 2.5%;
-	padding-top: 0.5%;
-	padding-bottom: 0.5%;
-	background-color: rgba(0, 0, 0, 0.70);
-	border-left: 3px solid var(--color);		
-	border-right: 3px solid var(--color);	
-	border-radius: 10px;
+  width: 0;
 }
 
 .gymprogressbarmaincontainer {
-	width: 3%;
-	height: 50%;
-	background-color: rgba(0, 0, 0, 0.70);
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 95%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-	z-index: 9999999;
-	border-radius: 10px;
+  position: relative;
+  height: 260px;
+  width: 22px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column-reverse;
+  border-radius: 999px;
+  overflow: hidden;
 }
 
 .gymprogressbarmaincontainerdata {
-	overflow: hidden;
-	outline: none;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background-color: var(--color);
-	z-index: 9999999;
-	bottom: 0;
+  position: relative;
+  width: 100%;
+  background: linear-gradient(180deg, var(--primary), var(--primary-accent));
+  z-index: 1;
 }
 
 .gymprogressbarmaincontainerpercentage {
-	position: absolute;
-	width: 100%;
-	height: 10%;
-	border-top: 15px solid #ffffff;	
-	background-color: rgba(0, 0, 0, 0.0);
-	z-index: 9999999;
-	bottom: 0;
-}
-
-#gymreactkey {
-	color: var(--color);
-}
-
-.full-screen {
+  position: absolute;
   width: 100%;
-  height:100%;
-  display: flex;
-  align-items: center;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  color: var(--text);
+  z-index: 2;
 }
 
-*{
-	font-family: BebasNeueBold;
+.gymprogress-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--gym-highlight-height);
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 222, 89, 0.35), rgba(255, 222, 89, 0.1));
+  border: 2px solid rgba(255, 222, 89, 0.85);
+  box-shadow: 0 0 12px rgba(255, 222, 89, 0.45), inset 0 0 6px rgba(255, 222, 89, 0.3);
+  z-index: 3;
+}
+
+#gymstatsshow.panel {
+  width: min(520px, 90vw);
+}
+
+#infonotifyshow.panel,
+#progressshow.panel,
+#gymprogressshow.panel,
+#gymshow.panel {
+  width: min(420px, 86vw);
+}
+
+@keyframes float-in {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .panel {
+    padding: 22px;
+  }
+
+  .panel-section {
+    padding: 16px;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .switch-wrapper {
+    align-self: stretch;
+    justify-content: space-between;
+  }
 }

@@ -107,32 +107,28 @@ function L0_1(A0_2, A1_2)
 end
 round = L0_1
 function L0_1(A0_2, ...)
-  local L1_2, L2_2, L3_2
-  L1_2 = string
-  L1_2 = L1_2.format
-  L2_2 = Language
-  L3_2 = Config
-  L3_2 = L3_2.Language
-  L2_2 = L2_2[L3_2]
-  L2_2 = L2_2[A0_2]
-  L3_2 = ...
-  return L1_2(L2_2, L3_2)
+  local L1_2, L2_2
+  L1_2 = Language
+  L2_2 = Config
+  L2_2 = L2_2.Language
+  L1_2 = L1_2[L2_2]
+  if nil == L1_2 then
+    L1_2 = {}
+  end
+  L2_2 = L1_2[A0_2]
+  if nil == L2_2 then
+    L2_2 = A0_2
+  end
+  if 0 < select("#", ...) then
+    return string.format(L2_2, ...)
+  end
+  return L2_2
 end
 LanguageFile2 = L0_1
 function L0_1(A0_2, ...)
-  local L1_2, L2_2, L3_2, L4_2, L5_2
-  L1_2 = tostring
-  L2_2 = LanguageFile2
-  L3_2 = A0_2
-  L4_2, L5_2 = ...
-  L2_2 = L2_2(L3_2, L4_2, L5_2)
-  L3_2 = L2_2
-  L2_2 = L2_2.gsub
-  L4_2 = "^%l"
-  L5_2 = string
-  L5_2 = L5_2.upper
-  L2_2, L3_2, L4_2, L5_2 = L2_2(L3_2, L4_2, L5_2)
-  return L1_2(L2_2, L3_2, L4_2, L5_2)
+  local L1_2
+  L1_2 = LanguageFile2(A0_2, ...)
+  return (L1_2:gsub("^%l", string.upper))
 end
 LanguageFile = L0_1
 function L0_1(A0_2, A1_2)

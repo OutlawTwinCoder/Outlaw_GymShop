@@ -34,6 +34,8 @@ Config.GymReactionMinigame = true -- Turn this feature on if you want the player
 
 Config.GymReactionMinigameKey = "SPACE" -- key the player must press to react
 
+Config.GymReactionSuccessWindow = 12 -- percentage size of the highlighted success zone for the reaction minigame
+
 Config.Showers = true -- enable shower system
 
 Config.ShowerTime = 25 -- shower time in seconds

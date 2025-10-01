@@ -131,6 +131,16 @@ function L0_1(A0_2, ...)
   return (L1_2:gsub("^%l", string.upper))
 end
 LanguageFile = L0_1
+local function EncodeGymVisitorsData(A0_2)
+  if "table" ~= type(A0_2) then
+    return json.encode({})
+  end
+  local L1_2, L2_2 = pcall(json.encode, A0_2)
+  if false == L1_2 or "string" ~= type(L2_2) then
+    return json.encode({})
+  end
+  return L2_2
+end
 function L0_1(A0_2, A1_2)
   local L2_2, L3_2, L4_2
   L2_2 = os
@@ -2353,8 +2363,7 @@ if "esx" == L0_1 then
                   L10_2["@gymid"] = A0_2
                   L11_2 = L5_2.gymbalance
                   L10_2["@gymbalance"] = L11_2
-                  L11_2 = json
-                  L11_2 = L11_2.encode
+                  L11_2 = EncodeGymVisitorsData
                   L12_2 = L5_2.gymvisitorsdata
                   L11_2 = L11_2(L12_2)
                   L10_2["@gymvisitorsdata"] = L11_2
@@ -3875,8 +3884,7 @@ if "qbcore" == L0_1 then
                   L10_2["@gymid"] = A0_2
                   L11_2 = L5_2.gymbalance
                   L10_2["@gymbalance"] = L11_2
-                  L11_2 = json
-                  L11_2 = L11_2.encode
+                  L11_2 = EncodeGymVisitorsData
                   L12_2 = L5_2.gymvisitorsdata
                   L11_2 = L11_2(L12_2)
                   L10_2["@gymvisitorsdata"] = L11_2
@@ -5337,8 +5345,7 @@ if "standalone" == L0_1 then
                 L9_2["@gymid"] = A0_2
                 L10_2 = L4_2.gymbalance
                 L9_2["@gymbalance"] = L10_2
-                L10_2 = json
-                L10_2 = L10_2.encode
+                L10_2 = EncodeGymVisitorsData
                 L11_2 = L4_2.gymvisitorsdata
                 L10_2 = L10_2(L11_2)
                 L9_2["@gymvisitorsdata"] = L10_2

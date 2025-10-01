@@ -8,9 +8,26 @@ let gymvisitorsdata = [0,0,0,0,0,10,0,0,0,0,0];
 let visitorschart;
 let nuiOpen = false;
 const root = document.documentElement;
+const defaultHighlight = getComputedStyle(root).getPropertyValue('--gym-highlight-height').trim() || '12%';
 
 Chart.defaults.global.defaultFontColor = '#f5f7fb';
 Chart.defaults.global.defaultFontFamily = 'Poppins, sans-serif';
+
+function clampPercentage(value, minimum, maximum, fallback) {
+  if (typeof value !== 'number' || Number.isNaN(value)) {
+    return fallback;
+  }
+  return Math.min(maximum, Math.max(minimum, value));
+}
+
+function setHighlightWindow(percent) {
+  const size = clampPercentage(percent, 2, 100, null);
+  if (size !== null) {
+    root.style.setProperty('--gym-highlight-height', `${size}%`);
+  } else {
+    root.style.setProperty('--gym-highlight-height', defaultHighlight);
+  }
+}
 
 (function ($) {
   const originalShow = $.fn.show;
@@ -228,16 +245,29 @@ window.addEventListener('message', function (event) {
 		$('.progressbarmaincontainerdata').css("width", item.progressbardata+"%")
 	}	
 
-	if (item.message == "gymprogressshow") {
-		openMain();
-		document.getElementsByClassName("progressbartext")[0].innerHTML = item.progresstext;
-		document.getElementById("gymreactkey").innerHTML = item.gymreactkey;
-		$("#gymprogressshow").show();	
-	}	
-	
-	if (item.message == "gymprogresshide") {
-		$("#gymprogressshow").hide();	
-	}	
+        if (item.message == "gymprogressshow") {
+                openMain();
+                const progressPrompt = document.querySelector('.progressbartext');
+                if (progressPrompt && typeof item.progresstext === 'string' && item.progresstext.trim().length > 0) {
+                  progressPrompt.textContent = item.progresstext;
+                }
+                const reactionPrompt = document.querySelector('.gymprogressbartext');
+                if (reactionPrompt) {
+                  const fallbackText = reactionPrompt.dataset.defaultText || reactionPrompt.innerHTML;
+                  reactionPrompt.innerHTML = fallbackText;
+                }
+                const reactKeyElement = document.getElementById('gymreactkey');
+                if (reactKeyElement) {
+                  reactKeyElement.textContent = item.gymreactkey;
+                }
+                setHighlightWindow(Number(item.highlightwindow));
+                $("#gymprogressshow").show();
+        }
+
+        if (item.message == "gymprogresshide") {
+                setHighlightWindow();
+                $("#gymprogressshow").hide();
+        }
 
 	if (item.message == "gymprogressupdate") {
 		$('.gymprogressbarmaincontainerdata').css("height", item.progressbardata2+"%")

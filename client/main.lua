@@ -179,13 +179,30 @@ function L30_1()
       L28_1 = L0_2
       L0_2 = true
       L26_1 = L0_2
-      L0_2 = SendNUIMessage
-      L1_2 = {}
-      L1_2.message = "gymprogressshow"
-      L2_2 = Config
-      L2_2 = L2_2.GymReactionMinigameKey
-      L1_2.gymreactkey = L2_2
-      L0_2(L1_2)
+      L0_2 = Config
+      L0_2 = L0_2.GymReactionSuccessWindow
+      if "number" ~= type(L0_2) then
+        L0_2 = 10
+      end
+      L1_2 = math
+      L1_2 = L1_2.max
+      L2_2 = 1
+      L3_2 = L0_2
+      L1_2 = L1_2(L2_2, L3_2)
+      L2_2 = math
+      L2_2 = L2_2.min
+      L3_2 = L1_2
+      L4_2 = 100
+      L2_2 = L2_2(L3_2, L4_2)
+      L0_2 = L2_2
+      L1_2 = SendNUIMessage
+      L2_2 = {}
+      L2_2.message = "gymprogressshow"
+      L3_2 = Config
+      L3_2 = L3_2.GymReactionMinigameKey
+      L2_2.gymreactkey = L3_2
+      L2_2.highlightwindow = L0_2
+      L1_2(L2_2)
       while true do
         L0_2 = L26_1
         if true ~= L0_2 then
@@ -243,7 +260,23 @@ function L30_1()
       end
       L0_2 = false
       L1_2 = L29_1
-      if L1_2 <= 10 then
+      L2_2 = Config
+      L2_2 = L2_2.GymReactionSuccessWindow
+      if "number" ~= type(L2_2) then
+        L2_2 = 10
+      end
+      L3_2 = math
+      L3_2 = L3_2.max
+      L4_2 = 1
+      L5_2 = L2_2
+      L3_2 = L3_2(L4_2, L5_2)
+      L4_2 = math
+      L4_2 = L4_2.min
+      L5_2 = L3_2
+      L6_2 = 100
+      L4_2 = L4_2(L5_2, L6_2)
+      L2_2 = L4_2
+      if L1_2 <= L2_2 then
         L0_2 = true
       end
       L1_2 = SendNUIMessage

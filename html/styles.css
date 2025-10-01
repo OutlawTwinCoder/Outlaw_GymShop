@@ -11,6 +11,7 @@
   --success: #3dd598;
   --danger: #ff5d5d;
   --shadow: 0 22px 48px rgba(0, 0, 0, 0.55);
+  --gym-highlight-height: 12%;
 }
 
 * {
@@ -41,7 +42,9 @@ body {
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  padding-right: clamp(64px, 14vw, 320px);
+  padding-left: clamp(24px, 6vw, 120px);
   pointer-events: none;
   background: radial-gradient(circle at top left, rgba(255, 107, 53, 0.08), transparent 55%),
     radial-gradient(circle at bottom right, rgba(250, 174, 43, 0.08), transparent 55%);
@@ -415,11 +418,14 @@ body {
   display: flex;
   flex-direction: column-reverse;
   border-radius: 999px;
+  overflow: hidden;
 }
 
 .gymprogressbarmaincontainerdata {
+  position: relative;
   width: 100%;
   background: linear-gradient(180deg, var(--primary), var(--primary-accent));
+  z-index: 1;
 }
 
 .gymprogressbarmaincontainerpercentage {
@@ -430,6 +436,20 @@ body {
   transform: translateY(-50%);
   font-size: 0.85rem;
   color: var(--text);
+  z-index: 2;
+}
+
+.gymprogress-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--gym-highlight-height);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 107, 53, 0.15));
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: 0;
 }
 
 #gymstatsshow.panel {

@@ -364,7 +364,7 @@ CheckSuplements = L0_1
 function L0_1(A0_2)
   local L1_2, L2_2, L3_2
   L1_2 = playerloaded
-  L2_2 = GetPlayerIdentifierRTX
+  L2_2 = GetPlayerIdentifierGym
   L3_2 = A0_2
   L2_2 = L2_2(L3_2)
   L1_2[A0_2] = L2_2
@@ -427,10 +427,10 @@ L0_1 = Config
 L0_1 = L0_1.Showers
 if L0_1 then
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:UseShower"
+  L1_1 = "outlaw_gym:UseShower"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:UseShower"
+  L1_1 = "outlaw_gym:UseShower"
   function L2_1(A0_2)
     local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2
     L1_2 = source
@@ -447,12 +447,12 @@ if L0_1 then
         L2_2.taken = true
         L2_2.takenplayerid = L1_2
         L3_2 = TriggerClientEvent
-        L4_2 = "rtx_gym:UseShower"
+        L4_2 = "outlaw_gym:UseShower"
         L5_2 = L1_2
         L6_2 = A0_2
         L3_2(L4_2, L5_2, L6_2)
         L3_2 = TriggerClientEvent
-        L4_2 = "rtx_gym:ShowerHandler"
+        L4_2 = "outlaw_gym:ShowerHandler"
         L5_2 = -1
         L6_2 = A0_2
         L7_2 = true
@@ -462,10 +462,10 @@ if L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:SHOWERComplete"
+  L1_1 = "outlaw_gym:SHOWERComplete"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:SHOWERComplete"
+  L1_1 = "outlaw_gym:SHOWERComplete"
   function L2_1(A0_2, A1_2)
     local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2
     L2_2 = source
@@ -492,7 +492,7 @@ if L0_1 then
             L3_2.taken = false
             L3_2.takenplayerid = nil
             L4_2 = TriggerClientEvent
-            L5_2 = "rtx_gym:ShowerHandler"
+            L5_2 = "outlaw_gym:ShowerHandler"
             L6_2 = -1
             L7_2 = A1_2
             L8_2 = false
@@ -507,10 +507,10 @@ if L0_1 then
   L0_1(L1_1, L2_1)
 end
 L0_1 = RegisterServerEvent
-L1_1 = "rtx_gym:UseGym"
+L1_1 = "outlaw_gym:UseGym"
 L0_1(L1_1)
 L0_1 = AddEventHandler
-L1_1 = "rtx_gym:UseGym"
+L1_1 = "outlaw_gym:UseGym"
 function L2_1(A0_2, A1_2, A2_2)
   local L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2
   L3_2 = source
@@ -566,13 +566,13 @@ function L2_1(A0_2, A1_2, A2_2)
         L6_2 = gymusing
         L6_2[L3_2] = true
         L6_2 = TriggerClientEvent
-        L7_2 = "rtx_gym:UseGymTypes"
+        L7_2 = "outlaw_gym:UseGymTypes"
         L8_2 = L3_2
         L9_2 = A0_2
         L6_2(L7_2, L8_2, L9_2)
       else
         L6_2 = TriggerClientEvent
-        L7_2 = "rtx_gym:Notify"
+        L7_2 = "outlaw_gym:Notify"
         L8_2 = L3_2
         L9_2 = Language
         L10_2 = Config
@@ -647,13 +647,13 @@ function L2_1(A0_2, A1_2, A2_2)
               L10_2 = L7_2.status
               L10_2.takenplayerid = L3_2
               L10_2 = TriggerClientEvent
-              L11_2 = "rtx_gym:UseGym"
+              L11_2 = "outlaw_gym:UseGym"
               L12_2 = L3_2
               L13_2 = A1_2
               L14_2 = A2_2
               L10_2(L11_2, L12_2, L13_2, L14_2)
               L10_2 = TriggerClientEvent
-              L11_2 = "rtx_gym:GymHandler"
+              L11_2 = "outlaw_gym:GymHandler"
               L12_2 = -1
               L13_2 = A1_2
               L14_2 = A2_2
@@ -662,7 +662,7 @@ function L2_1(A0_2, A1_2, A2_2)
             end
           else
             L10_2 = TriggerClientEvent
-            L11_2 = "rtx_gym:Notify"
+            L11_2 = "outlaw_gym:Notify"
             L12_2 = L3_2
             L13_2 = Language
             L14_2 = Config
@@ -673,7 +673,7 @@ function L2_1(A0_2, A1_2, A2_2)
           end
         else
           L7_2 = TriggerClientEvent
-          L8_2 = "rtx_gym:Notify"
+          L8_2 = "outlaw_gym:Notify"
           L9_2 = L3_2
           L10_2 = Language
           L11_2 = Config
@@ -684,7 +684,7 @@ function L2_1(A0_2, A1_2, A2_2)
         end
       else
         L6_2 = TriggerClientEvent
-        L7_2 = "rtx_gym:Notify"
+        L7_2 = "outlaw_gym:Notify"
         L8_2 = L3_2
         L9_2 = Language
         L10_2 = Config
@@ -698,10 +698,10 @@ function L2_1(A0_2, A1_2, A2_2)
 end
 L0_1(L1_1, L2_1)
 L0_1 = RegisterServerEvent
-L1_1 = "rtx_gym:GymAdd"
+L1_1 = "outlaw_gym:GymAdd"
 L0_1(L1_1)
 L0_1 = AddEventHandler
-L1_1 = "rtx_gym:GymAdd"
+L1_1 = "outlaw_gym:GymAdd"
 function L2_1(A0_2, A1_2)
   local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2, L20_2, L21_2, L22_2
   L2_2 = source
@@ -821,7 +821,7 @@ function L2_1(A0_2, A1_2)
                     L14_2 = L14_2.DisableIncreaseStatsNotify
                     if false == L14_2 then
                       L14_2 = TriggerClientEvent
-                      L15_2 = "rtx_gym:Notify"
+                      L15_2 = "outlaw_gym:Notify"
                       L16_2 = L2_2
                       L17_2 = LanguageFile
                       L18_2 = "statadd"
@@ -854,7 +854,7 @@ function L2_1(A0_2, A1_2)
                 L12_2 = L12_2.DisableIncreaseStatsNotify
                 if false == L12_2 then
                   L12_2 = TriggerClientEvent
-                  L13_2 = "rtx_gym:Notify"
+                  L13_2 = "outlaw_gym:Notify"
                   L14_2 = L2_2
                   L15_2 = LanguageFile
                   L16_2 = "statadd"
@@ -906,7 +906,7 @@ function L2_1(A0_2, A1_2)
             end
           else
             L6_2 = TriggerClientEvent
-            L7_2 = "rtx_gym:Notify"
+            L7_2 = "outlaw_gym:Notify"
             L8_2 = L2_2
             L9_2 = Language
             L10_2 = Config
@@ -915,7 +915,7 @@ function L2_1(A0_2, A1_2)
             L9_2 = L9_2.noenergy
             L6_2(L7_2, L8_2, L9_2)
             L6_2 = TriggerClientEvent
-            L7_2 = "rtx_gym:GymStop"
+            L7_2 = "outlaw_gym:GymStop"
             L8_2 = L2_2
             L9_2 = A0_2
             L10_2 = "energy"
@@ -932,7 +932,7 @@ function L2_1(A0_2, A1_2)
             L7_2 = L7_2(L8_2, L9_2)
             if false == L7_2 then
               L8_2 = TriggerClientEvent
-              L9_2 = "rtx_gym:GymStop"
+              L9_2 = "outlaw_gym:GymStop"
               L10_2 = L2_2
               L11_2 = A0_2
               L12_2 = "entry"
@@ -949,10 +949,10 @@ L0_1 = Config
 L0_1 = L0_1.ReducingStatsWhenNotExercising
 if true == L0_1 then
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:GymNoExercise"
+  L1_1 = "outlaw_gym:GymNoExercise"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:GymNoExercise"
+  L1_1 = "outlaw_gym:GymNoExercise"
   function L2_1(A0_2)
     local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2
     L1_2 = source
@@ -986,7 +986,7 @@ if true == L0_1 then
       L3_2 = L3_2.DisableDecreaseStatsNotify
       if false == L3_2 then
         L3_2 = TriggerClientEvent
-        L4_2 = "rtx_gym:Notify"
+        L4_2 = "outlaw_gym:Notify"
         L5_2 = L1_2
         L6_2 = LanguageFile
         L7_2 = "noexercise"
@@ -1012,7 +1012,7 @@ if true == L0_1 then
       L3_2 = L3_2.DisableDecreaseStatsNotify
       if false == L3_2 then
         L3_2 = TriggerClientEvent
-        L4_2 = "rtx_gym:Notify"
+        L4_2 = "outlaw_gym:Notify"
         L5_2 = L1_2
         L6_2 = LanguageFile
         L7_2 = "noexercise"
@@ -1038,7 +1038,7 @@ if true == L0_1 then
       L3_2 = L3_2.DisableDecreaseStatsNotify
       if false == L3_2 then
         L3_2 = TriggerClientEvent
-        L4_2 = "rtx_gym:Notify"
+        L4_2 = "outlaw_gym:Notify"
         L5_2 = L1_2
         L6_2 = LanguageFile
         L7_2 = "noexercise"
@@ -1060,10 +1060,10 @@ if true == L0_1 then
   L0_1(L1_1, L2_1)
 end
 L0_1 = RegisterServerEvent
-L1_1 = "rtx_gym:GymTypesAdd"
+L1_1 = "outlaw_gym:GymTypesAdd"
 L0_1(L1_1)
 L0_1 = AddEventHandler
-L1_1 = "rtx_gym:GymTypesAdd"
+L1_1 = "outlaw_gym:GymTypesAdd"
 function L2_1(A0_2)
   local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2, L20_2, L21_2
   L1_2 = source
@@ -1172,7 +1172,7 @@ function L2_1(A0_2)
                 L13_2 = L13_2.DisableIncreaseStatsNotify
                 if false == L13_2 then
                   L13_2 = TriggerClientEvent
-                  L14_2 = "rtx_gym:Notify"
+                  L14_2 = "outlaw_gym:Notify"
                   L15_2 = L1_2
                   L16_2 = LanguageFile
                   L17_2 = "statadd"
@@ -1205,7 +1205,7 @@ function L2_1(A0_2)
             L11_2 = L11_2.DisableIncreaseStatsNotify
             if false == L11_2 then
               L11_2 = TriggerClientEvent
-              L12_2 = "rtx_gym:Notify"
+              L12_2 = "outlaw_gym:Notify"
               L13_2 = L1_2
               L14_2 = LanguageFile
               L15_2 = "statadd"
@@ -1257,7 +1257,7 @@ function L2_1(A0_2)
         end
       else
         L4_2 = TriggerClientEvent
-        L5_2 = "rtx_gym:Notify"
+        L5_2 = "outlaw_gym:Notify"
         L6_2 = L1_2
         L7_2 = Language
         L8_2 = Config
@@ -1266,7 +1266,7 @@ function L2_1(A0_2)
         L7_2 = L7_2.noenergy
         L4_2(L5_2, L6_2, L7_2)
         L4_2 = TriggerClientEvent
-        L5_2 = "rrtx_gym:GymStop2"
+        L5_2 = "routlaw_gym:GymStop2"
         L6_2 = L1_2
         L4_2(L5_2, L6_2)
       end
@@ -1275,10 +1275,10 @@ function L2_1(A0_2)
 end
 L0_1(L1_1, L2_1)
 L0_1 = RegisterServerEvent
-L1_1 = "rtx_gym:UpdateLung"
+L1_1 = "outlaw_gym:UpdateLung"
 L0_1(L1_1)
 L0_1 = AddEventHandler
-L1_1 = "rtx_gym:UpdateLung"
+L1_1 = "outlaw_gym:UpdateLung"
 function L2_1()
   local L0_2, L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2
   L0_2 = source
@@ -1371,7 +1371,7 @@ function L2_1()
           L11_2 = L11_2.DisableIncreaseStatsNotify
           if false == L11_2 then
             L11_2 = TriggerClientEvent
-            L12_2 = "rtx_gym:Notify"
+            L12_2 = "outlaw_gym:Notify"
             L13_2 = L0_2
             L14_2 = LanguageFile
             L15_2 = "statadd"
@@ -1403,7 +1403,7 @@ function L2_1()
         L9_2 = L9_2.DisableIncreaseStatsNotify
         if false == L9_2 then
           L9_2 = TriggerClientEvent
-          L10_2 = "rtx_gym:Notify"
+          L10_2 = "outlaw_gym:Notify"
           L11_2 = L0_2
           L12_2 = LanguageFile
           L13_2 = "statadd"
@@ -1460,10 +1460,10 @@ L0_1 = Config
 L0_1 = L0_1.ConditionIncreaseByNormalRunning
 if L0_1 then
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:UpdateCondition"
+  L1_1 = "outlaw_gym:UpdateCondition"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:UpdateCondition"
+  L1_1 = "outlaw_gym:UpdateCondition"
   function L2_1()
     local L0_2, L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2
     L0_2 = source
@@ -1556,7 +1556,7 @@ if L0_1 then
             L11_2 = L11_2.DisableIncreaseStatsNotify
             if false == L11_2 then
               L11_2 = TriggerClientEvent
-              L12_2 = "rtx_gym:Notify"
+              L12_2 = "outlaw_gym:Notify"
               L13_2 = L0_2
               L14_2 = LanguageFile
               L15_2 = "statadd"
@@ -1588,7 +1588,7 @@ if L0_1 then
           L9_2 = L9_2.DisableIncreaseStatsNotify
           if false == L9_2 then
             L9_2 = TriggerClientEvent
-            L10_2 = "rtx_gym:Notify"
+            L10_2 = "outlaw_gym:Notify"
             L11_2 = L0_2
             L12_2 = LanguageFile
             L13_2 = "statadd"
@@ -1643,10 +1643,10 @@ if L0_1 then
   L0_1(L1_1, L2_1)
 end
 L0_1 = RegisterServerEvent
-L1_1 = "rtx_gym:GYMTYPESComplete"
+L1_1 = "outlaw_gym:GYMTYPESComplete"
 L0_1(L1_1)
 L0_1 = AddEventHandler
-L1_1 = "rtx_gym:GYMTYPESComplete"
+L1_1 = "outlaw_gym:GYMTYPESComplete"
 function L2_1()
   local L0_2, L1_2
   L0_2 = source
@@ -1663,10 +1663,10 @@ function L2_1()
 end
 L0_1(L1_1, L2_1)
 L0_1 = RegisterServerEvent
-L1_1 = "rtx_gym:GYMComplete"
+L1_1 = "outlaw_gym:GYMComplete"
 L0_1(L1_1)
 L0_1 = AddEventHandler
-L1_1 = "rtx_gym:GYMComplete"
+L1_1 = "outlaw_gym:GYMComplete"
 function L2_1(A0_2, A1_2)
   local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2
   L2_2 = source
@@ -1692,7 +1692,7 @@ function L2_1(A0_2, A1_2)
           L4_2 = L3_2.status
           L4_2.takenplayerid = nil
           L4_2 = TriggerClientEvent
-          L5_2 = "rtx_gym:GymHandler"
+          L5_2 = "outlaw_gym:GymHandler"
           L6_2 = -1
           L7_2 = A0_2
           L8_2 = A1_2
@@ -1707,10 +1707,10 @@ function L2_1(A0_2, A1_2)
 end
 L0_1(L1_1, L2_1)
 L0_1 = RegisterServerEvent
-L1_1 = "rtx_gym:OpenGymPayMenu"
+L1_1 = "outlaw_gym:OpenGymPayMenu"
 L0_1(L1_1)
 L0_1 = AddEventHandler
-L1_1 = "rtx_gym:OpenGymPayMenu"
+L1_1 = "outlaw_gym:OpenGymPayMenu"
 function L2_1(A0_2)
   local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2
   L1_2 = source
@@ -1733,14 +1733,14 @@ function L2_1(A0_2)
             L3_2 = L3_2.gymclosed
             if false == L3_2 then
               L3_2 = TriggerClientEvent
-              L4_2 = "rtx_gym:OpenGymPayMenuClient"
+              L4_2 = "outlaw_gym:OpenGymPayMenuClient"
               L5_2 = L1_2
               L6_2 = A0_2
               L7_2 = L2_2.gymprice
               L3_2(L4_2, L5_2, L6_2, L7_2)
             else
               L3_2 = TriggerClientEvent
-              L4_2 = "rtx_gym:Notify"
+              L4_2 = "outlaw_gym:Notify"
               L5_2 = L1_2
               L6_2 = Language
               L7_2 = Config
@@ -1751,7 +1751,7 @@ function L2_1(A0_2)
             end
           else
             L3_2 = TriggerClientEvent
-            L4_2 = "rtx_gym:OpenGymPayMenuClient"
+            L4_2 = "outlaw_gym:OpenGymPayMenuClient"
             L5_2 = L1_2
             L6_2 = A0_2
             L7_2 = L2_2.gymprice
@@ -1760,7 +1760,7 @@ function L2_1(A0_2)
       end
       else
         L3_2 = TriggerClientEvent
-        L4_2 = "rtx_gym:OpenGymPayMenuClient"
+        L4_2 = "outlaw_gym:OpenGymPayMenuClient"
         L5_2 = L1_2
         L6_2 = A0_2
         L7_2 = L2_2.gymprice
@@ -1771,10 +1771,10 @@ function L2_1(A0_2)
 end
 L0_1(L1_1, L2_1)
 L0_1 = RegisterServerEvent
-L1_1 = "rtx_gym:OpenBuyGymMenu"
+L1_1 = "outlaw_gym:OpenBuyGymMenu"
 L0_1(L1_1)
 L0_1 = AddEventHandler
-L1_1 = "rtx_gym:OpenBuyGymMenu"
+L1_1 = "outlaw_gym:OpenBuyGymMenu"
 function L2_1(A0_2)
   local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2
   L1_2 = source
@@ -1795,7 +1795,7 @@ function L2_1(A0_2)
           L3_2 = L3_2.gymowned
           if false == L3_2 then
             L3_2 = TriggerClientEvent
-            L4_2 = "rtx_gym:OpenBuyGymMenuClient"
+            L4_2 = "outlaw_gym:OpenBuyGymMenuClient"
             L5_2 = L1_2
             L6_2 = A0_2
             L7_2 = L2_2.gymowneableprice
@@ -1906,10 +1906,10 @@ if "esx" == L0_1 then
   end
   GymStatsData = L0_1
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:GymSynchronize"
+  L1_1 = "outlaw_gym:GymSynchronize"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:GymSynchronize"
+  L1_1 = "outlaw_gym:GymSynchronize"
   function L2_1()
     local L0_2, L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2
     L0_2 = source
@@ -1922,12 +1922,12 @@ if "esx" == L0_1 then
       L2_2 = L2_2[L0_2]
       if nil == L2_2 then
         L2_2 = TriggerClientEvent
-        L3_2 = "rtx_gym:PlayerLoadedClient"
+        L3_2 = "outlaw_gym:PlayerLoadedClient"
         L4_2 = L0_2
         L5_2 = true
         L2_2(L3_2, L4_2, L5_2)
         L2_2 = playerloaded
-        L3_2 = GetPlayerIdentifierRTX
+        L3_2 = GetPlayerIdentifierGym
         L4_2 = L0_2
         L3_2 = L3_2(L4_2)
         L2_2[L0_2] = L3_2
@@ -1945,7 +1945,7 @@ if "esx" == L0_1 then
         L3_2.testosterone = nil
         L2_2[L0_2] = L3_2
         L2_2 = GymStatsData
-        L3_2 = GetPlayerIdentifierRTX
+        L3_2 = GetPlayerIdentifierGym
         L4_2 = L0_2
         L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2 = L3_2(L4_2)
         L2_2 = L2_2(L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2)
@@ -1968,7 +1968,7 @@ if "esx" == L0_1 then
                 L9_2 = L9_2[L7_2]
                 if nil ~= L9_2 then
                   L9_2 = TriggerClientEvent
-                  L10_2 = "rtx_gym:SynchronizeOwnedGym"
+                  L10_2 = "outlaw_gym:SynchronizeOwnedGym"
                   L11_2 = L0_2
                   L12_2 = L7_2
                   L13_2 = ownedgyms
@@ -1978,12 +1978,12 @@ if "esx" == L0_1 then
                   L9_2 = ownedgyms
                   L9_2 = L9_2[L7_2]
                   L9_2 = L9_2.gymownedidentifier
-                  L10_2 = GetPlayerIdentifierRTX
+                  L10_2 = GetPlayerIdentifierGym
                   L11_2 = L0_2
                   L10_2 = L10_2(L11_2)
                   if L9_2 == L10_2 then
                     L9_2 = TriggerClientEvent
-                    L10_2 = "rtx_gym:SynchronizeYourOwnedGym"
+                    L10_2 = "outlaw_gym:SynchronizeYourOwnedGym"
                     L11_2 = L0_2
                     L12_2 = L7_2
                     L13_2 = true
@@ -2008,7 +2008,7 @@ if "esx" == L0_1 then
                 L9_2 = L9_2[L7_2]
                 if nil ~= L9_2 then
                   L9_2 = TriggerClientEvent
-                  L10_2 = "rtx_gym:SynchronizeOwnedGym"
+                  L10_2 = "outlaw_gym:SynchronizeOwnedGym"
                   L11_2 = L0_2
                   L12_2 = L7_2
                   L13_2 = ownedgyms
@@ -2018,12 +2018,12 @@ if "esx" == L0_1 then
                   L9_2 = ownedgyms
                   L9_2 = L9_2[L7_2]
                   L9_2 = L9_2.gymownedidentifier
-                  L10_2 = GetPlayerIdentifierRTX
+                  L10_2 = GetPlayerIdentifierGym
                   L11_2 = L0_2
                   L10_2 = L10_2(L11_2)
                   if L9_2 == L10_2 then
                     L9_2 = TriggerClientEvent
-                    L10_2 = "rtx_gym:SynchronizeYourOwnedGym"
+                    L10_2 = "outlaw_gym:SynchronizeYourOwnedGym"
                     L11_2 = L0_2
                     L12_2 = L7_2
                     L13_2 = true
@@ -2038,7 +2038,7 @@ if "esx" == L0_1 then
         L3_2 = L3_2.DifferentStatsSystem
         if false == L3_2 then
           L3_2 = TriggerClientEvent
-          L4_2 = "rtx_gym:SynchronizeStats"
+          L4_2 = "outlaw_gym:SynchronizeStats"
           L5_2 = L0_2
           L6_2 = playerneeds
           L6_2 = L6_2[L0_2]
@@ -2056,7 +2056,7 @@ if "esx" == L0_1 then
             L9_2 = L9_2.fetchScalar
             L10_2 = "SELECT gymtime FROM gympass WHERE identifier = @identifier AND gymid = @gymid "
             L11_2 = {}
-            L12_2 = GetPlayerIdentifierRTX
+            L12_2 = GetPlayerIdentifierGym
             L13_2 = L0_2
             L12_2 = L12_2(L13_2)
             L11_2["@identifier"] = L12_2
@@ -2079,10 +2079,10 @@ if "esx" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:GymBuyEntry"
+  L1_1 = "outlaw_gym:GymBuyEntry"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:GymBuyEntry"
+  L1_1 = "outlaw_gym:GymBuyEntry"
   function L2_1(A0_2, A1_2)
     local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2
     L2_2 = source
@@ -2141,17 +2141,17 @@ if "esx" == L0_1 then
                   L7_2 = L7_2(L8_2, L9_2)
                   L6_2 = L7_2
                 end
-                L7_2 = GetMoneyRTX
+                L7_2 = GetGymMoney
                 L8_2 = L2_2
                 L7_2 = L7_2(L8_2)
                 if L6_2 <= L7_2 then
-                  L7_2 = RemoveMoneyRTX
+                  L7_2 = RemoveGymMoney
                   L8_2 = L2_2
                   L9_2 = L6_2
                   L7_2(L8_2, L9_2)
                   if "normal" == A1_2 then
                     L7_2 = TriggerClientEvent
-                    L8_2 = "rtx_gym:Notify"
+                    L8_2 = "outlaw_gym:Notify"
                     L9_2 = L2_2
                     L10_2 = LanguageFile
                     L11_2 = "youboughtentry"
@@ -2178,7 +2178,7 @@ if "esx" == L0_1 then
                     L9_2[A0_2] = L8_2
                   elseif "pass" == A1_2 then
                     L7_2 = TriggerClientEvent
-                    L8_2 = "rtx_gym:Notify"
+                    L8_2 = "outlaw_gym:Notify"
                     L9_2 = L2_2
                     L10_2 = LanguageFile
                     L11_2 = "youboughtpass"
@@ -2198,7 +2198,7 @@ if "esx" == L0_1 then
                     L9_2 = L9_2.fetchScalar
                     L10_2 = "SELECT 1 FROM gympass WHERE identifier = @identifier AND gymid = @gymid "
                     L11_2 = {}
-                    L12_2 = GetPlayerIdentifierRTX
+                    L12_2 = GetPlayerIdentifierGym
                     L13_2 = L2_2
                     L12_2 = L12_2(L13_2)
                     L11_2["@identifier"] = L12_2
@@ -2211,7 +2211,7 @@ if "esx" == L0_1 then
                         L1_3 = L1_3.execute
                         L2_3 = "UPDATE gympass SET gymtime = @gymtime WHERE identifier = @identifier AND gymid = @gymid"
                         L3_3 = {}
-                        L4_3 = GetPlayerIdentifierRTX
+                        L4_3 = GetPlayerIdentifierGym
                         L5_3 = L2_2
                         L4_3 = L4_3(L5_3)
                         L3_3["@identifier"] = L4_3
@@ -2241,7 +2241,7 @@ if "esx" == L0_1 then
                         L1_3 = L1_3.execute
                         L2_3 = "INSERT INTO gympass (identifier, gymid, gymtime) VALUES (@identifier,@gymid,@gymtime)"
                         L3_3 = {}
-                        L4_3 = GetPlayerIdentifierRTX
+                        L4_3 = GetPlayerIdentifierGym
                         L5_3 = L2_2
                         L4_3 = L4_3(L5_3)
                         L3_3["@identifier"] = L4_3
@@ -2365,7 +2365,7 @@ if "esx" == L0_1 then
                   L8_2(L9_2, L10_2)
                 else
                   L7_2 = TriggerClientEvent
-                  L8_2 = "rtx_gym:Notify"
+                  L8_2 = "outlaw_gym:Notify"
                   L9_2 = L2_2
                   L10_2 = Language
                   L11_2 = Config
@@ -2376,7 +2376,7 @@ if "esx" == L0_1 then
                 end
               else
                 L6_2 = TriggerClientEvent
-                L7_2 = "rtx_gym:Notify"
+                L7_2 = "outlaw_gym:Notify"
                 L8_2 = L2_2
                 L9_2 = Language
                 L10_2 = Config
@@ -2401,17 +2401,17 @@ if "esx" == L0_1 then
             L6_2 = L6_2(L7_2, L8_2)
             L5_2 = L6_2
           end
-          L6_2 = GetMoneyRTX
+          L6_2 = GetGymMoney
           L7_2 = L2_2
           L6_2 = L6_2(L7_2)
           if L5_2 <= L6_2 then
-            L6_2 = RemoveMoneyRTX
+            L6_2 = RemoveGymMoney
             L7_2 = L2_2
             L8_2 = L5_2
             L6_2(L7_2, L8_2)
             if "normal" == A1_2 then
               L6_2 = TriggerClientEvent
-              L7_2 = "rtx_gym:Notify"
+              L7_2 = "outlaw_gym:Notify"
               L8_2 = L2_2
               L9_2 = LanguageFile
               L10_2 = "youboughtentry"
@@ -2438,7 +2438,7 @@ if "esx" == L0_1 then
               L8_2[A0_2] = L7_2
             elseif "pass" == A1_2 then
               L6_2 = TriggerClientEvent
-              L7_2 = "rtx_gym:Notify"
+              L7_2 = "outlaw_gym:Notify"
               L8_2 = L2_2
               L9_2 = LanguageFile
               L10_2 = "youboughtpass"
@@ -2458,7 +2458,7 @@ if "esx" == L0_1 then
               L8_2 = L8_2.fetchScalar
               L9_2 = "SELECT 1 FROM gympass WHERE identifier = @identifier AND gymid = @gymid "
               L10_2 = {}
-              L11_2 = GetPlayerIdentifierRTX
+              L11_2 = GetPlayerIdentifierGym
               L12_2 = L2_2
               L11_2 = L11_2(L12_2)
               L10_2["@identifier"] = L11_2
@@ -2471,7 +2471,7 @@ if "esx" == L0_1 then
                   L1_3 = L1_3.execute
                   L2_3 = "UPDATE gympass SET gymtime = @gymtime WHERE identifier = @identifier AND gymid = @gymid"
                   L3_3 = {}
-                  L4_3 = GetPlayerIdentifierRTX
+                  L4_3 = GetPlayerIdentifierGym
                   L5_3 = L2_2
                   L4_3 = L4_3(L5_3)
                   L3_3["@identifier"] = L4_3
@@ -2501,7 +2501,7 @@ if "esx" == L0_1 then
                   L1_3 = L1_3.execute
                   L2_3 = "INSERT INTO gympass (identifier, gymid, gymtime) VALUES (@identifier,@gymid,@gymtime)"
                   L3_3 = {}
-                  L4_3 = GetPlayerIdentifierRTX
+                  L4_3 = GetPlayerIdentifierGym
                   L5_3 = L2_2
                   L4_3 = L4_3(L5_3)
                   L3_3["@identifier"] = L4_3
@@ -2534,7 +2534,7 @@ if "esx" == L0_1 then
             end
           else
             L6_2 = TriggerClientEvent
-            L7_2 = "rtx_gym:Notify"
+            L7_2 = "outlaw_gym:Notify"
             L8_2 = L2_2
             L9_2 = Language
             L10_2 = Config
@@ -2549,10 +2549,10 @@ if "esx" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:GymBuy"
+  L1_1 = "outlaw_gym:GymBuy"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:GymBuy"
+  L1_1 = "outlaw_gym:GymBuy"
   function L2_1(A0_2)
     local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2
     L1_2 = source
@@ -2598,40 +2598,40 @@ if "esx" == L0_1 then
               L4_2 = L4_2[A0_2]
               L5_2 = L4_2.gymowned
               if false == L5_2 then
-                L5_2 = GetMoneyRTX
+                L5_2 = GetGymMoney
                 L6_2 = L1_2
                 L5_2 = L5_2(L6_2)
                 L6_2 = L3_2.gymowneableprice
                 if L5_2 >= L6_2 then
-                  L5_2 = RemoveMoneyRTX
+                  L5_2 = RemoveGymMoney
                   L6_2 = L1_2
                   L7_2 = L3_2.gymowneableprice
                   L5_2(L6_2, L7_2)
                   L4_2.gymowned = true
                   L5_2 = TriggerClientEvent
-                  L6_2 = "rtx_gym:SynchronizeOwnedGym"
+                  L6_2 = "outlaw_gym:SynchronizeOwnedGym"
                   L7_2 = -1
                   L8_2 = A0_2
                   L9_2 = true
                   L5_2(L6_2, L7_2, L8_2, L9_2)
                   L5_2 = TriggerClientEvent
-                  L6_2 = "rtx_gym:SynchronizeYourOwnedGym"
+                  L6_2 = "outlaw_gym:SynchronizeYourOwnedGym"
                   L7_2 = L1_2
                   L8_2 = A0_2
                   L9_2 = true
                   L5_2(L6_2, L7_2, L8_2, L9_2)
                   L5_2 = TriggerClientEvent
-                  L6_2 = "rtx_gym:GymBuyed"
+                  L6_2 = "outlaw_gym:GymBuyed"
                   L7_2 = -1
                   L8_2 = A0_2
                   L5_2(L6_2, L7_2, L8_2)
                   L4_2.gymowned = true
-                  L5_2 = GetPlayerIdentifierRTX
+                  L5_2 = GetPlayerIdentifierGym
                   L6_2 = L1_2
                   L5_2 = L5_2(L6_2)
                   L4_2.gymownedidentifier = L5_2
                   L5_2 = TriggerClientEvent
-                  L6_2 = "rtx_gym:Notify"
+                  L6_2 = "outlaw_gym:Notify"
                   L7_2 = L1_2
                   L8_2 = LanguageFile
                   L9_2 = "youboughtgym"
@@ -2653,7 +2653,7 @@ if "esx" == L0_1 then
                       L1_3 = L1_3.execute
                       L2_3 = "UPDATE owned_gyms SET identifier = @identifier WHERE gymid = @gymid"
                       L3_3 = {}
-                      L4_3 = GetPlayerIdentifierRTX
+                      L4_3 = GetPlayerIdentifierGym
                       L5_3 = L1_2
                       L4_3 = L4_3(L5_3)
                       L3_3["@identifier"] = L4_3
@@ -2666,7 +2666,7 @@ if "esx" == L0_1 then
                       L1_3 = L1_3.execute
                       L2_3 = "INSERT INTO owned_gyms (identifier, gymid, gymprice, gymbalance, gymvisitorsdata) VALUES (@identifier,@gymid,@gymprice,@gymbalance,@gymvisitorsdata)"
                       L3_3 = {}
-                      L4_3 = GetPlayerIdentifierRTX
+                      L4_3 = GetPlayerIdentifierGym
                       L5_3 = L1_2
                       L4_3 = L4_3(L5_3)
                       L3_3["@identifier"] = L4_3
@@ -2689,7 +2689,7 @@ if "esx" == L0_1 then
                   L5_2(L6_2, L7_2, L8_2)
                 else
                   L5_2 = TriggerClientEvent
-                  L6_2 = "rtx_gym:Notify"
+                  L6_2 = "outlaw_gym:Notify"
                   L7_2 = L1_2
                   L8_2 = Language
                   L9_2 = Config
@@ -2707,10 +2707,10 @@ if "esx" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:GymOpenManagment"
+  L1_1 = "outlaw_gym:GymOpenManagment"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:GymOpenManagment"
+  L1_1 = "outlaw_gym:GymOpenManagment"
   function L2_1(A0_2)
     local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2, L20_2
     L1_2 = source
@@ -2731,7 +2731,7 @@ if "esx" == L0_1 then
             L4_2 = ownedgyms
             L4_2 = L4_2[A0_2]
             L4_2 = L4_2.gymownedidentifier
-            L5_2 = GetPlayerIdentifierRTX
+            L5_2 = GetPlayerIdentifierGym
             L6_2 = L1_2
             L5_2 = L5_2(L6_2)
             if L4_2 == L5_2 then
@@ -2763,7 +2763,7 @@ if "esx" == L0_1 then
                 L13_2(L14_2, L15_2)
               end
               L6_2 = TriggerClientEvent
-              L7_2 = "rtx_gym:OpenGymMenu"
+              L7_2 = "outlaw_gym:OpenGymMenu"
               L8_2 = L1_2
               L9_2 = A0_2
               L10_2 = L4_2.gymbalance
@@ -2779,10 +2779,10 @@ if "esx" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:ChangeEntryPrice"
+  L1_1 = "outlaw_gym:ChangeEntryPrice"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:ChangeEntryPrice"
+  L1_1 = "outlaw_gym:ChangeEntryPrice"
   function L2_1(A0_2, A1_2)
     local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2
     L2_2 = source
@@ -2803,7 +2803,7 @@ if "esx" == L0_1 then
             L5_2 = ownedgyms
             L5_2 = L5_2[A0_2]
             L5_2 = L5_2.gymownedidentifier
-            L6_2 = GetPlayerIdentifierRTX
+            L6_2 = GetPlayerIdentifierGym
             L7_2 = L2_2
             L6_2 = L6_2(L7_2)
             if L5_2 == L6_2 then
@@ -2823,7 +2823,7 @@ if "esx" == L0_1 then
                   L8_2["@gymprice"] = A1_2
                   L6_2(L7_2, L8_2)
                   L6_2 = TriggerClientEvent
-                  L7_2 = "rtx_gym:Notify"
+                  L7_2 = "outlaw_gym:Notify"
                   L8_2 = L2_2
                   L9_2 = LanguageFile
                   L10_2 = "youchangedgymentry"
@@ -2831,7 +2831,7 @@ if "esx" == L0_1 then
                   L9_2, L10_2, L11_2, L12_2 = L9_2(L10_2, L11_2)
                   L6_2(L7_2, L8_2, L9_2, L10_2, L11_2, L12_2)
                   L6_2 = TriggerClientEvent
-                  L7_2 = "rtx_gym:GymMenuUpdate"
+                  L7_2 = "outlaw_gym:GymMenuUpdate"
                   L8_2 = L2_2
                   L9_2 = A0_2
                   L10_2 = L5_2.gymbalance
@@ -2841,7 +2841,7 @@ if "esx" == L0_1 then
               end
               else
                 L6_2 = TriggerClientEvent
-                L7_2 = "rtx_gym:Notify"
+                L7_2 = "outlaw_gym:Notify"
                 L8_2 = L2_2
                 L9_2 = LanguageFile
                 L10_2 = "minimumentryamount"
@@ -2858,10 +2858,10 @@ if "esx" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:ManagmentWithdraw"
+  L1_1 = "outlaw_gym:ManagmentWithdraw"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:ManagmentWithdraw"
+  L1_1 = "outlaw_gym:ManagmentWithdraw"
   function L2_1(A0_2)
     local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2
     L1_2 = source
@@ -2882,7 +2882,7 @@ if "esx" == L0_1 then
             L4_2 = ownedgyms
             L4_2 = L4_2[A0_2]
             L4_2 = L4_2.gymownedidentifier
-            L5_2 = GetPlayerIdentifierRTX
+            L5_2 = GetPlayerIdentifierGym
             L6_2 = L1_2
             L5_2 = L5_2(L6_2)
             if L4_2 == L5_2 then
@@ -2891,14 +2891,14 @@ if "esx" == L0_1 then
               L5_2 = L4_2.gymbalance
               if L5_2 > 0 then
                 L5_2 = TriggerClientEvent
-                L6_2 = "rtx_gym:Notify"
+                L6_2 = "outlaw_gym:Notify"
                 L7_2 = L1_2
                 L8_2 = LanguageFile
                 L9_2 = "youwithdraw"
                 L10_2 = L4_2.gymbalance
                 L8_2, L9_2, L10_2, L11_2 = L8_2(L9_2, L10_2)
                 L5_2(L6_2, L7_2, L8_2, L9_2, L10_2, L11_2)
-                L5_2 = AddMoneyRTX
+                L5_2 = AddGymMoney
                 L6_2 = L1_2
                 L7_2 = L4_2.gymbalance
                 L5_2(L6_2, L7_2)
@@ -2912,7 +2912,7 @@ if "esx" == L0_1 then
                 L7_2["@gymbalance"] = 0
                 L5_2(L6_2, L7_2)
                 L5_2 = TriggerClientEvent
-                L6_2 = "rtx_gym:GymMenuUpdate"
+                L6_2 = "outlaw_gym:GymMenuUpdate"
                 L7_2 = L1_2
                 L8_2 = A0_2
                 L9_2 = L4_2.gymbalance
@@ -2921,7 +2921,7 @@ if "esx" == L0_1 then
                 L5_2(L6_2, L7_2, L8_2, L9_2, L10_2, L11_2)
               else
                 L5_2 = TriggerClientEvent
-                L6_2 = "rtx_gym:Notify"
+                L6_2 = "outlaw_gym:Notify"
                 L7_2 = L1_2
                 L8_2 = Language
                 L9_2 = Config
@@ -2938,10 +2938,10 @@ if "esx" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:CloseStatus"
+  L1_1 = "outlaw_gym:CloseStatus"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:CloseStatus"
+  L1_1 = "outlaw_gym:CloseStatus"
   function L2_1(A0_2, A1_2)
     local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2
     L2_2 = source
@@ -2962,7 +2962,7 @@ if "esx" == L0_1 then
             L5_2 = ownedgyms
             L5_2 = L5_2[A0_2]
             L5_2 = L5_2.gymownedidentifier
-            L6_2 = GetPlayerIdentifierRTX
+            L6_2 = GetPlayerIdentifierGym
             L7_2 = L2_2
             L6_2 = L6_2(L7_2)
             if L5_2 == L6_2 then
@@ -2971,7 +2971,7 @@ if "esx" == L0_1 then
               L5_2.gymclosed = A1_2
               if A1_2 then
                 L6_2 = TriggerClientEvent
-                L7_2 = "rtx_gym:Notify"
+                L7_2 = "outlaw_gym:Notify"
                 L8_2 = L2_2
                 L9_2 = Language
                 L10_2 = Config
@@ -2980,14 +2980,14 @@ if "esx" == L0_1 then
                 L9_2 = L9_2.yourgymclosed
                 L6_2(L7_2, L8_2, L9_2)
                 L6_2 = TriggerClientEvent
-                L7_2 = "rtx_gym:GymStop"
+                L7_2 = "outlaw_gym:GymStop"
                 L8_2 = -1
                 L9_2 = A0_2
                 L10_2 = "closed"
                 L6_2(L7_2, L8_2, L9_2, L10_2)
               else
                 L6_2 = TriggerClientEvent
-                L7_2 = "rtx_gym:Notify"
+                L7_2 = "outlaw_gym:Notify"
                 L8_2 = L2_2
                 L9_2 = Language
                 L10_2 = Config
@@ -3005,7 +3005,7 @@ if "esx" == L0_1 then
               L8_2["@gymclosed"] = A1_2
               L6_2(L7_2, L8_2)
               L6_2 = TriggerClientEvent
-              L7_2 = "rtx_gym:GymMenuUpdate"
+              L7_2 = "outlaw_gym:GymMenuUpdate"
               L8_2 = L2_2
               L9_2 = A0_2
               L10_2 = L5_2.gymbalance
@@ -3020,10 +3020,10 @@ if "esx" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:SellGym"
+  L1_1 = "outlaw_gym:SellGym"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:SellGym"
+  L1_1 = "outlaw_gym:SellGym"
   function L2_1(A0_2)
     local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2
     L1_2 = source
@@ -3044,7 +3044,7 @@ if "esx" == L0_1 then
             L4_2 = ownedgyms
             L4_2 = L4_2[A0_2]
             L4_2 = L4_2.gymownedidentifier
-            L5_2 = GetPlayerIdentifierRTX
+            L5_2 = GetPlayerIdentifierGym
             L6_2 = L1_2
             L5_2 = L5_2(L6_2)
             if L4_2 == L5_2 then
@@ -3059,19 +3059,19 @@ if "esx" == L0_1 then
               L5_2 = L5_2[A0_2]
               L5_2.gymownedidentifier = ""
               L6_2 = TriggerClientEvent
-              L7_2 = "rtx_gym:Notify"
+              L7_2 = "outlaw_gym:Notify"
               L8_2 = L1_2
               L9_2 = LanguageFile
               L10_2 = "yousoldgym"
               L11_2 = L4_2
               L9_2, L10_2, L11_2 = L9_2(L10_2, L11_2)
               L6_2(L7_2, L8_2, L9_2, L10_2, L11_2)
-              L6_2 = AddMoneyRTX
+              L6_2 = AddGymMoney
               L7_2 = L1_2
               L8_2 = L4_2
               L6_2(L7_2, L8_2)
               L6_2 = TriggerClientEvent
-              L7_2 = "rtx_gym:SynchronizeYourOwnedGym"
+              L7_2 = "outlaw_gym:SynchronizeYourOwnedGym"
               L8_2 = L1_2
               L9_2 = A0_2
               L10_2 = false
@@ -3091,7 +3091,7 @@ if "esx" == L0_1 then
                 L2_2.gymprice = L1_3
                 L5_2.gymclosed = false
                 L1_3 = TriggerClientEvent
-                L2_3 = "rtx_gym:SynchronizeOwnedGym"
+                L2_3 = "outlaw_gym:SynchronizeOwnedGym"
                 L3_3 = -1
                 L4_3 = A0_2
                 L5_3 = false
@@ -3106,10 +3106,10 @@ if "esx" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:TransferGym"
+  L1_1 = "outlaw_gym:TransferGym"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:TransferGym"
+  L1_1 = "outlaw_gym:TransferGym"
   function L2_1(A0_2, A1_2)
     local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2
     L2_2 = source
@@ -3134,7 +3134,7 @@ if "esx" == L0_1 then
             L6_2 = ownedgyms
             L6_2 = L6_2[A0_2]
             L6_2 = L6_2.gymownedidentifier
-            L7_2 = GetPlayerIdentifierRTX
+            L7_2 = GetPlayerIdentifierGym
             L8_2 = L2_2
             L7_2 = L7_2(L8_2)
             if L6_2 == L7_2 then
@@ -3144,12 +3144,12 @@ if "esx" == L0_1 then
               L6_2 = L6_2 * L7_2
               L7_2 = ownedgyms
               L7_2 = L7_2[A0_2]
-              L8_2 = GetPlayerIdentifierRTX
+              L8_2 = GetPlayerIdentifierGym
               L9_2 = A1_2
               L8_2 = L8_2(L9_2)
               L7_2.gymownedidentifier = L8_2
               L8_2 = TriggerClientEvent
-              L9_2 = "rtx_gym:Notify"
+              L9_2 = "outlaw_gym:Notify"
               L10_2 = L2_2
               L11_2 = Language
               L12_2 = Config
@@ -3158,7 +3158,7 @@ if "esx" == L0_1 then
               L11_2 = L11_2.youtransfergym
               L8_2(L9_2, L10_2, L11_2)
               L8_2 = TriggerClientEvent
-              L9_2 = "rtx_gym:Notify"
+              L9_2 = "outlaw_gym:Notify"
               L10_2 = L2_2
               L11_2 = LanguageFile
               L12_2 = "gymtransferredto"
@@ -3166,13 +3166,13 @@ if "esx" == L0_1 then
               L11_2, L12_2, L13_2 = L11_2(L12_2, L13_2)
               L8_2(L9_2, L10_2, L11_2, L12_2, L13_2)
               L8_2 = TriggerClientEvent
-              L9_2 = "rtx_gym:SynchronizeYourOwnedGym"
+              L9_2 = "outlaw_gym:SynchronizeYourOwnedGym"
               L10_2 = L2_2
               L11_2 = A0_2
               L12_2 = false
               L8_2(L9_2, L10_2, L11_2, L12_2)
               L8_2 = TriggerClientEvent
-              L9_2 = "rtx_gym:SynchronizeYourOwnedGym"
+              L9_2 = "outlaw_gym:SynchronizeYourOwnedGym"
               L10_2 = A1_2
               L11_2 = A0_2
               L12_2 = true
@@ -3182,7 +3182,7 @@ if "esx" == L0_1 then
               L8_2 = L8_2.execute
               L9_2 = "UPDATE owned_gyms SET identifier = @identifier WHERE gymid = @gymid"
               L10_2 = {}
-              L11_2 = GetPlayerIdentifierRTX
+              L11_2 = GetPlayerIdentifierGym
               L12_2 = A1_2
               L11_2 = L11_2(L12_2)
               L10_2["@identifier"] = L11_2
@@ -3268,7 +3268,7 @@ if "esx" == L0_1 then
                   L13_2 = L12_2.status
                   L13_2.takenplayerid = nil
                   L13_2 = TriggerClientEvent
-                  L14_2 = "rtx_gym:GymHandler"
+                  L14_2 = "outlaw_gym:GymHandler"
                   L15_2 = -1
                   L16_2 = L5_2
                   L17_2 = L11_2
@@ -3297,7 +3297,7 @@ if "esx" == L0_1 then
           L2_2 = L2_2.fetchScalar
           L3_2 = "SELECT 1 FROM gymstats WHERE identifier = @identifier"
           L4_2 = {}
-          L5_2 = GetPlayerIdentifierRTX
+          L5_2 = GetPlayerIdentifierGym
           L6_2 = A0_2
           L5_2 = L5_2(L6_2)
           L4_2["@identifier"] = L5_2
@@ -3309,7 +3309,7 @@ if "esx" == L0_1 then
               L1_3 = L1_3.execute
               L2_3 = "UPDATE gymstats SET stats = @stats WHERE identifier = @identifier"
               L3_3 = {}
-              L4_3 = GetPlayerIdentifierRTX
+              L4_3 = GetPlayerIdentifierGym
               L5_3 = A0_2
               L4_3 = L4_3(L5_3)
               L3_3["@identifier"] = L4_3
@@ -3348,7 +3348,7 @@ if "qbcore" == L0_1 then
     L1_2 = playerloaded
     L1_2[A0_2] = nil
     L1_2 = TriggerClientEvent
-    L2_2 = "rtx_gym:PlayerLoadedClient"
+    L2_2 = "outlaw_gym:PlayerLoadedClient"
     L3_2 = A0_2
     L4_2 = false
     L1_2(L2_2, L3_2, L4_2)
@@ -3426,10 +3426,10 @@ if "qbcore" == L0_1 then
   end
   GymStatsData = L0_1
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:GymSynchronize"
+  L1_1 = "outlaw_gym:GymSynchronize"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:GymSynchronize"
+  L1_1 = "outlaw_gym:GymSynchronize"
   function L2_1()
     local L0_2, L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2
     L0_2 = source
@@ -3443,12 +3443,12 @@ if "qbcore" == L0_1 then
       L2_2 = L2_2[L0_2]
       if nil == L2_2 then
         L2_2 = TriggerClientEvent
-        L3_2 = "rtx_gym:PlayerLoadedClient"
+        L3_2 = "outlaw_gym:PlayerLoadedClient"
         L4_2 = L0_2
         L5_2 = true
         L2_2(L3_2, L4_2, L5_2)
         L2_2 = playerloaded
-        L3_2 = GetPlayerIdentifierRTX
+        L3_2 = GetPlayerIdentifierGym
         L4_2 = L0_2
         L3_2 = L3_2(L4_2)
         L2_2[L0_2] = L3_2
@@ -3466,7 +3466,7 @@ if "qbcore" == L0_1 then
         L3_2.testosterone = nil
         L2_2[L0_2] = L3_2
         L2_2 = GymStatsData
-        L3_2 = GetPlayerIdentifierRTX
+        L3_2 = GetPlayerIdentifierGym
         L4_2 = L0_2
         L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2 = L3_2(L4_2)
         L2_2 = L2_2(L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2)
@@ -3489,7 +3489,7 @@ if "qbcore" == L0_1 then
                 L9_2 = L9_2[L7_2]
                 if nil ~= L9_2 then
                   L9_2 = TriggerClientEvent
-                  L10_2 = "rtx_gym:SynchronizeOwnedGym"
+                  L10_2 = "outlaw_gym:SynchronizeOwnedGym"
                   L11_2 = L0_2
                   L12_2 = L7_2
                   L13_2 = ownedgyms
@@ -3499,12 +3499,12 @@ if "qbcore" == L0_1 then
                   L9_2 = ownedgyms
                   L9_2 = L9_2[L7_2]
                   L9_2 = L9_2.gymownedidentifier
-                  L10_2 = GetPlayerIdentifierRTX
+                  L10_2 = GetPlayerIdentifierGym
                   L11_2 = L0_2
                   L10_2 = L10_2(L11_2)
                   if L9_2 == L10_2 then
                     L9_2 = TriggerClientEvent
-                    L10_2 = "rtx_gym:SynchronizeYourOwnedGym"
+                    L10_2 = "outlaw_gym:SynchronizeYourOwnedGym"
                     L11_2 = L0_2
                     L12_2 = L7_2
                     L13_2 = true
@@ -3529,7 +3529,7 @@ if "qbcore" == L0_1 then
                 L9_2 = L9_2[L7_2]
                 if nil ~= L9_2 then
                   L9_2 = TriggerClientEvent
-                  L10_2 = "rtx_gym:SynchronizeOwnedGym"
+                  L10_2 = "outlaw_gym:SynchronizeOwnedGym"
                   L11_2 = L0_2
                   L12_2 = L7_2
                   L13_2 = ownedgyms
@@ -3539,12 +3539,12 @@ if "qbcore" == L0_1 then
                   L9_2 = ownedgyms
                   L9_2 = L9_2[L7_2]
                   L9_2 = L9_2.gymownedidentifier
-                  L10_2 = GetPlayerIdentifierRTX
+                  L10_2 = GetPlayerIdentifierGym
                   L11_2 = L0_2
                   L10_2 = L10_2(L11_2)
                   if L9_2 == L10_2 then
                     L9_2 = TriggerClientEvent
-                    L10_2 = "rtx_gym:SynchronizeYourOwnedGym"
+                    L10_2 = "outlaw_gym:SynchronizeYourOwnedGym"
                     L11_2 = L0_2
                     L12_2 = L7_2
                     L13_2 = true
@@ -3559,7 +3559,7 @@ if "qbcore" == L0_1 then
         L3_2 = L3_2.DifferentStatsSystem
         if false == L3_2 then
           L3_2 = TriggerClientEvent
-          L4_2 = "rtx_gym:SynchronizeStats"
+          L4_2 = "outlaw_gym:SynchronizeStats"
           L5_2 = L0_2
           L6_2 = playerneeds
           L6_2 = L6_2[L0_2]
@@ -3577,7 +3577,7 @@ if "qbcore" == L0_1 then
             L9_2 = L9_2.fetchScalar
             L10_2 = "SELECT gymtime FROM gympass WHERE identifier = @identifier AND gymid = @gymid "
             L11_2 = {}
-            L12_2 = GetPlayerIdentifierRTX
+            L12_2 = GetPlayerIdentifierGym
             L13_2 = L0_2
             L12_2 = L12_2(L13_2)
             L11_2["@identifier"] = L12_2
@@ -3600,10 +3600,10 @@ if "qbcore" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:GymBuyEntry"
+  L1_1 = "outlaw_gym:GymBuyEntry"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:GymBuyEntry"
+  L1_1 = "outlaw_gym:GymBuyEntry"
   function L2_1(A0_2, A1_2)
     local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2
     L2_2 = source
@@ -3663,17 +3663,17 @@ if "qbcore" == L0_1 then
                   L7_2 = L7_2(L8_2, L9_2)
                   L6_2 = L7_2
                 end
-                L7_2 = GetMoneyRTX
+                L7_2 = GetGymMoney
                 L8_2 = L2_2
                 L7_2 = L7_2(L8_2)
                 if L6_2 <= L7_2 then
-                  L7_2 = RemoveMoneyRTX
+                  L7_2 = RemoveGymMoney
                   L8_2 = L2_2
                   L9_2 = L6_2
                   L7_2(L8_2, L9_2)
                   if "normal" == A1_2 then
                     L7_2 = TriggerClientEvent
-                    L8_2 = "rtx_gym:Notify"
+                    L8_2 = "outlaw_gym:Notify"
                     L9_2 = L2_2
                     L10_2 = LanguageFile
                     L11_2 = "youboughtentry"
@@ -3700,7 +3700,7 @@ if "qbcore" == L0_1 then
                     L9_2[A0_2] = L8_2
                   elseif "pass" == A1_2 then
                     L7_2 = TriggerClientEvent
-                    L8_2 = "rtx_gym:Notify"
+                    L8_2 = "outlaw_gym:Notify"
                     L9_2 = L2_2
                     L10_2 = LanguageFile
                     L11_2 = "youboughtpass"
@@ -3720,7 +3720,7 @@ if "qbcore" == L0_1 then
                     L9_2 = L9_2.fetchScalar
                     L10_2 = "SELECT 1 FROM gympass WHERE identifier = @identifier AND gymid = @gymid "
                     L11_2 = {}
-                    L12_2 = GetPlayerIdentifierRTX
+                    L12_2 = GetPlayerIdentifierGym
                     L13_2 = L2_2
                     L12_2 = L12_2(L13_2)
                     L11_2["@identifier"] = L12_2
@@ -3733,7 +3733,7 @@ if "qbcore" == L0_1 then
                         L1_3 = L1_3.execute
                         L2_3 = "UPDATE gympass SET gymtime = @gymtime WHERE identifier = @identifier AND gymid = @gymid"
                         L3_3 = {}
-                        L4_3 = GetPlayerIdentifierRTX
+                        L4_3 = GetPlayerIdentifierGym
                         L5_3 = L2_2
                         L4_3 = L4_3(L5_3)
                         L3_3["@identifier"] = L4_3
@@ -3763,7 +3763,7 @@ if "qbcore" == L0_1 then
                         L1_3 = L1_3.execute
                         L2_3 = "INSERT INTO gympass (identifier, gymid, gymtime) VALUES (@identifier,@gymid,@gymtime)"
                         L3_3 = {}
-                        L4_3 = GetPlayerIdentifierRTX
+                        L4_3 = GetPlayerIdentifierGym
                         L5_3 = L2_2
                         L4_3 = L4_3(L5_3)
                         L3_3["@identifier"] = L4_3
@@ -3887,7 +3887,7 @@ if "qbcore" == L0_1 then
                   L8_2(L9_2, L10_2)
                 else
                   L7_2 = TriggerClientEvent
-                  L8_2 = "rtx_gym:Notify"
+                  L8_2 = "outlaw_gym:Notify"
                   L9_2 = L2_2
                   L10_2 = Language
                   L11_2 = Config
@@ -3898,7 +3898,7 @@ if "qbcore" == L0_1 then
                 end
               else
                 L6_2 = TriggerClientEvent
-                L7_2 = "rtx_gym:Notify"
+                L7_2 = "outlaw_gym:Notify"
                 L8_2 = L2_2
                 L9_2 = Language
                 L10_2 = Config
@@ -3923,17 +3923,17 @@ if "qbcore" == L0_1 then
             L6_2 = L6_2(L7_2, L8_2)
             L5_2 = L6_2
           end
-          L6_2 = GetMoneyRTX
+          L6_2 = GetGymMoney
           L7_2 = L2_2
           L6_2 = L6_2(L7_2)
           if L5_2 <= L6_2 then
-            L6_2 = RemoveMoneyRTX
+            L6_2 = RemoveGymMoney
             L7_2 = L2_2
             L8_2 = L5_2
             L6_2(L7_2, L8_2)
             if "normal" == A1_2 then
               L6_2 = TriggerClientEvent
-              L7_2 = "rtx_gym:Notify"
+              L7_2 = "outlaw_gym:Notify"
               L8_2 = L2_2
               L9_2 = LanguageFile
               L10_2 = "youboughtentry"
@@ -3960,7 +3960,7 @@ if "qbcore" == L0_1 then
               L8_2[A0_2] = L7_2
             elseif "pass" == A1_2 then
               L6_2 = TriggerClientEvent
-              L7_2 = "rtx_gym:Notify"
+              L7_2 = "outlaw_gym:Notify"
               L8_2 = L2_2
               L9_2 = LanguageFile
               L10_2 = "youboughtpass"
@@ -3980,7 +3980,7 @@ if "qbcore" == L0_1 then
               L8_2 = L8_2.fetchScalar
               L9_2 = "SELECT 1 FROM gympass WHERE identifier = @identifier AND gymid = @gymid "
               L10_2 = {}
-              L11_2 = GetPlayerIdentifierRTX
+              L11_2 = GetPlayerIdentifierGym
               L12_2 = L2_2
               L11_2 = L11_2(L12_2)
               L10_2["@identifier"] = L11_2
@@ -3993,7 +3993,7 @@ if "qbcore" == L0_1 then
                   L1_3 = L1_3.execute
                   L2_3 = "UPDATE gympass SET gymtime = @gymtime WHERE identifier = @identifier AND gymid = @gymid"
                   L3_3 = {}
-                  L4_3 = GetPlayerIdentifierRTX
+                  L4_3 = GetPlayerIdentifierGym
                   L5_3 = L2_2
                   L4_3 = L4_3(L5_3)
                   L3_3["@identifier"] = L4_3
@@ -4023,7 +4023,7 @@ if "qbcore" == L0_1 then
                   L1_3 = L1_3.execute
                   L2_3 = "INSERT INTO gympass (identifier, gymid, gymtime) VALUES (@identifier,@gymid,@gymtime)"
                   L3_3 = {}
-                  L4_3 = GetPlayerIdentifierRTX
+                  L4_3 = GetPlayerIdentifierGym
                   L5_3 = L2_2
                   L4_3 = L4_3(L5_3)
                   L3_3["@identifier"] = L4_3
@@ -4056,7 +4056,7 @@ if "qbcore" == L0_1 then
             end
           else
             L6_2 = TriggerClientEvent
-            L7_2 = "rtx_gym:Notify"
+            L7_2 = "outlaw_gym:Notify"
             L8_2 = L2_2
             L9_2 = Language
             L10_2 = Config
@@ -4071,10 +4071,10 @@ if "qbcore" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:GymBuy"
+  L1_1 = "outlaw_gym:GymBuy"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:GymBuy"
+  L1_1 = "outlaw_gym:GymBuy"
   function L2_1(A0_2)
     local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2
     L1_2 = source
@@ -4100,40 +4100,40 @@ if "qbcore" == L0_1 then
               L4_2 = L4_2[A0_2]
               L5_2 = L4_2.gymowned
               if false == L5_2 then
-                L5_2 = GetMoneyRTX
+                L5_2 = GetGymMoney
                 L6_2 = L1_2
                 L5_2 = L5_2(L6_2)
                 L6_2 = L3_2.gymowneableprice
                 if L5_2 >= L6_2 then
-                  L5_2 = RemoveMoneyRTX
+                  L5_2 = RemoveGymMoney
                   L6_2 = L1_2
                   L7_2 = L3_2.gymowneableprice
                   L5_2(L6_2, L7_2)
                   L4_2.gymowned = true
                   L5_2 = TriggerClientEvent
-                  L6_2 = "rtx_gym:SynchronizeOwnedGym"
+                  L6_2 = "outlaw_gym:SynchronizeOwnedGym"
                   L7_2 = -1
                   L8_2 = A0_2
                   L9_2 = true
                   L5_2(L6_2, L7_2, L8_2, L9_2)
                   L5_2 = TriggerClientEvent
-                  L6_2 = "rtx_gym:SynchronizeYourOwnedGym"
+                  L6_2 = "outlaw_gym:SynchronizeYourOwnedGym"
                   L7_2 = L1_2
                   L8_2 = A0_2
                   L9_2 = true
                   L5_2(L6_2, L7_2, L8_2, L9_2)
                   L5_2 = TriggerClientEvent
-                  L6_2 = "rtx_gym:GymBuyed"
+                  L6_2 = "outlaw_gym:GymBuyed"
                   L7_2 = -1
                   L8_2 = A0_2
                   L5_2(L6_2, L7_2, L8_2)
                   L4_2.gymowned = true
-                  L5_2 = GetPlayerIdentifierRTX
+                  L5_2 = GetPlayerIdentifierGym
                   L6_2 = L1_2
                   L5_2 = L5_2(L6_2)
                   L4_2.gymownedidentifier = L5_2
                   L5_2 = TriggerClientEvent
-                  L6_2 = "rtx_gym:Notify"
+                  L6_2 = "outlaw_gym:Notify"
                   L7_2 = L1_2
                   L8_2 = LanguageFile
                   L9_2 = "youboughtgym"
@@ -4155,7 +4155,7 @@ if "qbcore" == L0_1 then
                       L1_3 = L1_3.execute
                       L2_3 = "UPDATE owned_gyms SET identifier = @identifier WHERE gymid = @gymid"
                       L3_3 = {}
-                      L4_3 = GetPlayerIdentifierRTX
+                      L4_3 = GetPlayerIdentifierGym
                       L5_3 = L1_2
                       L4_3 = L4_3(L5_3)
                       L3_3["@identifier"] = L4_3
@@ -4168,7 +4168,7 @@ if "qbcore" == L0_1 then
                       L1_3 = L1_3.execute
                       L2_3 = "INSERT INTO owned_gyms (identifier, gymid, gymprice, gymbalance, gymvisitorsdata) VALUES (@identifier,@gymid,@gymprice,@gymbalance,@gymvisitorsdata)"
                       L3_3 = {}
-                      L4_3 = GetPlayerIdentifierRTX
+                      L4_3 = GetPlayerIdentifierGym
                       L5_3 = L1_2
                       L4_3 = L4_3(L5_3)
                       L3_3["@identifier"] = L4_3
@@ -4191,7 +4191,7 @@ if "qbcore" == L0_1 then
                   L5_2(L6_2, L7_2, L8_2)
                 else
                   L5_2 = TriggerClientEvent
-                  L6_2 = "rtx_gym:Notify"
+                  L6_2 = "outlaw_gym:Notify"
                   L7_2 = L1_2
                   L8_2 = Language
                   L9_2 = Config
@@ -4209,10 +4209,10 @@ if "qbcore" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:GymOpenManagment"
+  L1_1 = "outlaw_gym:GymOpenManagment"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:GymOpenManagment"
+  L1_1 = "outlaw_gym:GymOpenManagment"
   function L2_1(A0_2)
     local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2, L20_2
     L1_2 = source
@@ -4234,7 +4234,7 @@ if "qbcore" == L0_1 then
             L4_2 = ownedgyms
             L4_2 = L4_2[A0_2]
             L4_2 = L4_2.gymownedidentifier
-            L5_2 = GetPlayerIdentifierRTX
+            L5_2 = GetPlayerIdentifierGym
             L6_2 = L1_2
             L5_2 = L5_2(L6_2)
             if L4_2 == L5_2 then
@@ -4266,7 +4266,7 @@ if "qbcore" == L0_1 then
                 L13_2(L14_2, L15_2)
               end
               L6_2 = TriggerClientEvent
-              L7_2 = "rtx_gym:OpenGymMenu"
+              L7_2 = "outlaw_gym:OpenGymMenu"
               L8_2 = L1_2
               L9_2 = A0_2
               L10_2 = L4_2.gymbalance
@@ -4282,10 +4282,10 @@ if "qbcore" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:ChangeEntryPrice"
+  L1_1 = "outlaw_gym:ChangeEntryPrice"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:ChangeEntryPrice"
+  L1_1 = "outlaw_gym:ChangeEntryPrice"
   function L2_1(A0_2, A1_2)
     local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2
     L2_2 = source
@@ -4307,7 +4307,7 @@ if "qbcore" == L0_1 then
             L5_2 = ownedgyms
             L5_2 = L5_2[A0_2]
             L5_2 = L5_2.gymownedidentifier
-            L6_2 = GetPlayerIdentifierRTX
+            L6_2 = GetPlayerIdentifierGym
             L7_2 = L2_2
             L6_2 = L6_2(L7_2)
             if L5_2 == L6_2 then
@@ -4327,7 +4327,7 @@ if "qbcore" == L0_1 then
                   L8_2["@gymprice"] = A1_2
                   L6_2(L7_2, L8_2)
                   L6_2 = TriggerClientEvent
-                  L7_2 = "rtx_gym:Notify"
+                  L7_2 = "outlaw_gym:Notify"
                   L8_2 = L2_2
                   L9_2 = LanguageFile
                   L10_2 = "youchangedgymentry"
@@ -4335,7 +4335,7 @@ if "qbcore" == L0_1 then
                   L9_2, L10_2, L11_2, L12_2 = L9_2(L10_2, L11_2)
                   L6_2(L7_2, L8_2, L9_2, L10_2, L11_2, L12_2)
                   L6_2 = TriggerClientEvent
-                  L7_2 = "rtx_gym:GymMenuUpdate"
+                  L7_2 = "outlaw_gym:GymMenuUpdate"
                   L8_2 = L2_2
                   L9_2 = A0_2
                   L10_2 = L5_2.gymbalance
@@ -4345,7 +4345,7 @@ if "qbcore" == L0_1 then
               end
               else
                 L6_2 = TriggerClientEvent
-                L7_2 = "rtx_gym:Notify"
+                L7_2 = "outlaw_gym:Notify"
                 L8_2 = L2_2
                 L9_2 = LanguageFile
                 L10_2 = "minimumentryamount"
@@ -4362,10 +4362,10 @@ if "qbcore" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:ManagmentWithdraw"
+  L1_1 = "outlaw_gym:ManagmentWithdraw"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:ManagmentWithdraw"
+  L1_1 = "outlaw_gym:ManagmentWithdraw"
   function L2_1(A0_2)
     local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2
     L1_2 = source
@@ -4384,7 +4384,7 @@ if "qbcore" == L0_1 then
           L4_2 = ownedgyms
           L4_2 = L4_2[A0_2]
           L4_2 = L4_2.gymownedidentifier
-          L5_2 = GetPlayerIdentifierRTX
+          L5_2 = GetPlayerIdentifierGym
           L6_2 = L1_2
           L5_2 = L5_2(L6_2)
           if L4_2 == L5_2 then
@@ -4393,7 +4393,7 @@ if "qbcore" == L0_1 then
             L5_2 = L4_2.gymbalance
             if L5_2 > 0 then
               L5_2 = TriggerClientEvent
-              L6_2 = "rtx_gym:Notify"
+              L6_2 = "outlaw_gym:Notify"
               L7_2 = L1_2
               L8_2 = LanguageFile
               L9_2 = "youwithdraw"
@@ -4415,7 +4415,7 @@ if "qbcore" == L0_1 then
               L7_2["@gymbalance"] = 0
               L5_2(L6_2, L7_2)
               L5_2 = TriggerClientEvent
-              L6_2 = "rtx_gym:GymMenuUpdate"
+              L6_2 = "outlaw_gym:GymMenuUpdate"
               L7_2 = L1_2
               L8_2 = A0_2
               L9_2 = L4_2.gymbalance
@@ -4424,7 +4424,7 @@ if "qbcore" == L0_1 then
               L5_2(L6_2, L7_2, L8_2, L9_2, L10_2, L11_2)
             else
               L5_2 = TriggerClientEvent
-              L6_2 = "rtx_gym:Notify"
+              L6_2 = "outlaw_gym:Notify"
               L7_2 = L1_2
               L8_2 = Language
               L9_2 = Config
@@ -4440,10 +4440,10 @@ if "qbcore" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:CloseStatus"
+  L1_1 = "outlaw_gym:CloseStatus"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:CloseStatus"
+  L1_1 = "outlaw_gym:CloseStatus"
   function L2_1(A0_2, A1_2)
     local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2
     L2_2 = source
@@ -4465,7 +4465,7 @@ if "qbcore" == L0_1 then
             L5_2 = ownedgyms
             L5_2 = L5_2[A0_2]
             L5_2 = L5_2.gymownedidentifier
-            L6_2 = GetPlayerIdentifierRTX
+            L6_2 = GetPlayerIdentifierGym
             L7_2 = L2_2
             L6_2 = L6_2(L7_2)
             if L5_2 == L6_2 then
@@ -4474,7 +4474,7 @@ if "qbcore" == L0_1 then
               L5_2.gymclosed = A1_2
               if A1_2 then
                 L6_2 = TriggerClientEvent
-                L7_2 = "rtx_gym:Notify"
+                L7_2 = "outlaw_gym:Notify"
                 L8_2 = L2_2
                 L9_2 = Language
                 L10_2 = Config
@@ -4483,14 +4483,14 @@ if "qbcore" == L0_1 then
                 L9_2 = L9_2.yourgymclosed
                 L6_2(L7_2, L8_2, L9_2)
                 L6_2 = TriggerClientEvent
-                L7_2 = "rtx_gym:GymStop"
+                L7_2 = "outlaw_gym:GymStop"
                 L8_2 = -1
                 L9_2 = A0_2
                 L10_2 = "closed"
                 L6_2(L7_2, L8_2, L9_2, L10_2)
               else
                 L6_2 = TriggerClientEvent
-                L7_2 = "rtx_gym:Notify"
+                L7_2 = "outlaw_gym:Notify"
                 L8_2 = L2_2
                 L9_2 = Language
                 L10_2 = Config
@@ -4508,7 +4508,7 @@ if "qbcore" == L0_1 then
               L8_2["@gymclosed"] = A1_2
               L6_2(L7_2, L8_2)
               L6_2 = TriggerClientEvent
-              L7_2 = "rtx_gym:GymMenuUpdate"
+              L7_2 = "outlaw_gym:GymMenuUpdate"
               L8_2 = L2_2
               L9_2 = A0_2
               L10_2 = L5_2.gymbalance
@@ -4523,10 +4523,10 @@ if "qbcore" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:SellGym"
+  L1_1 = "outlaw_gym:SellGym"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:SellGym"
+  L1_1 = "outlaw_gym:SellGym"
   function L2_1(A0_2)
     local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2
     L1_2 = source
@@ -4548,7 +4548,7 @@ if "qbcore" == L0_1 then
             L4_2 = ownedgyms
             L4_2 = L4_2[A0_2]
             L4_2 = L4_2.gymownedidentifier
-            L5_2 = GetPlayerIdentifierRTX
+            L5_2 = GetPlayerIdentifierGym
             L6_2 = L1_2
             L5_2 = L5_2(L6_2)
             if L4_2 == L5_2 then
@@ -4563,7 +4563,7 @@ if "qbcore" == L0_1 then
               L5_2 = L5_2[A0_2]
               L5_2.gymownedidentifier = ""
               L6_2 = TriggerClientEvent
-              L7_2 = "rtx_gym:Notify"
+              L7_2 = "outlaw_gym:Notify"
               L8_2 = L1_2
               L9_2 = LanguageFile
               L10_2 = "yousoldgym"
@@ -4576,7 +4576,7 @@ if "qbcore" == L0_1 then
               L8_2 = L4_2
               L6_2(L7_2, L8_2)
               L6_2 = TriggerClientEvent
-              L7_2 = "rtx_gym:SynchronizeYourOwnedGym"
+              L7_2 = "outlaw_gym:SynchronizeYourOwnedGym"
               L8_2 = L1_2
               L9_2 = A0_2
               L10_2 = false
@@ -4596,7 +4596,7 @@ if "qbcore" == L0_1 then
                 L2_2.gymprice = L1_3
                 L5_2.gymclosed = false
                 L1_3 = TriggerClientEvent
-                L2_3 = "rtx_gym:SynchronizeOwnedGym"
+                L2_3 = "outlaw_gym:SynchronizeOwnedGym"
                 L3_3 = -1
                 L4_3 = A0_2
                 L5_3 = false
@@ -4611,10 +4611,10 @@ if "qbcore" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:TransferGym"
+  L1_1 = "outlaw_gym:TransferGym"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:TransferGym"
+  L1_1 = "outlaw_gym:TransferGym"
   function L2_1(A0_2, A1_2)
     local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2
     L2_2 = source
@@ -4641,7 +4641,7 @@ if "qbcore" == L0_1 then
             L6_2 = ownedgyms
             L6_2 = L6_2[A0_2]
             L6_2 = L6_2.gymownedidentifier
-            L7_2 = GetPlayerIdentifierRTX
+            L7_2 = GetPlayerIdentifierGym
             L8_2 = L2_2
             L7_2 = L7_2(L8_2)
             if L6_2 == L7_2 then
@@ -4651,12 +4651,12 @@ if "qbcore" == L0_1 then
               L6_2 = L6_2 * L7_2
               L7_2 = ownedgyms
               L7_2 = L7_2[A0_2]
-              L8_2 = GetPlayerIdentifierRTX
+              L8_2 = GetPlayerIdentifierGym
               L9_2 = A1_2
               L8_2 = L8_2(L9_2)
               L7_2.gymownedidentifier = L8_2
               L8_2 = TriggerClientEvent
-              L9_2 = "rtx_gym:Notify"
+              L9_2 = "outlaw_gym:Notify"
               L10_2 = L2_2
               L11_2 = Language
               L12_2 = Config
@@ -4665,7 +4665,7 @@ if "qbcore" == L0_1 then
               L11_2 = L11_2.youtransfergym
               L8_2(L9_2, L10_2, L11_2)
               L8_2 = TriggerClientEvent
-              L9_2 = "rtx_gym:Notify"
+              L9_2 = "outlaw_gym:Notify"
               L10_2 = L2_2
               L11_2 = LanguageFile
               L12_2 = "gymtransferredto"
@@ -4673,13 +4673,13 @@ if "qbcore" == L0_1 then
               L11_2, L12_2, L13_2 = L11_2(L12_2, L13_2)
               L8_2(L9_2, L10_2, L11_2, L12_2, L13_2)
               L8_2 = TriggerClientEvent
-              L9_2 = "rtx_gym:SynchronizeYourOwnedGym"
+              L9_2 = "outlaw_gym:SynchronizeYourOwnedGym"
               L10_2 = L2_2
               L11_2 = A0_2
               L12_2 = false
               L8_2(L9_2, L10_2, L11_2, L12_2)
               L8_2 = TriggerClientEvent
-              L9_2 = "rtx_gym:SynchronizeYourOwnedGym"
+              L9_2 = "outlaw_gym:SynchronizeYourOwnedGym"
               L10_2 = A1_2
               L11_2 = A0_2
               L12_2 = true
@@ -4689,7 +4689,7 @@ if "qbcore" == L0_1 then
               L8_2 = L8_2.execute
               L9_2 = "UPDATE owned_gyms SET identifier = @identifier WHERE gymid = @gymid"
               L10_2 = {}
-              L11_2 = GetPlayerIdentifierRTX
+              L11_2 = GetPlayerIdentifierGym
               L12_2 = A1_2
               L11_2 = L11_2(L12_2)
               L10_2["@identifier"] = L11_2
@@ -4775,7 +4775,7 @@ if "qbcore" == L0_1 then
                   L13_2 = L12_2.status
                   L13_2.takenplayerid = nil
                   L13_2 = TriggerClientEvent
-                  L14_2 = "rtx_gym:GymHandler"
+                  L14_2 = "outlaw_gym:GymHandler"
                   L15_2 = -1
                   L16_2 = L5_2
                   L17_2 = L11_2
@@ -4805,7 +4805,7 @@ if "qbcore" == L0_1 then
           L2_2 = L2_2.fetchScalar
           L3_2 = "SELECT 1 FROM gymstats WHERE identifier = @identifier"
           L4_2 = {}
-          L5_2 = GetPlayerIdentifierRTX
+          L5_2 = GetPlayerIdentifierGym
           L6_2 = A0_2
           L5_2 = L5_2(L6_2)
           L4_2["@identifier"] = L5_2
@@ -4817,7 +4817,7 @@ if "qbcore" == L0_1 then
               L1_3 = L1_3.execute
               L2_3 = "UPDATE gymstats SET stats = @stats WHERE identifier = @identifier"
               L3_3 = {}
-              L4_3 = GetPlayerIdentifierRTX
+              L4_3 = GetPlayerIdentifierGym
               L5_3 = A0_2
               L4_3 = L4_3(L5_3)
               L3_3["@identifier"] = L4_3
@@ -4913,10 +4913,10 @@ if "standalone" == L0_1 then
   end
   GymStatsData = L0_1
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:GymSynchronize"
+  L1_1 = "outlaw_gym:GymSynchronize"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:GymSynchronize"
+  L1_1 = "outlaw_gym:GymSynchronize"
   function L2_1()
     local L0_2, L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2
     L0_2 = source
@@ -4924,12 +4924,12 @@ if "standalone" == L0_1 then
     L1_2 = L1_2[L0_2]
     if nil == L1_2 then
       L1_2 = TriggerClientEvent
-      L2_2 = "rtx_gym:PlayerLoadedClient"
+      L2_2 = "outlaw_gym:PlayerLoadedClient"
       L3_2 = L0_2
       L4_2 = true
       L1_2(L2_2, L3_2, L4_2)
       L1_2 = playerloaded
-      L2_2 = GetPlayerIdentifierRTX
+      L2_2 = GetPlayerIdentifierGym
       L3_2 = L0_2
       L2_2 = L2_2(L3_2)
       L1_2[L0_2] = L2_2
@@ -4946,7 +4946,7 @@ if "standalone" == L0_1 then
       L2_2.preworkout = nil
       L2_2.testosterone = nil
       L1_2[L0_2] = L2_2
-      L1_2 = GetPlayerIdentifierRTX
+      L1_2 = GetPlayerIdentifierGym
       L2_2 = L0_2
       L1_2 = L1_2(L2_2)
       L2_2 = GymStatsData
@@ -4971,7 +4971,7 @@ if "standalone" == L0_1 then
               L9_2 = L9_2[L7_2]
               if nil ~= L9_2 then
                 L9_2 = TriggerClientEvent
-                L10_2 = "rtx_gym:SynchronizeOwnedGym"
+                L10_2 = "outlaw_gym:SynchronizeOwnedGym"
                 L11_2 = L0_2
                 L12_2 = L7_2
                 L13_2 = ownedgyms
@@ -4983,7 +4983,7 @@ if "standalone" == L0_1 then
                 L9_2 = L9_2.gymownedidentifier
                 if L9_2 == L1_2 then
                   L9_2 = TriggerClientEvent
-                  L10_2 = "rtx_gym:SynchronizeYourOwnedGym"
+                  L10_2 = "outlaw_gym:SynchronizeYourOwnedGym"
                   L11_2 = L0_2
                   L12_2 = L7_2
                   L13_2 = true
@@ -5008,7 +5008,7 @@ if "standalone" == L0_1 then
               L9_2 = L9_2[L7_2]
               if nil ~= L9_2 then
                 L9_2 = TriggerClientEvent
-                L10_2 = "rtx_gym:SynchronizeOwnedGym"
+                L10_2 = "outlaw_gym:SynchronizeOwnedGym"
                 L11_2 = L0_2
                 L12_2 = L7_2
                 L13_2 = ownedgyms
@@ -5020,7 +5020,7 @@ if "standalone" == L0_1 then
                 L9_2 = L9_2.gymownedidentifier
                 if L9_2 == L1_2 then
                   L9_2 = TriggerClientEvent
-                  L10_2 = "rtx_gym:SynchronizeYourOwnedGym"
+                  L10_2 = "outlaw_gym:SynchronizeYourOwnedGym"
                   L11_2 = L0_2
                   L12_2 = L7_2
                   L13_2 = true
@@ -5035,7 +5035,7 @@ if "standalone" == L0_1 then
       L3_2 = L3_2.DifferentStatsSystem
       if false == L3_2 then
         L3_2 = TriggerClientEvent
-        L4_2 = "rtx_gym:SynchronizeStats"
+        L4_2 = "outlaw_gym:SynchronizeStats"
         L5_2 = L0_2
         L6_2 = playerneeds
         L6_2 = L6_2[L0_2]
@@ -5072,10 +5072,10 @@ if "standalone" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:GymBuyEntry"
+  L1_1 = "outlaw_gym:GymBuyEntry"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:GymBuyEntry"
+  L1_1 = "outlaw_gym:GymBuyEntry"
   function L2_1(A0_2, A1_2)
     local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2
     L2_2 = source
@@ -5129,17 +5129,17 @@ if "standalone" == L0_1 then
                 L6_2 = L6_2(L7_2, L8_2)
                 L5_2 = L6_2
               end
-              L6_2 = GetMoneyRTX
+              L6_2 = GetGymMoney
               L7_2 = L2_2
               L6_2 = L6_2(L7_2)
               if L5_2 <= L6_2 then
-                L6_2 = RemoveMoneyRTX
+                L6_2 = RemoveGymMoney
                 L7_2 = L2_2
                 L8_2 = L5_2
                 L6_2(L7_2, L8_2)
                 if "normal" == A1_2 then
                   L6_2 = TriggerClientEvent
-                  L7_2 = "rtx_gym:Notify"
+                  L7_2 = "outlaw_gym:Notify"
                   L8_2 = L2_2
                   L9_2 = LanguageFile
                   L10_2 = "youboughtentry"
@@ -5166,7 +5166,7 @@ if "standalone" == L0_1 then
                   L8_2[A0_2] = L7_2
                 elseif "pass" == A1_2 then
                   L6_2 = TriggerClientEvent
-                  L7_2 = "rtx_gym:Notify"
+                  L7_2 = "outlaw_gym:Notify"
                   L8_2 = L2_2
                   L9_2 = LanguageFile
                   L10_2 = "youboughtpass"
@@ -5181,7 +5181,7 @@ if "standalone" == L0_1 then
                   L7_2 = L7_2.time
                   L7_2 = L7_2()
                   L7_2 = L7_2 + L6_2
-                  L8_2 = GetPlayerIdentifierRTX
+                  L8_2 = GetPlayerIdentifierGym
                   L9_2 = L2_2
                   L8_2 = L8_2(L9_2)
                   L9_2 = MySQL
@@ -5349,7 +5349,7 @@ if "standalone" == L0_1 then
                 L7_2(L8_2, L9_2)
               else
                 L6_2 = TriggerClientEvent
-                L7_2 = "rtx_gym:Notify"
+                L7_2 = "outlaw_gym:Notify"
                 L8_2 = L2_2
                 L9_2 = Language
                 L10_2 = Config
@@ -5360,7 +5360,7 @@ if "standalone" == L0_1 then
               end
             else
               L5_2 = TriggerClientEvent
-              L6_2 = "rtx_gym:Notify"
+              L6_2 = "outlaw_gym:Notify"
               L7_2 = L2_2
               L8_2 = Language
               L9_2 = Config
@@ -5385,17 +5385,17 @@ if "standalone" == L0_1 then
           L5_2 = L5_2(L6_2, L7_2)
           L4_2 = L5_2
         end
-        L5_2 = GetMoneyRTX
+        L5_2 = GetGymMoney
         L6_2 = L2_2
         L5_2 = L5_2(L6_2)
         if L4_2 <= L5_2 then
-          L5_2 = RemoveMoneyRTX
+          L5_2 = RemoveGymMoney
           L6_2 = L2_2
           L7_2 = L4_2
           L5_2(L6_2, L7_2)
           if "normal" == A1_2 then
             L5_2 = TriggerClientEvent
-            L6_2 = "rtx_gym:Notify"
+            L6_2 = "outlaw_gym:Notify"
             L7_2 = L2_2
             L8_2 = LanguageFile
             L9_2 = "youboughtentry"
@@ -5422,7 +5422,7 @@ if "standalone" == L0_1 then
             L7_2[A0_2] = L6_2
           elseif "pass" == A1_2 then
             L5_2 = TriggerClientEvent
-            L6_2 = "rtx_gym:Notify"
+            L6_2 = "outlaw_gym:Notify"
             L7_2 = L2_2
             L8_2 = LanguageFile
             L9_2 = "youboughtpass"
@@ -5437,7 +5437,7 @@ if "standalone" == L0_1 then
             L6_2 = L6_2.time
             L6_2 = L6_2()
             L6_2 = L6_2 + L5_2
-            L7_2 = GetPlayerIdentifierRTX
+            L7_2 = GetPlayerIdentifierGym
             L8_2 = L2_2
             L7_2 = L7_2(L8_2)
             L8_2 = MySQL
@@ -5514,7 +5514,7 @@ if "standalone" == L0_1 then
           end
         else
           L5_2 = TriggerClientEvent
-          L6_2 = "rtx_gym:Notify"
+          L6_2 = "outlaw_gym:Notify"
           L7_2 = L2_2
           L8_2 = Language
           L9_2 = Config
@@ -5528,10 +5528,10 @@ if "standalone" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:GymBuy"
+  L1_1 = "outlaw_gym:GymBuy"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:GymBuy"
+  L1_1 = "outlaw_gym:GymBuy"
   function L2_1(A0_2)
     local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2
     L1_2 = source
@@ -5548,40 +5548,40 @@ if "standalone" == L0_1 then
           L3_2 = L3_2[A0_2]
           L4_2 = L3_2.gymowned
           if false == L4_2 then
-            L4_2 = GetMoneyRTX
+            L4_2 = GetGymMoney
             L5_2 = L1_2
             L4_2 = L4_2(L5_2)
             L5_2 = L2_2.gymowneableprice
             if L4_2 >= L5_2 then
-              L4_2 = RemoveMoneyRTX
+              L4_2 = RemoveGymMoney
               L5_2 = L1_2
               L6_2 = L2_2.gymowneableprice
               L4_2(L5_2, L6_2)
-              L4_2 = GetPlayerIdentifierRTX
+              L4_2 = GetPlayerIdentifierGym
               L5_2 = L1_2
               L4_2 = L4_2(L5_2)
               L3_2.gymowned = true
               L5_2 = TriggerClientEvent
-              L6_2 = "rtx_gym:SynchronizeOwnedGym"
+              L6_2 = "outlaw_gym:SynchronizeOwnedGym"
               L7_2 = -1
               L8_2 = A0_2
               L9_2 = true
               L5_2(L6_2, L7_2, L8_2, L9_2)
               L5_2 = TriggerClientEvent
-              L6_2 = "rtx_gym:SynchronizeYourOwnedGym"
+              L6_2 = "outlaw_gym:SynchronizeYourOwnedGym"
               L7_2 = L1_2
               L8_2 = A0_2
               L9_2 = true
               L5_2(L6_2, L7_2, L8_2, L9_2)
               L5_2 = TriggerClientEvent
-              L6_2 = "rtx_gym:GymBuyed"
+              L6_2 = "outlaw_gym:GymBuyed"
               L7_2 = -1
               L8_2 = A0_2
               L5_2(L6_2, L7_2, L8_2)
               L3_2.gymowned = true
               L3_2.gymownedidentifier = L4_2
               L5_2 = TriggerClientEvent
-              L6_2 = "rtx_gym:Notify"
+              L6_2 = "outlaw_gym:Notify"
               L7_2 = L1_2
               L8_2 = LanguageFile
               L9_2 = "youboughtgym"
@@ -5635,7 +5635,7 @@ if "standalone" == L0_1 then
               L5_2(L6_2, L7_2, L8_2)
             else
               L4_2 = TriggerClientEvent
-              L5_2 = "rtx_gym:Notify"
+              L5_2 = "outlaw_gym:Notify"
               L6_2 = L1_2
               L7_2 = Language
               L8_2 = Config
@@ -5651,10 +5651,10 @@ if "standalone" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:GymOpenManagment"
+  L1_1 = "outlaw_gym:GymOpenManagment"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:GymOpenManagment"
+  L1_1 = "outlaw_gym:GymOpenManagment"
   function L2_1(A0_2)
     local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2, L14_2, L15_2, L16_2, L17_2, L18_2, L19_2, L20_2
     L1_2 = source
@@ -5662,7 +5662,7 @@ if "standalone" == L0_1 then
       L2_2 = Config
       L2_2 = L2_2.Gyms
       L2_2 = L2_2[A0_2]
-      L3_2 = GetPlayerIdentifierRTX
+      L3_2 = GetPlayerIdentifierGym
       L4_2 = L1_2
       L3_2 = L3_2(L4_2)
       L4_2 = L2_2.gymowneable
@@ -5699,7 +5699,7 @@ if "standalone" == L0_1 then
             L13_2(L14_2, L15_2)
           end
           L6_2 = TriggerClientEvent
-          L7_2 = "rtx_gym:OpenGymMenu"
+          L7_2 = "outlaw_gym:OpenGymMenu"
           L8_2 = L1_2
           L9_2 = A0_2
           L10_2 = L4_2.gymbalance
@@ -5713,10 +5713,10 @@ if "standalone" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:ChangeEntryPrice"
+  L1_1 = "outlaw_gym:ChangeEntryPrice"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:ChangeEntryPrice"
+  L1_1 = "outlaw_gym:ChangeEntryPrice"
   function L2_1(A0_2, A1_2)
     local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2
     L2_2 = source
@@ -5726,7 +5726,7 @@ if "standalone" == L0_1 then
       L3_2 = L3_2[A0_2]
       L4_2 = L3_2.gymowneable
       if L4_2 then
-        L4_2 = GetPlayerIdentifierRTX
+        L4_2 = GetPlayerIdentifierGym
         L5_2 = L2_2
         L4_2 = L4_2(L5_2)
         L5_2 = ownedgyms
@@ -5749,7 +5749,7 @@ if "standalone" == L0_1 then
               L8_2["@gymprice"] = A1_2
               L6_2(L7_2, L8_2)
               L6_2 = TriggerClientEvent
-              L7_2 = "rtx_gym:Notify"
+              L7_2 = "outlaw_gym:Notify"
               L8_2 = L2_2
               L9_2 = LanguageFile
               L10_2 = "youchangedgymentry"
@@ -5757,7 +5757,7 @@ if "standalone" == L0_1 then
               L9_2, L10_2, L11_2, L12_2 = L9_2(L10_2, L11_2)
               L6_2(L7_2, L8_2, L9_2, L10_2, L11_2, L12_2)
               L6_2 = TriggerClientEvent
-              L7_2 = "rtx_gym:GymMenuUpdate"
+              L7_2 = "outlaw_gym:GymMenuUpdate"
               L8_2 = L2_2
               L9_2 = A0_2
               L10_2 = L5_2.gymbalance
@@ -5767,7 +5767,7 @@ if "standalone" == L0_1 then
           end
           else
             L6_2 = TriggerClientEvent
-            L7_2 = "rtx_gym:Notify"
+            L7_2 = "outlaw_gym:Notify"
             L8_2 = L2_2
             L9_2 = LanguageFile
             L10_2 = "minimumentryamount"
@@ -5782,10 +5782,10 @@ if "standalone" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:ManagmentWithdraw"
+  L1_1 = "outlaw_gym:ManagmentWithdraw"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:ManagmentWithdraw"
+  L1_1 = "outlaw_gym:ManagmentWithdraw"
   function L2_1(A0_2)
     local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2
     L1_2 = source
@@ -5795,7 +5795,7 @@ if "standalone" == L0_1 then
       L2_2 = L2_2[A0_2]
       L3_2 = L2_2.gymowneable
       if L3_2 then
-        L3_2 = GetPlayerIdentifierRTX
+        L3_2 = GetPlayerIdentifierGym
         L4_2 = L1_2
         L3_2 = L3_2(L4_2)
         L4_2 = ownedgyms
@@ -5807,14 +5807,14 @@ if "standalone" == L0_1 then
           L5_2 = L4_2.gymbalance
           if L5_2 > 0 then
             L5_2 = TriggerClientEvent
-            L6_2 = "rtx_gym:Notify"
+            L6_2 = "outlaw_gym:Notify"
             L7_2 = L1_2
             L8_2 = LanguageFile
             L9_2 = "youwithdraw"
             L10_2 = L4_2.gymbalance
             L8_2, L9_2, L10_2, L11_2 = L8_2(L9_2, L10_2)
             L5_2(L6_2, L7_2, L8_2, L9_2, L10_2, L11_2)
-            L5_2 = AddMoneyRTX
+            L5_2 = AddGymMoney
             L6_2 = L1_2
             L7_2 = L4_2.gymbalance
             L5_2(L6_2, L7_2)
@@ -5828,7 +5828,7 @@ if "standalone" == L0_1 then
             L7_2["@gymbalance"] = 0
             L5_2(L6_2, L7_2)
             L5_2 = TriggerClientEvent
-            L6_2 = "rtx_gym:GymMenuUpdate"
+            L6_2 = "outlaw_gym:GymMenuUpdate"
             L7_2 = L1_2
             L8_2 = A0_2
             L9_2 = L4_2.gymbalance
@@ -5837,7 +5837,7 @@ if "standalone" == L0_1 then
             L5_2(L6_2, L7_2, L8_2, L9_2, L10_2, L11_2)
           else
             L5_2 = TriggerClientEvent
-            L6_2 = "rtx_gym:Notify"
+            L6_2 = "outlaw_gym:Notify"
             L7_2 = L1_2
             L8_2 = Language
             L9_2 = Config
@@ -5852,10 +5852,10 @@ if "standalone" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:CloseStatus"
+  L1_1 = "outlaw_gym:CloseStatus"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:CloseStatus"
+  L1_1 = "outlaw_gym:CloseStatus"
   function L2_1(A0_2, A1_2)
     local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2
     L2_2 = source
@@ -5865,7 +5865,7 @@ if "standalone" == L0_1 then
       L3_2 = L3_2[A0_2]
       L4_2 = L3_2.gymowneable
       if L4_2 then
-        L4_2 = GetPlayerIdentifierRTX
+        L4_2 = GetPlayerIdentifierGym
         L5_2 = L2_2
         L4_2 = L4_2(L5_2)
         L5_2 = ownedgyms
@@ -5877,7 +5877,7 @@ if "standalone" == L0_1 then
           L5_2.gymclosed = A1_2
           if A1_2 then
             L6_2 = TriggerClientEvent
-            L7_2 = "rtx_gym:Notify"
+            L7_2 = "outlaw_gym:Notify"
             L8_2 = L2_2
             L9_2 = Language
             L10_2 = Config
@@ -5886,14 +5886,14 @@ if "standalone" == L0_1 then
             L9_2 = L9_2.yourgymclosed
             L6_2(L7_2, L8_2, L9_2)
             L6_2 = TriggerClientEvent
-            L7_2 = "rtx_gym:GymStop"
+            L7_2 = "outlaw_gym:GymStop"
             L8_2 = -1
             L9_2 = A0_2
             L10_2 = "closed"
             L6_2(L7_2, L8_2, L9_2, L10_2)
           else
             L6_2 = TriggerClientEvent
-            L7_2 = "rtx_gym:Notify"
+            L7_2 = "outlaw_gym:Notify"
             L8_2 = L2_2
             L9_2 = Language
             L10_2 = Config
@@ -5911,7 +5911,7 @@ if "standalone" == L0_1 then
           L8_2["@gymclosed"] = A1_2
           L6_2(L7_2, L8_2)
           L6_2 = TriggerClientEvent
-          L7_2 = "rtx_gym:GymMenuUpdate"
+          L7_2 = "outlaw_gym:GymMenuUpdate"
           L8_2 = L2_2
           L9_2 = A0_2
           L10_2 = L5_2.gymbalance
@@ -5924,10 +5924,10 @@ if "standalone" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:SellGym"
+  L1_1 = "outlaw_gym:SellGym"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:SellGym"
+  L1_1 = "outlaw_gym:SellGym"
   function L2_1(A0_2)
     local L1_2, L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2
     L1_2 = source
@@ -5937,7 +5937,7 @@ if "standalone" == L0_1 then
       L2_2 = L2_2[A0_2]
       L3_2 = L2_2.gymowneable
       if L3_2 then
-        L3_2 = GetPlayerIdentifierRTX
+        L3_2 = GetPlayerIdentifierGym
         L4_2 = L1_2
         L3_2 = L3_2(L4_2)
         L4_2 = ownedgyms
@@ -5955,19 +5955,19 @@ if "standalone" == L0_1 then
           L5_2 = L5_2[A0_2]
           L5_2.gymownedidentifier = ""
           L6_2 = TriggerClientEvent
-          L7_2 = "rtx_gym:Notify"
+          L7_2 = "outlaw_gym:Notify"
           L8_2 = L1_2
           L9_2 = LanguageFile
           L10_2 = "yousoldgym"
           L11_2 = L4_2
           L9_2, L10_2, L11_2 = L9_2(L10_2, L11_2)
           L6_2(L7_2, L8_2, L9_2, L10_2, L11_2)
-          L6_2 = AddMoneyRTX
+          L6_2 = AddGymMoney
           L7_2 = L1_2
           L8_2 = L4_2
           L6_2(L7_2, L8_2)
           L6_2 = TriggerClientEvent
-          L7_2 = "rtx_gym:SynchronizeYourOwnedGym"
+          L7_2 = "outlaw_gym:SynchronizeYourOwnedGym"
           L8_2 = L1_2
           L9_2 = A0_2
           L10_2 = false
@@ -5987,7 +5987,7 @@ if "standalone" == L0_1 then
             L2_2.gymprice = L1_3
             L5_2.gymclosed = false
             L1_3 = TriggerClientEvent
-            L2_3 = "rtx_gym:SynchronizeOwnedGym"
+            L2_3 = "outlaw_gym:SynchronizeOwnedGym"
             L3_3 = -1
             L4_3 = A0_2
             L5_3 = false
@@ -6000,10 +6000,10 @@ if "standalone" == L0_1 then
   end
   L0_1(L1_1, L2_1)
   L0_1 = RegisterServerEvent
-  L1_1 = "rtx_gym:TransferGym"
+  L1_1 = "outlaw_gym:TransferGym"
   L0_1(L1_1)
   L0_1 = AddEventHandler
-  L1_1 = "rtx_gym:TransferGym"
+  L1_1 = "outlaw_gym:TransferGym"
   function L2_1(A0_2, A1_2)
     local L2_2, L3_2, L4_2, L5_2, L6_2, L7_2, L8_2, L9_2, L10_2, L11_2, L12_2, L13_2
     L2_2 = source
@@ -6013,7 +6013,7 @@ if "standalone" == L0_1 then
       L3_2 = L3_2[A0_2]
       L4_2 = L3_2.gymowneable
       if L4_2 then
-        L4_2 = GetPlayerIdentifierRTX
+        L4_2 = GetPlayerIdentifierGym
         L5_2 = L2_2
         L4_2 = L4_2(L5_2)
         L5_2 = ownedgyms
@@ -6026,12 +6026,12 @@ if "standalone" == L0_1 then
           L5_2 = L5_2 * L6_2
           L6_2 = ownedgyms
           L6_2 = L6_2[A0_2]
-          L7_2 = GetPlayerIdentifierRTX
+          L7_2 = GetPlayerIdentifierGym
           L8_2 = A1_2
           L7_2 = L7_2(L8_2)
           L6_2.gymownedidentifier = L7_2
           L8_2 = TriggerClientEvent
-          L9_2 = "rtx_gym:Notify"
+          L9_2 = "outlaw_gym:Notify"
           L10_2 = L2_2
           L11_2 = Language
           L12_2 = Config
@@ -6040,7 +6040,7 @@ if "standalone" == L0_1 then
           L11_2 = L11_2.youtransfergym
           L8_2(L9_2, L10_2, L11_2)
           L8_2 = TriggerClientEvent
-          L9_2 = "rtx_gym:Notify"
+          L9_2 = "outlaw_gym:Notify"
           L10_2 = L2_2
           L11_2 = LanguageFile
           L12_2 = "gymtransferredto"
@@ -6048,13 +6048,13 @@ if "standalone" == L0_1 then
           L11_2, L12_2, L13_2 = L11_2(L12_2, L13_2)
           L8_2(L9_2, L10_2, L11_2, L12_2, L13_2)
           L8_2 = TriggerClientEvent
-          L9_2 = "rtx_gym:SynchronizeYourOwnedGym"
+          L9_2 = "outlaw_gym:SynchronizeYourOwnedGym"
           L10_2 = L2_2
           L11_2 = A0_2
           L12_2 = false
           L8_2(L9_2, L10_2, L11_2, L12_2)
           L8_2 = TriggerClientEvent
-          L9_2 = "rtx_gym:SynchronizeYourOwnedGym"
+          L9_2 = "outlaw_gym:SynchronizeYourOwnedGym"
           L10_2 = A1_2
           L11_2 = A0_2
           L12_2 = true
@@ -6145,7 +6145,7 @@ if "standalone" == L0_1 then
                   L13_2 = L12_2.status
                   L13_2.takenplayerid = nil
                   L13_2 = TriggerClientEvent
-                  L14_2 = "rtx_gym:GymHandler"
+                  L14_2 = "outlaw_gym:GymHandler"
                   L15_2 = -1
                   L16_2 = L5_2
                   L17_2 = L11_2
@@ -6164,7 +6164,7 @@ if "standalone" == L0_1 then
       L1_2 = playerneeds
       L1_2 = L1_2[A0_2]
       if nil ~= L1_2 then
-        L1_2 = GetPlayerIdentifierRTX
+        L1_2 = GetPlayerIdentifierGym
         L2_2 = A0_2
         L1_2 = L1_2(L2_2)
         L2_2 = MySQL
@@ -6202,7 +6202,7 @@ end
 function L0_1()
   local L0_2, L1_2
   L0_2 = print
-  L1_2 = "[RTX GYM SYSTEM] - Thank you for choosing us - Discord: https://discord.gg/P6KdaDpgAk Store: https://rtx.tebex.io"
+  L1_2 = "[OUTLAW GYM SHOP] - Welcome to the community!"
   L0_2(L1_2)
 end
 authorized = L0_1

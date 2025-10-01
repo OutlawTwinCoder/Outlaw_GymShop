@@ -2,7 +2,7 @@ fx_version 'adamant'
 
 game 'gta5'
 
-description 'RTX GYM'
+description 'Outlaw Gym Shop'
 
 version '50.0'
 
@@ -34,19 +34,19 @@ files {
 ui_page 'html/ui.html'
 
 server_exports {
-	'SavePlayer',  -- exports["rtx_gym"]:SavePlayer(source) Use this export to save player
-	'AddStats', -- exports["rtx_gym"]:AddStats(source, "condition", 25.0) Use this export to add specific player stats
-	'RemoveStats', -- exports["rtx_gym"]:RemoveStats(source, "condition", 25.0) Use this export to remove specific player stats
-	'UpdateStats', -- exports["rtx_gym"]:UpdateStats(source, "condition", 25.0) Use this export to replace the player's specific stat
-	'GetStats', -- exports["rtx_gym"]:GetStats(source, "condition") Through this export you will gain a specific player stat
-	'GetAllStats', -- exports["rtx_gym"]:GetAllStats(source)  Through this export you gain all player stats
+	'SavePlayer',  -- exports["outlaw_gym"]:SavePlayer(source) Use this export to save player
+	'AddStats', -- exports["outlaw_gym"]:AddStats(source, "condition", 25.0) Use this export to add specific player stats
+	'RemoveStats', -- exports["outlaw_gym"]:RemoveStats(source, "condition", 25.0) Use this export to remove specific player stats
+	'UpdateStats', -- exports["outlaw_gym"]:UpdateStats(source, "condition", 25.0) Use this export to replace the player's specific stat
+	'GetStats', -- exports["outlaw_gym"]:GetStats(source, "condition") Through this export you will gain a specific player stat
+	'GetAllStats', -- exports["outlaw_gym"]:GetAllStats(source)  Through this export you gain all player stats
 }
 
 exports {
-	'GetStats',  -- exports["rtx_gym"]:GetStats("condition") Through this export you will gain a specific player stat
-	'GetAllStats', -- exports["rtx_gym"]:GetAllStats()  Through this export you gain all player stats
-	'IsPlayerExercise', -- exports["rtx_gym"]:IsPlayerExercise()  Through this export you can check if the player is exercising
-	'IsPlayerShowering', -- exports["rtx_gym"]:IsPlayerShowering()  Through this export you can check if the player taking a shower
+	'GetStats',  -- exports["outlaw_gym"]:GetStats("condition") Through this export you will gain a specific player stat
+	'GetAllStats', -- exports["outlaw_gym"]:GetAllStats()  Through this export you gain all player stats
+	'IsPlayerExercise', -- exports["outlaw_gym"]:IsPlayerExercise()  Through this export you can check if the player is exercising
+	'IsPlayerShowering', -- exports["outlaw_gym"]:IsPlayerShowering()  Through this export you can check if the player taking a shower
 }
 
 lua54 'yes'

@@ -94,9 +94,9 @@ Config.MyStatsCommand = "mystats" -- mystats command, only work if you enable Co
 
 Config.DisablePedInMyStats = false -- enable this if you dont want a ped inside a my stats menu
 
-Config.OpenMyStatsViaEvent = false -- this will enable mystats show via event, for show TriggerEvent("rtx_gym:ShowStats", true), for hide TriggerEvent("rtx_gym:ShowStats", false)
+Config.OpenMyStatsViaEvent = false -- this will enable mystats show via event, for show TriggerEvent("outlaw_gym:ShowStats", true), for hide TriggerEvent("outlaw_gym:ShowStats", false)
 
-Config.MyStatsEvent = "rtx_gym:ShowStats" -- mystats show event, only work if you enable Config.OpenMyStatsViaEvent
+Config.MyStatsEvent = "outlaw_gym:ShowStats" -- mystats show event, only work if you enable Config.OpenMyStatsViaEvent
 
 Config.GymInteractionSystem = 1 -- 1 == Our custom interact system, 2 == 3D Text Interact, 3 == Gta V Online Interaction Style
 
@@ -825,7 +825,7 @@ Config.Showers = {
 
 
 function Notify(text)
-	exports["rtx_notify"]:Notify("Gym", text, 5000, "info") -- if you get error in this line its because you dont use our notify system buy it here https://rtx.tebex.io/package/5402098 or you can use some other notify system just replace this notify line with your notify system
+    exports["my_notify"]:Notify("Gym", text, 5000, "info") -- replace with your preferred notification trigger
 	--exports["mythic_notify"]:SendAlert("inform", text, 5000)
 end
 

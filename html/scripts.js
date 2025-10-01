@@ -1,31 +1,73 @@
-var gymresourcename = "rtx_gym";
+const gymResourceNameDefault = typeof GetParentResourceName === 'function' ? GetParentResourceName() : 'Outlaw_GymShop';
+let gymresourcename = gymResourceNameDefault;
 
-var gymdatedata = ["10.03","11.03","12.03","13.03","14.03","15.03","16.03","17.03","18.03","19.03","20.03"];
+let gymdatedata = ["10.03","11.03","12.03","13.03","14.03","15.03","16.03","17.03","18.03","19.03","20.03"];
 
-var gymvisitorsdata = [0,0,0,0,0,10,0,0,0,0,0];
+let gymvisitorsdata = [0,0,0,0,0,10,0,0,0,0,0];
 
-Chart.defaults.global.defaultFontColor = "#fff";
+let visitorschart;
+let nuiOpen = false;
+const root = document.documentElement;
 
-var visitorschart;
+Chart.defaults.global.defaultFontColor = '#f5f7fb';
+Chart.defaults.global.defaultFontFamily = 'Poppins, sans-serif';
+
+(function ($) {
+  const originalShow = $.fn.show;
+  $.fn.show = function () {
+    const result = originalShow.apply(this, arguments);
+    this.each(function () {
+      if ($(this).hasClass('panel')) {
+        $(this).css('display', 'flex');
+      }
+    });
+    return result;
+  };
+})(jQuery);
 
 function closeMain() {
-	$("body").css("display", "none");
+  $('body').css('display', 'none');
+  nuiOpen = false;
 }
 
 function openMain() {
-	$("body").css("display", "block");
+  $('body').css('display', 'block');
+  nuiOpen = true;
 }
 
-$(".closegymentry").click(function(){
-	$.post('http://'+gymresourcename+'/quit', JSON.stringify({}));
+function postNui(endpoint, payload) {
+  $.post('https://' + gymresourcename + '/' + endpoint, JSON.stringify(payload || {}));
+}
+
+function tintColor(hex, ratio) {
+  if (typeof hex !== 'string') {
+    return '#ffffff';
+  }
+  const normalized = hex.replace('#', '');
+  if (normalized.length !== 6) {
+    return hex;
+  }
+  const num = parseInt(normalized, 16);
+  const r = (num >> 16) & 255;
+  const g = (num >> 8) & 255;
+  const b = num & 255;
+  const mix = (channel) => Math.round(channel + (255 - channel) * ratio);
+  const rr = mix(r).toString(16).padStart(2, '0');
+  const gg = mix(g).toString(16).padStart(2, '0');
+  const bb = mix(b).toString(16).padStart(2, '0');
+  return `#${rr}${gg}${bb}`;
+}
+
+$('.closegymentry').on('click', function () {
+  postNui('quit');
 });
 
-$(".closegymbuy").click(function(){
-	$.post('http://'+gymresourcename+'/quit', JSON.stringify({}));
+$('.closegymbuy').on('click', function () {
+  postNui('quit');
 });
 
-$(".closegymmanagment").click(function(){
-	$.post('http://'+gymresourcename+'/quit', JSON.stringify({}));
+$('.closegymmanagment').on('click', function () {
+  postNui('quit');
 });
 
 window.addEventListener('message', function (event) {
@@ -42,7 +84,7 @@ window.addEventListener('message', function (event) {
 		$("#gymmanagmentshow").hide();	
 		$("#gymbuyshow").hide();	
 		$("#gymshow").hide();	
-		$("#gymstats").hide();	
+		$("#gymstatsshow").hide();	
 		$("#gymentryshow").show();	
 	}		
 		
@@ -57,7 +99,7 @@ window.addEventListener('message', function (event) {
 		$("#gymmanagmentshow").hide();	
 		$("#gymentryshow").hide();	
 		$("#gymshow").hide();	
-		$("#gymstats").hide();	
+		$("#gymstatsshow").hide();	
 		$("#gymbuyshow").show();	
 	}	
 
@@ -71,7 +113,7 @@ window.addEventListener('message', function (event) {
 		$("#gymentryshow").hide();	
 		$("#gymbuyshow").hide();	
 		$("#gymshow").hide();	
-		$("#gymstats").hide();	
+		$("#gymstatsshow").hide();	
 		$("#gymmanagmentshow").show();	
 		var inputhandler = document.getElementById("gymentrypricesliderdata");
 		inputhandler.setAttribute("max", item.gympricemaxdata);	
@@ -90,55 +132,60 @@ window.addEventListener('message', function (event) {
 		gymvisitorsdata.push(item.visitordata2);
 	}	
 	
-	if (item.message == "updatevisitors2") {
-		visitorschart = new Chart("gymstatsdata2", {
-		  type: "line",
-		  color: "#ffffff",
-		  data: {
-			labels: gymdatedata,
-			datasets: [{
-			},{
-			  data: gymvisitorsdata,
-			  borderColor: "#ff66ff",
-			  backgroundColor: "rgba(255,255,255,1.0)",
-			  tickColor: "rgba(255,255,255,1.0)",
-			  fill: false
-			}]
-		  },
-		  options: {
-			scales: {    
-				yAxes: [{
-					ticks: {
-						fontSize: 16,
-						fontFamily: "BebasNeueBold",
-						stepSize: 1,
-						beginAtZero: true
-					}
-				}],
-				xAxes: [{
-					ticks: {
-						fontSize: 16,
-						fontFamily: "BebasNeueBold",
-						stepSize: 1,
-						beginAtZero: true
-					}
-				}]		
-			},
-            tooltips: {
-                enabled: true,
-				displayColors: false,
-                mode: 'single',
-                callbacks: {
-                    label: function(tooltipItems, data) { 
-                        return  '$' + tooltipItems.yLabel;
-                    }
-                }
-            },			
-			responsive:true,
-			legend: {display: false}
-		  }  
-		});
-	}		
+        if (item.message == "updatevisitors2") {
+                const styles = getComputedStyle(root);
+                const primary = styles.getPropertyValue('--primary').trim() || '#ff6b35';
+                const accent = styles.getPropertyValue('--primary-accent').trim() || tintColor(primary, 0.35);
+                visitorschart = new Chart("gymstatsdata2", {
+                  type: "line",
+                  data: {
+                        labels: gymdatedata,
+                        datasets: [{
+                          data: gymvisitorsdata,
+                          borderColor: primary,
+                          backgroundColor: accent,
+                          pointBackgroundColor: primary,
+                          pointBorderColor: '#1b2335',
+                          borderWidth: 3,
+                          lineTension: 0.25,
+                          fill: false
+                        }]
+                  },
+                  options: {
+                        scales: {
+                                yAxes: [{
+                                        gridLines: { color: 'rgba(255,255,255,0.1)' },
+                                        ticks: {
+                                                fontSize: 14,
+                                                fontFamily: 'Poppins, sans-serif',
+                                                stepSize: 1,
+                                                beginAtZero: true
+                                        }
+                                }],
+                                xAxes: [{
+                                        gridLines: { color: 'rgba(255,255,255,0.05)' },
+                                        ticks: {
+                                                fontSize: 14,
+                                                fontFamily: 'Poppins, sans-serif',
+                                                beginAtZero: true
+                                        }
+                                }]
+                        },
+                        tooltips: {
+                                enabled: true,
+                                displayColors: false,
+                                mode: 'single',
+                                callbacks: {
+                                        label: function(tooltipItems) {
+                                                return '$' + tooltipItems.yLabel;
+                                        }
+                                }
+                        },
+                        responsive: true,
+                        legend: { display: false }
+                  }
+                });
+        }
 	
 	if (item.message == "gymmanagmentupdate") {
 		document.getElementById("gymentrypricedata").innerHTML = item.gympriceoowneddata;
@@ -226,67 +273,67 @@ window.addEventListener('message', function (event) {
 		$("#infonotifyshow").hide();	
 	}		
 	
-	if (item.message == "updateinterfacedata") {
-		gymresourcename = item.gymresourcenamedata;
-		let root = document.documentElement;
-		root.style.setProperty('--color', item.interfacecolordata);	
-	}			
-	
-	document.onkeyup = function (data) {
-		if (open) {
-			if (data.which == 27) {
-				$.post('http://'+gymresourcename+'/quit', JSON.stringify({}));
-			}
-		}	
-	};	
+        if (item.message == "updateinterfacedata") {
+                gymresourcename = item.gymresourcenamedata || gymResourceNameDefault;
+                if (item.interfacecolordata) {
+                        root.style.setProperty('--primary', item.interfacecolordata);
+                        root.style.setProperty('--primary-accent', tintColor(item.interfacecolordata, 0.35));
+                }
+        }
+
+        document.onkeyup = function (data) {
+                if (nuiOpen && data.which === 27) {
+                        postNui('quit');
+                }
+        };
 });
 
 function managmententryprice(e) {
-	document.getElementById("gymentrypricedata").innerHTML = e.value;
-	$.post('http://'+gymresourcename+'/changeentryprice', JSON.stringify({
-		entryprice: e.value
-	}));	
+        document.getElementById("gymentrypricedata").innerHTML = e.value;
+        postNui('changeentryprice', {
+                entryprice: e.value
+        });
 }
 
 $(".gymentrypassbutton").click(function () {
-	$.post('http://'+gymresourcename+'/payentry', JSON.stringify({
-		entrytype: "pass"
-	}));
+        postNui('payentry', {
+                entrytype: "pass"
+        });
 });
 
 $(".gymentryonebutton").click(function () {
-	$.post('http://'+gymresourcename+'/payentry', JSON.stringify({
-		entrytype: "normal"
-	}));
+        postNui('payentry', {
+                entrytype: "normal"
+        });
 });
 
 $(".buttongymbuy").click(function () {
-	$.post('http://'+gymresourcename+'/buygym', JSON.stringify({}));
+        postNui('buygym');
 });
 
 $(".gymwithdrawbutton").click(function () {
-	$.post('http://'+gymresourcename+'/managmentwithdraw', JSON.stringify({}));
+        postNui('managmentwithdraw');
 });
 
 $("#gymclosedinputdata").click(function(){
-	if (document.getElementById("gymclosedinputdata").checked == false){
-		document.getElementById("gymclosedinputdata").checked = false;
-		$.post('http://'+gymresourcename+'/gymstatus', JSON.stringify({
-			statushandler: true
-		}));
-	}
-	else {
-		document.getElementById("gymclosedinputdata").checked = true;
-		$.post('http://'+gymresourcename+'/gymstatus', JSON.stringify({
-			statushandler: false
-		}));
-	}
-})	
+        if (document.getElementById("gymclosedinputdata").checked == false){
+                document.getElementById("gymclosedinputdata").checked = false;
+                postNui('gymstatus', {
+                        statushandler: true
+                });
+        }
+        else {
+                document.getElementById("gymclosedinputdata").checked = true;
+                postNui('gymstatus', {
+                        statushandler: false
+                });
+        }
+})
 
 $(".gymsellbutton").click(function () {
-	$.post('http://'+gymresourcename+'/sellgym', JSON.stringify({}));
+        postNui('sellgym');
 });
 
 $(".gymtransferbutton").click(function () {
-	$.post('http://'+gymresourcename+'/transfergym', JSON.stringify({}));
+        postNui('transfergym');
 });

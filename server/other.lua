@@ -9,7 +9,7 @@ local statslist = {
 function UpdateStats(playersource, needdataname, needdatanumber)
 	if Config.DifferentStatsSystem == false then
 		playerneeds[playersource][tostring(needdataname)] = needdatanumber
-		TriggerClientEvent("rtx_gym:UpdateStats", playersource, tostring(needdataname), needdatanumber)
+		TriggerClientEvent("outlaw_gym:UpdateStats", playersource, tostring(needdataname), needdatanumber)
 		if Config.SaveWhenStatsAreUpdated == true then
 			SavePlayer(playersource)
 		end
@@ -23,19 +23,19 @@ function AddStats(playersource, statnamedata, needdatanumber)
 		local statnamedatacalculate = playerneeds[playersource][tostring(statnamedata)]+needdatanumber
 		if statnamedatacalculate > 100 then
 			playerneeds[playersource][tostring(statnamedata)] = 100
-			TriggerClientEvent("rtx_gym:UpdateStats", playersource, tostring(statnamedata), 100)
+			TriggerClientEvent("outlaw_gym:UpdateStats", playersource, tostring(statnamedata), 100)
 			if Config.SaveWhenStatsAreUpdated == true then
 				SavePlayer(playersource)
 			end		
 		else
 			playerneeds[playersource][tostring(statnamedata)] = playerneeds[playersource][tostring(statnamedata)]+needdatanumber
-			TriggerClientEvent("rtx_gym:UpdateStats", playersource, tostring(statnamedata), playerneeds[playersource][tostring(statnamedata)])
+			TriggerClientEvent("outlaw_gym:UpdateStats", playersource, tostring(statnamedata), playerneeds[playersource][tostring(statnamedata)])
 			if Config.SaveWhenStatsAreUpdated == true then
 				SavePlayer(playersource)
 			end		
 		end
 		if Config.ReducingStatsWhenNotExercising == true then
-			TriggerClientEvent("rtx_gym:ResetTimer", playersource, tostring(statnamedata))
+			TriggerClientEvent("outlaw_gym:ResetTimer", playersource, tostring(statnamedata))
 		end		
 	else
 		-- add here your add function for stats (needdataname = name of skill, needdatanumber = new data)
@@ -47,13 +47,13 @@ function RemoveStats(playersource, statnamedata, needdatanumber)
 		local statnamedatacalculate = playerneeds[playersource][tostring(statnamedata)]-needdatanumber
 		if statnamedatacalculate < 0 then
 			playerneeds[playersource][tostring(statnamedata)] = 0
-			TriggerClientEvent("rtx_gym:UpdateStats", playersource, tostring(statnamedata), 0)
+			TriggerClientEvent("outlaw_gym:UpdateStats", playersource, tostring(statnamedata), 0)
 			if Config.SaveWhenStatsAreUpdated == true then
 				SavePlayer(playersource)
 			end		
 		else
 			playerneeds[playersource][tostring(statnamedata)] = playerneeds[playersource][tostring(statnamedata)]-needdatanumber
-			TriggerClientEvent("rtx_gym:UpdateStats", playersource, tostring(statnamedata), playerneeds[playersource][tostring(statnamedata)])
+			TriggerClientEvent("outlaw_gym:UpdateStats", playersource, tostring(statnamedata), playerneeds[playersource][tostring(statnamedata)])
 			if Config.SaveWhenStatsAreUpdated == true then
 				SavePlayer(playersource)
 			end		
@@ -83,8 +83,8 @@ function RemoveStress(playersource, stressdata)
 	-- add here your stress function for yoga
 end	
 
-RegisterServerEvent("rtx_gym:UpdateEnergy")
-AddEventHandler("rtx_gym:UpdateEnergy", function()
+RegisterServerEvent("outlaw_gym:UpdateEnergy")
+AddEventHandler("outlaw_gym:UpdateEnergy", function()
 	local playersource = source															
 	if playerneeds[playersource] == nil or gymonetimedata[playersource] == nil or gympassdata[playersource] == nil or playersupplements[playersource] == nil then
 		PlayerDataReformated(playersource)
@@ -92,7 +92,7 @@ AddEventHandler("rtx_gym:UpdateEnergy", function()
 	AddStats(playersource, "energy", 2.5)																
 end)
 
-function AddMoneyRTX(playersource, moneydata)
+function AddGymMoney(playersource, moneydata)
 	if Config.Framework == "esx" then
 		local xPlayer = ESX.GetPlayerFromId(playersource)
 		if xPlayer then
@@ -108,7 +108,7 @@ function AddMoneyRTX(playersource, moneydata)
 	end
 end	
 
-function RemoveMoneyRTX(playersource, moneydata)
+function RemoveGymMoney(playersource, moneydata)
 	if Config.Framework == "esx" then
 		local xPlayer = ESX.GetPlayerFromId(playersource)
 		if xPlayer then
@@ -124,7 +124,7 @@ function RemoveMoneyRTX(playersource, moneydata)
 	end
 end	
 
-function GetMoneyRTX(playersource)
+function GetGymMoney(playersource)
 	local moneydata = 0
 	if Config.Framework == "esx" then
 		local xPlayer = ESX.GetPlayerFromId(playersource)
@@ -153,7 +153,7 @@ function GetPlayerIdentifierData(playersource)
 	return licensedata
 end
 
-function GetPlayerIdentifierRTX(playersource)
+function GetPlayerIdentifierGym(playersource)
 	local playeridentifierdata = ""
 	if Config.Framework == "esx" then
 		local xPlayer = ESX.GetPlayerFromId(playersource)
@@ -179,8 +179,8 @@ if Config.Framework == "esx" then
 			local supplementtimereformated = 60 * Config.Supplements["protein"].duration
 			local supplementimereformatedcalculate = os.time() + supplementtimereformated
 			playersupplements[playersource].protein = supplementimereformatedcalculate
-			TriggerClientEvent("rtx_gym:SupplementAnim", playersource, "protein")
-			TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["youtookprotein"])
+			TriggerClientEvent("outlaw_gym:SupplementAnim", playersource, "protein")
+			TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["youtookprotein"])
 			xPlayer.removeInventoryItem("protein", 1)	
 		end
 	end)
@@ -192,8 +192,8 @@ if Config.Framework == "esx" then
 			local supplementtimereformated = 60 * Config.Supplements["creatine"].duration
 			local supplementimereformatedcalculate = os.time() + supplementtimereformated
 			playersupplements[playersource].creatine = supplementimereformatedcalculate	
-			TriggerClientEvent("rtx_gym:SupplementAnim", playersource, "creatine")
-			TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["youtookcreatine"])	
+			TriggerClientEvent("outlaw_gym:SupplementAnim", playersource, "creatine")
+			TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["youtookcreatine"])	
 			xPlayer.removeInventoryItem("creatine", 1)	
 		end
 	end)
@@ -205,8 +205,8 @@ if Config.Framework == "esx" then
 			local supplementtimereformated = 60 * Config.Supplements["preworkout"].duration
 			local supplementimereformatedcalculate = os.time() + supplementtimereformated
 			playersupplements[playersource].preworkout = supplementimereformatedcalculate	
-			TriggerClientEvent("rtx_gym:SupplementAnim", playersource, "preworkout")
-			TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["youtookpreworkout"])	
+			TriggerClientEvent("outlaw_gym:SupplementAnim", playersource, "preworkout")
+			TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["youtookpreworkout"])	
 			xPlayer.removeInventoryItem("preworkout", 1)	
 		end
 	end)
@@ -218,8 +218,8 @@ if Config.Framework == "esx" then
 			local supplementtimereformated = 60 * Config.Supplements["testosterone"].duration
 			local supplementimereformatedcalculate = os.time() + supplementtimereformated
 			playersupplements[playersource].testosterone = supplementimereformatedcalculate	
-			TriggerClientEvent("rtx_gym:SupplementAnim", playersource, "testosterone")
-			TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["youtooktestosterone"])	
+			TriggerClientEvent("outlaw_gym:SupplementAnim", playersource, "testosterone")
+			TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["youtooktestosterone"])	
 			xPlayer.removeInventoryItem("testosterone", 1)	
 		end
 	end)
@@ -259,18 +259,18 @@ if Config.Framework == "esx" then
 							local statsreformated = statslist[tostring(args[2])]
 							if args[3] ~= nil and tonumber(args[3]) >= 0 and tonumber(args[3]) <= 100 then
 								AddStats(reformatedplayerid, statsreformated, tonumber(args[3]))
-								TriggerClientEvent("rtx_gym:Notify", playersource, LanguageFile("statsaddplayer", statsreformated, Language[Config.Language][tostring(statsreformated)], tonumber(args[3])))
+								TriggerClientEvent("outlaw_gym:Notify", playersource, LanguageFile("statsaddplayer", statsreformated, Language[Config.Language][tostring(statsreformated)], tonumber(args[3])))
 							else
-								TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["statsnumberdata"])
+								TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["statsnumberdata"])
 							end
 						else
-							TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["statsdefine"])
+							TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["statsdefine"])
 						end
 					else
-						TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["playeroffline"])
+						TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["playeroffline"])
 					end
 				else
-					TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["idplayer"])
+					TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["idplayer"])
 				end
 			end
 		end
@@ -310,18 +310,18 @@ if Config.Framework == "esx" then
 							local statsreformated = statslist[tostring(args[2])]
 							if args[3] ~= nil and tonumber(args[3]) >= 0 and tonumber(args[3]) <= 100 then
 								RemoveStats(reformatedplayerid, statsreformated, tonumber(args[3]))
-								TriggerClientEvent("rtx_gym:Notify", playersource, LanguageFile("statsremoveplayer", statsreformated, Language[Config.Language][tostring(statsreformated)], tonumber(args[3])))
+								TriggerClientEvent("outlaw_gym:Notify", playersource, LanguageFile("statsremoveplayer", statsreformated, Language[Config.Language][tostring(statsreformated)], tonumber(args[3])))
 							else
-								TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["statsnumberdata"])
+								TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["statsnumberdata"])
 							end
 						else
-							TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["statsdefine"])
+							TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["statsdefine"])
 						end
 					else
-						TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["playeroffline"])
+						TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["playeroffline"])
 					end
 				else
-					TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["idplayer"])
+					TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["idplayer"])
 				end
 			end
 		end
@@ -340,7 +340,7 @@ if Config.Framework == "esx" then
 						["hygiene"] = 100.0,	
 						["energy"] = 100.0,	
 					}			
-					TriggerClientEvent("rtx_gym:SynchronizeStats", reformatedplayerid, playerneeds[reformatedplayerid])
+					TriggerClientEvent("outlaw_gym:SynchronizeStats", reformatedplayerid, playerneeds[reformatedplayerid])
 					print(LanguageFile("statsreset", reformatedplayerid))
 				else
 					print(Language[Config.Language]["playeroffline"])
@@ -362,13 +362,13 @@ if Config.Framework == "esx" then
 							["hygiene"] = 100.0,	
 							["energy"] = 100.0,	
 						}			
-						TriggerClientEvent("rtx_gym:SynchronizeStats", reformatedplayerid, playerneeds[reformatedplayerid])
-						TriggerClientEvent("rtx_gym:Notify", playersource, LanguageFile("statsreset", reformatedplayerid))
+						TriggerClientEvent("outlaw_gym:SynchronizeStats", reformatedplayerid, playerneeds[reformatedplayerid])
+						TriggerClientEvent("outlaw_gym:Notify", playersource, LanguageFile("statsreset", reformatedplayerid))
 					else
-						TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["playeroffline"])
+						TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["playeroffline"])
 					end
 				else
-					TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["idplayer"])
+					TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["idplayer"])
 				end
 			end
 		end
@@ -384,8 +384,8 @@ if Config.Framework == "qbcore" then
 			local supplementtimereformated = 60 * Config.Supplements["protein"].duration
 			local supplementimereformatedcalculate = os.time() + supplementtimereformated
 			playersupplements[playersource].protein = supplementimereformatedcalculate
-			TriggerClientEvent("rtx_gym:SupplementAnim", playersource, "protein")
-			TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["youtookprotein"])
+			TriggerClientEvent("outlaw_gym:SupplementAnim", playersource, "protein")
+			TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["youtookprotein"])
 			xPlayer.Functions.RemoveItem("protein", 1)	
 		end
 	end)
@@ -397,8 +397,8 @@ if Config.Framework == "qbcore" then
 			local supplementtimereformated = 60 * Config.Supplements["creatine"].duration
 			local supplementimereformatedcalculate = os.time() + supplementtimereformated
 			playersupplements[playersource].creatine = supplementimereformatedcalculate	
-			TriggerClientEvent("rtx_gym:SupplementAnim", playersource, "creatine")
-			TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["youtookcreatine"])	
+			TriggerClientEvent("outlaw_gym:SupplementAnim", playersource, "creatine")
+			TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["youtookcreatine"])	
 			xPlayer.Functions.RemoveItem("creatine", 1)	
 		end
 	end)
@@ -410,8 +410,8 @@ if Config.Framework == "qbcore" then
 			local supplementtimereformated = 60 * Config.Supplements["preworkout"].duration
 			local supplementimereformatedcalculate = os.time() + supplementtimereformated
 			playersupplements[playersource].preworkout = supplementimereformatedcalculate	
-			TriggerClientEvent("rtx_gym:SupplementAnim", playersource, "preworkout")
-			TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["youtookpreworkout"])	
+			TriggerClientEvent("outlaw_gym:SupplementAnim", playersource, "preworkout")
+			TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["youtookpreworkout"])	
 			xPlayer.Functions.RemoveItem("preworkout", 1)	
 		end
 	end)
@@ -423,8 +423,8 @@ if Config.Framework == "qbcore" then
 			local supplementtimereformated = 60 * Config.Supplements["testosterone"].duration
 			local supplementimereformatedcalculate = os.time() + supplementtimereformated
 			playersupplements[playersource].testosterone = supplementimereformatedcalculate	
-			TriggerClientEvent("rtx_gym:SupplementAnim", playersource, "testosterone")
-			TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["youtooktestosterone"])	
+			TriggerClientEvent("outlaw_gym:SupplementAnim", playersource, "testosterone")
+			TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["youtooktestosterone"])	
 			xPlayer.Functions.RemoveItem("testosterone", 1)
 		end
 	end)
@@ -461,18 +461,18 @@ if Config.Framework == "qbcore" then
 							local statsreformated = statslist[tostring(args[2])]
 							if args[3] ~= nil and tonumber(args[3]) >= 0 and tonumber(args[3]) <= 100 then
 								AddStats(reformatedplayerid, statsreformated, tonumber(args[3]))
-								TriggerClientEvent("rtx_gym:Notify", playersource, LanguageFile("statsaddplayer", statsreformated, Language[Config.Language][tostring(statsreformated)], tonumber(args[3])))
+								TriggerClientEvent("outlaw_gym:Notify", playersource, LanguageFile("statsaddplayer", statsreformated, Language[Config.Language][tostring(statsreformated)], tonumber(args[3])))
 							else
-								TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["statsnumberdata"])
+								TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["statsnumberdata"])
 							end
 						else
-							TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["statsdefine"])
+							TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["statsdefine"])
 						end
 					else
-						TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["playeroffline"])
+						TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["playeroffline"])
 					end
 				else
-					TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["idplayer"])
+					TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["idplayer"])
 				end
 			end
 		end
@@ -510,18 +510,18 @@ if Config.Framework == "qbcore" then
 							local statsreformated = statslist[tostring(args[2])]
 							if args[3] ~= nil and tonumber(args[3]) >= 0 and tonumber(args[3]) <= 100 then
 								RemoveStats(reformatedplayerid, statsreformated, tonumber(args[3]))
-								TriggerClientEvent("rtx_gym:Notify", playersource, LanguageFile("statsremoveplayer", statsreformated, Language[Config.Language][tostring(statsreformated)], tonumber(args[3])))
+								TriggerClientEvent("outlaw_gym:Notify", playersource, LanguageFile("statsremoveplayer", statsreformated, Language[Config.Language][tostring(statsreformated)], tonumber(args[3])))
 							else
-								TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["statsnumberdata"])
+								TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["statsnumberdata"])
 							end
 						else
-							TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["statsdefine"])
+							TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["statsdefine"])
 						end
 					else
-						TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["playeroffline"])
+						TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["playeroffline"])
 					end
 				else
-					TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["idplayer"])
+					TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["idplayer"])
 				end
 			end
 		end
@@ -540,7 +540,7 @@ if Config.Framework == "qbcore" then
 						["hygiene"] = 100.0,	
 						["energy"] = 100.0,	
 					}			
-					TriggerClientEvent("rtx_gym:SynchronizeStats", reformatedplayerid, playerneeds[reformatedplayerid])
+					TriggerClientEvent("outlaw_gym:SynchronizeStats", reformatedplayerid, playerneeds[reformatedplayerid])
 					print(LanguageFile("statsreset", reformatedplayerid))
 				else
 					print(Language[Config.Language]["playeroffline"])
@@ -560,13 +560,13 @@ if Config.Framework == "qbcore" then
 							["hygiene"] = 100.0,	
 							["energy"] = 100.0,	
 						}			
-						TriggerClientEvent("rtx_gym:SynchronizeStats", reformatedplayerid, playerneeds[reformatedplayerid])
-						TriggerClientEvent("rtx_gym:Notify", playersource, LanguageFile("statsreset", reformatedplayerid))
+						TriggerClientEvent("outlaw_gym:SynchronizeStats", reformatedplayerid, playerneeds[reformatedplayerid])
+						TriggerClientEvent("outlaw_gym:Notify", playersource, LanguageFile("statsreset", reformatedplayerid))
 					else
-						TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["playeroffline"])
+						TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["playeroffline"])
 					end
 				else
-					TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["idplayer"])
+					TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["idplayer"])
 				end
 			end
 		end
@@ -584,8 +584,8 @@ if Config.Framework == "standalone" then
 			local supplementtimereformated = 60 * Config.Supplements["protein"].duration
 			local supplementimereformatedcalculate = os.time() + supplementtimereformated
 			playersupplements[playersource].protein = supplementimereformatedcalculate
-			TriggerClientEvent("rtx_gym:SupplementAnim", playersource, "protein")
-			TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["youtookprotein"])
+			TriggerClientEvent("outlaw_gym:SupplementAnim", playersource, "protein")
+			TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["youtookprotein"])
 			xPlayer.removeInventoryItem("protein", 1)	
 		end
 	end)
@@ -597,8 +597,8 @@ if Config.Framework == "standalone" then
 			local supplementtimereformated = 60 * Config.Supplements["creatine"].duration
 			local supplementimereformatedcalculate = os.time() + supplementtimereformated
 			playersupplements[playersource].creatine = supplementimereformatedcalculate	
-			TriggerClientEvent("rtx_gym:SupplementAnim", playersource, "creatine")
-			TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["youtookcreatine"])	
+			TriggerClientEvent("outlaw_gym:SupplementAnim", playersource, "creatine")
+			TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["youtookcreatine"])	
 			xPlayer.removeInventoryItem("creatine", 1)	
 		end
 	end)
@@ -610,8 +610,8 @@ if Config.Framework == "standalone" then
 			local supplementtimereformated = 60 * Config.Supplements["preworkout"].duration
 			local supplementimereformatedcalculate = os.time() + supplementtimereformated
 			playersupplements[playersource].preworkout = supplementimereformatedcalculate	
-			TriggerClientEvent("rtx_gym:SupplementAnim", playersource, "preworkout")
-			TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["youtookpreworkout"])	
+			TriggerClientEvent("outlaw_gym:SupplementAnim", playersource, "preworkout")
+			TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["youtookpreworkout"])	
 			xPlayer.removeInventoryItem("preworkout", 1)	
 		end
 	end)
@@ -623,8 +623,8 @@ if Config.Framework == "standalone" then
 			local supplementtimereformated = 60 * Config.Supplements["testosterone"].duration
 			local supplementimereformatedcalculate = os.time() + supplementtimereformated
 			playersupplements[playersource].testosterone = supplementimereformatedcalculate	
-			TriggerClientEvent("rtx_gym:SupplementAnim", playersource, "testosterone")
-			TriggerClientEvent("rtx_gym:Notify", playersource, Language[Config.Language]["youtooktestosterone"])	
+			TriggerClientEvent("outlaw_gym:SupplementAnim", playersource, "testosterone")
+			TriggerClientEvent("outlaw_gym:Notify", playersource, Language[Config.Language]["youtooktestosterone"])	
 			xPlayer.removeInventoryItem("testosterone", 1)	
 		end
 	end)
@@ -698,7 +698,7 @@ if Config.Framework == "standalone" then
 						["hygiene"] = 100.0,	
 						["energy"] = 100.0,	
 					}			
-					TriggerClientEvent("rtx_gym:SynchronizeStats", reformatedplayerid, playerneeds[reformatedplayerid])
+					TriggerClientEvent("outlaw_gym:SynchronizeStats", reformatedplayerid, playerneeds[reformatedplayerid])
 					print(LanguageFile("statsreset", reformatedplayerid))
 				else
 					print(Language[Config.Language]["playeroffline"])

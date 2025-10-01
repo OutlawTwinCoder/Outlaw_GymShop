@@ -1,137 +1,174 @@
-<head>
-	<link rel="stylesheet" href="styles.css" type="text/css">
-	<link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.2.0/css/pro.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>	
-</head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.2.0/css/pro.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <title>Outlaw Gym Shop</title>
+  </head>
+  <body>
+    <div class="full-screen">
+      <div class="panel gymmanagment-container" id="gymmanagmentshow">
+        <header class="panel-header headergymmanagment">
+          <span class="headergymmanagmenttext">Manage your gym</span>
+          <button class="icon-button closegymmanagment" aria-label="Close management panel">
+            <img src="img/close.png" alt="Close" />
+          </button>
+        </header>
+        <section class="panel-section gymentrypricecontainer">
+          <div class="section-header">
+            <h2 class="gymentrypricetext">Entry Price</h2>
+            <p class="gymentrypricetextdata"><span id="gymentrypricedata">100</span>$</p>
+          </div>
+          <input type="range" min="1" max="1000" value="500" class="gymentrypriceslider" id="gymentrypricesliderdata" onchange="managmententryprice(this)" />
+        </section>
+        <section class="panel-section gymclosedcontainer">
+          <div class="section-header">
+            <h2 class="gymclosedtext">Status</h2>
+            <div class="switch-wrapper">
+              <span class="gymclosedtextclose">Closed</span>
+              <label class="switch gymclosedinput">
+                <input type="checkbox" id="gymclosedinputdata" />
+                <span class="slider"></span>
+              </label>
+              <span class="gymclosedtextopen">Open</span>
+            </div>
+          </div>
+        </section>
+        <section class="panel-section gymwithdrawcontainer">
+          <div class="section-header">
+            <h2 class="gymwithdrawtext">Balance</h2>
+            <p class="gymwithdrawmoneytext"><span id="gymwithdrawmoneytextdata">100</span>$</p>
+          </div>
+          <button class="pill-button gymwithdrawbutton">Withdraw</button>
+        </section>
+        <section class="panel-section gymstatscontainer">
+          <h2 class="gymstatstext">Earnings statistics</h2>
+          <div class="chart-wrapper gymstatsdata">
+            <canvas id="gymstatsdata2"></canvas>
+          </div>
+        </section>
+        <section class="panel-section gymsellcontainer">
+          <button class="pill-button gymsellbutton">Sell gym</button>
+          <button class="ghost-button gymtransferbutton">Transfer gym</button>
+        </section>
+      </div>
 
-<body>
-	<div class="full-screen">			
-		<div class="gymmanagment-container" id="gymmanagmentshow">	
-			<div class="headergymmanagment">
-				<div class="headergymmanagmenttext">Manage your gym</div>
-				<img class="closegymmanagment" src="img/close.png" style="width:30px;height:30px" alt="closegymmanagment"/>
-			</div>	
-			<div class="gymentrypricecontainer">	
-				<div class="gymentrypricetext">Entry Price</div>
-				<div class="gymentrypricetextdata"><span id="gymentrypricedata">100</span>$</div>
-				<div class="gymentrypriceline">
-				</div>				
-			  <input type="range" min="1" max="1000" value="500" class="gymentrypriceslider" id="gymentrypricesliderdata" onchange="managmententryprice(this)">
-			</div>
-			<div class="gymclosedcontainer">	
-				<div class="gymclosedtext">Status</div>
-				<div class="gymclosedtextclose">Close</div>
-				<div class="gymclosedtextopen">Open</div>
-				<label class="gymclosedinput">
-				  <input type="checkbox" id="gymclosedinputdata">
-				  <span class="gymclosedinputslider"></span>
-				</label>				
-			</div>		
-			<div class="gymwithdrawcontainer">	
-				<div class="gymwithdrawtext">Balance</div>	
-				<div class="gymwithdrawmoneytext"><span id="gymwithdrawmoneytextdata">100</span>$</div>
-				<div class="gymwithdrawbutton">Withdraw</div>
-			</div>	
-			<div class="gymstatscontainer">	
-				<div class="gymstatstext">Earnings Statistics</div>	
-				<div class="gymstatsdata">
-					<canvas id="gymstatsdata2"></canvas>
-				</div>	
-			</div>	
-			<div class="gymsellcontainer">	
-				<div class="gymsellbutton">SELL GYM</div>
-				<div class="gymtransferbutton">TRANSFER GYM</div>
-			</div>				
-		</div>	
-		<div class="gymentry-container" id="gymentryshow">		
-			<div class="headergymentry">
-				<div class="headergymentrytext">BEACH GYM</div>
-				<img class="closegymentry" src="img/close.png" style="width:25px;height:25px" alt="closegymentry"/>
-			</div>	
-			<div class="gymentrypasscontainer">	
-				<div class="gymentrypasstext">GYM PASS</div>	
-				<div class="gymentrypassdurationtextmain">Duration</div>	
-				<div class="gymentrypassdurationtext"><span id="gymentrypassdurationdata">10</span> days</div>	
-				<div class="gymentrypasspricetextmain">PRICE</div>
-				<div class="gymentrypasspricetext">$<span id="gymentrypasspricedata">100</span></div>	
-				<div class="gymentrypassbutton">Purchase</div>
-			</div>		
-			<div class="gymentryonecontainer">	
-				<div class="gymentrypasstext">GYM ENTRY</div>	
-				<div class="gymentrypassdurationtextmain">Duration</div>	
-				<div class="gymentrypassdurationtext"><span id="gymentryonedurationdata">10</span> minutes</div>	
-				<div class="gymentrypasspricetextmain">PRICE</div>
-				<div class="gymentrypasspricetext">$<span id="gymentryonepricedata">10</span></div>	
-				<div class="gymentryonebutton">Purchase</div>
-			</div>	
-		</div>	
-		<div class="gymbuy-container" id="gymbuyshow">
-			<div class="headergymbuy">
-				<div class="headergymbuytext">GYM</div>
-				<img class="closegymbuy" src="img/close.png" style="width:25px;height:25px"/>
-			</div>
-			<div class="gymbuytext">GYM PRICE</div>
-			<div class="gymbuytextprice">$<span id="gymbuypricedata">100</span></div>
-			<div class="buttongymbuy">BUY GYM</div>
-		</div>		
-		<div class="gym-container" id="gymshow">	
-			<div class="gymlabeltext">Text</div>
-			<div class="gymlabelpress1">Press <span id="gympresskey">E</span> for exercise</div>
-			<div class="gymlabelpress2">Press <span id="gympresskey">F</span> for end exercise</div>
-		</div>	
-		<div class="gymstats-container" id="gymstatsshow">
-			<div class="statsmaintext">MY STATS</div>
-			<div class="statsstrength-container" id="statslogicshow">
-				<div class="statstext">STRENGTH</div>
-				<div class="statsstatsstrengthmaincontainer">
-					<div class="statsstatsstrengthmaincontainerdata"></div>
-				</div>		
-			</div>
-			<div class="statscondition-container" id="statslogicshow">
-				<div class="statstext">CONDITION</div>
-				<div class="statsstatsconditionmaincontainer">
-					<div class="statsstatsconditionmaincontainerdata"></div>
-				</div>		
-			</div>	
-			<div class="statsswimming-container" id="statsswimmingshow">
-				<div class="statstext">LUNG CAPACITY</div>
-				<div class="statsstatsswimmingmaincontainer">
-					<div class="statsstatsswimmingmaincontainerdata"></div>
-				</div>		
-			</div>				
-			<div class="statshygiene-container" id="statslogicshow">
-				<div class="statstext">HYGIENE</div>
-				<div class="statsstatshygienemaincontainer">
-					<div class="statsstatshygienemaincontainerdata"></div>
-				</div>		
-			</div>			
-			<div class="statsenergy-container" id="statslogicshow">
-				<div class="statstext">ENERGY</div>
-				<div class="statsstatsenergymaincontainer">
-					<div class="statsstatsenergymaincontainerdata"></div>
-				</div>		
-			</div>				
-		</div>			
-		<div class="infonotify-container" id="infonotifyshow">	
-			<div class="infonotifytext">Text</div>
-		</div>	
-		<div class="progress-container" id="progressshow">
-			<div class="progressbartext">Text</div>
-			<div class="progressbarmaincontainer">
-				<div class="progressbarmaincontainerdata"></div>
-			</div>		
-		</div>	
-		<div class="gymprogress-container" id="gymprogressshow">
-			<div class="gymprogressbartext">Press <span id="gymreactkey">E</span> when the progress bar is at the bottom of the highlighted section.</div>
-			<div class="gymprogressbarmaincontainer">
-				<div class="gymprogressbarmaincontainerdata"></div>
-				<div class="gymprogressbarmaincontainerpercentage"></div>
-			</div>	
-		</div>			
-	</div>
+      <div class="panel gymentry-container" id="gymentryshow">
+        <header class="panel-header headergymentry">
+          <span class="headergymentrytext">Beach Gym</span>
+          <button class="icon-button closegymentry" aria-label="Close gym entry">
+            <img src="img/close.png" alt="Close" />
+          </button>
+        </header>
+        <div class="gymentry-cards">
+          <section class="entry-card gymentrypasscontainer">
+            <h2 class="gymentrypasstext">Gym pass</h2>
+            <div class="entry-meta">
+              <span class="label">Duration</span>
+              <span class="value"><span id="gymentrypassdurationdata">10</span> days</span>
+            </div>
+            <div class="entry-meta">
+              <span class="label">Price</span>
+              <span class="value">$<span id="gymentrypasspricedata">100</span></span>
+            </div>
+            <button class="pill-button gymentrypassbutton">Purchase</button>
+          </section>
+          <section class="entry-card gymentryonecontainer">
+            <h2 class="gymentrypasstext">Gym entry</h2>
+            <div class="entry-meta">
+              <span class="label">Duration</span>
+              <span class="value"><span id="gymentryonedurationdata">10</span> minutes</span>
+            </div>
+            <div class="entry-meta">
+              <span class="label">Price</span>
+              <span class="value">$<span id="gymentryonepricedata">10</span></span>
+            </div>
+            <button class="ghost-button gymentryonebutton">Purchase</button>
+          </section>
+        </div>
+      </div>
 
+      <div class="panel gymbuy-container" id="gymbuyshow">
+        <header class="panel-header headergymbuy">
+          <span class="headergymbuytext">Gym</span>
+          <button class="icon-button closegymbuy" aria-label="Close purchase panel">
+            <img src="img/close.png" alt="Close" />
+          </button>
+        </header>
+        <p class="gymbuytext">Gym price</p>
+        <p class="gymbuytextprice">$<span id="gymbuypricedata">100</span></p>
+        <button class="pill-button buttongymbuy">Buy gym</button>
+      </div>
 
-	<script src="scripts.js" type="text/javascript"></script>
-	<script src="debounce.min.js" type="text/javascript"></script>
-</body>
+      <div class="panel gym-container" id="gymshow">
+        <h2 class="gymlabeltext">Welcome to the gym</h2>
+        <p class="gymlabelpress1">Press <span id="gympresskey">E</span> to start exercising</p>
+        <p class="gymlabelpress2">Press <span id="gympresskey">F</span> to finish exercising</p>
+      </div>
+
+      <div class="panel gymstats-container" id="gymstatsshow">
+        <h2 class="statsmaintext">My stats</h2>
+        <div class="stat-block statsstrength-container" id="statslogicshow">
+          <span class="statstext">Strength</span>
+          <div class="progress-track statsstatsstrengthmaincontainer">
+            <div class="progress-fill statsstatsstrengthmaincontainerdata"></div>
+          </div>
+        </div>
+        <div class="stat-block statscondition-container" id="statslogicshow">
+          <span class="statstext">Condition</span>
+          <div class="progress-track statsstatsconditionmaincontainer">
+            <div class="progress-fill statsstatsconditionmaincontainerdata"></div>
+          </div>
+        </div>
+        <div class="stat-block statsswimming-container" id="statsswimmingshow">
+          <span class="statstext">Lung capacity</span>
+          <div class="progress-track statsstatsswimmingmaincontainer">
+            <div class="progress-fill statsstatsswimmingmaincontainerdata"></div>
+          </div>
+        </div>
+        <div class="stat-block statshygiene-container" id="statslogicshow">
+          <span class="statstext">Hygiene</span>
+          <div class="progress-track statsstatshygienemaincontainer">
+            <div class="progress-fill statsstatshygienemaincontainerdata"></div>
+          </div>
+        </div>
+        <div class="stat-block statsenergy-container" id="statslogicshow">
+          <span class="statstext">Energy</span>
+          <div class="progress-track statsstatsenergymaincontainer">
+            <div class="progress-fill statsstatsenergymaincontainerdata"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel infonotify-container" id="infonotifyshow">
+        <p class="infonotifytext">Text</p>
+      </div>
+
+      <div class="panel progress-container" id="progressshow">
+        <p class="progressbartext">Text</p>
+        <div class="progress-track progressbarmaincontainer">
+          <div class="progress-fill progressbarmaincontainerdata"></div>
+        </div>
+      </div>
+
+      <div class="panel gymprogress-container" id="gymprogressshow">
+        <p class="gymprogressbartext" data-default-text="Press <span id=&quot;gymreactkey&quot;>E</span> when the progress bar is at the bottom of the highlighted section.">
+          Press <span id="gymreactkey">E</span> when the progress bar is at the bottom of the highlighted section.
+        </p>
+        <div class="progress-track gymprogressbarmaincontainer">
+          <div class="gymprogress-highlight"></div>
+          <div class="progress-fill gymprogressbarmaincontainerdata"></div>
+          <div class="gymprogressbarmaincontainerpercentage"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="scripts.js" type="text/javascript"></script>
+    <script src="debounce.min.js" type="text/javascript"></script>
+  </body>
+</html>

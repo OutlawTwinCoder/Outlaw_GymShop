@@ -95,21 +95,21 @@ if Config.DifferentStatsSystem == false then
 							if latestexercises.strenght > timerightnow then
 							else
 								latestexercises.strenght = GetGameTimer()+(Config.ReduceStatsTime.strenght.decreasetime*60000)
-								TriggerServerEvent("rtx_gym:GymNoExercise", "strenght")
+								TriggerServerEvent("outlaw_gym:GymNoExercise", "strenght")
 							end
 						end
 						if playerneeds["condition"] > 0.0 then
 							if latestexercises.condition > timerightnow then
 							else
 								latestexercises.condition = GetGameTimer()+(Config.ReduceStatsTime.condition.decreasetime*60000)
-								TriggerServerEvent("rtx_gym:GymNoExercise", "condition")
+								TriggerServerEvent("outlaw_gym:GymNoExercise", "condition")
 							end
 						end
 						if playerneeds["swimming"] > 95.0 then
 							if latestexercises.water > timerightnow then
 							else
 								latestexercises.water = GetGameTimer()+(Config.ReduceStatsTime.water.decreasetime*60000)
-								TriggerServerEvent("rtx_gym:GymNoExercise", "water")
+								TriggerServerEvent("outlaw_gym:GymNoExercise", "water")
 							end	
 						end
 					end
